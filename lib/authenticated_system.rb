@@ -14,7 +14,7 @@ module AuthenticatedSystem
 
     # Store the given use id in the session.
     def current_user=(new_user)
-      session[:use_id] = new_user ? new_user.id : nil
+      session[:user_id] = new_user ? new_user.id : nil
       @current_user = new_user || false
     end
 
