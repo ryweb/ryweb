@@ -2,6 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+  include AuthenticatedSystem
   helper :all # include all helpers, all the time
 
   # See ActionController::RequestForgeryProtection for details
@@ -12,4 +13,22 @@ class ApplicationController < ActionController::Base
   # Uncomment this to filter the contents of submitted sensitive data parameters
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
+
+  before_filter :set_current_customer
+
+  private
+
+  def set_current_customer
+    if params[:customer] == 'admin'
+      Customer.current = nil
+    else
+      Customer.current = params[:customer] 
+    end
+    unless current_user.nil?
+      if current_user.customer_id != Customer.current_id
+        access_denied
+      end
+    end
+  end
+
 end

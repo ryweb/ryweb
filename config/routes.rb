@@ -1,12 +1,16 @@
 ActionController::Routing::Routes.draw do |map|
-  map.logout '/logout', :controller => 'sessions', :action => 'destroy'
-  map.login '/login', :controller => 'sessions', :action => 'new'
-  map.register '/register', :controller => 'users', :action => 'create'
-  map.signup '/signup', :controller => 'users', :action => 'new'
-  map.resources :users
 
-  map.resource :session
-
+  
+  map.resources :customers, :path_prefix => '/:customer'
+  map.logout '/:customer/logout', :controller => 'sessions', :action => 'destroy'
+  map.login '/:customer/login/:id', :controller => 'sessions', :action => 'new'
+  map.register '/:customer/register', :controller => 'users', :action => 'create'
+  map.signup '/:custome/signup', :controller => 'users', :action => 'new'
+  map.resources :users, :path_prefix => '/:customer'
+  map.resource :session, :path_prefix => '/:customer'
+  map.connect ':customer/:controller/:action/:id'
+  map.connect ':customer/:controller/:action/:id.:format'
+  map.connect ':customer/', :controller => 'users'
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
@@ -46,6 +50,5 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing the them or commenting them out if you're using named routes and resources.
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+
 end
