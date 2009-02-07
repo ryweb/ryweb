@@ -9,24 +9,24 @@ class SessionsControllerTest < ActionController::TestCase
   # Then, you can remove it from this and the units test.
   include AuthenticatedTestHelper
 
-  fixtures :uses
+  fixtures :users
 
   def test_should_login_and_redirect
     post :create, :login => 'quentin', :password => 'monkey'
-    assert session[:use_id]
+    assert session[:user_id]
     assert_response :redirect
   end
 
   def test_should_fail_login_and_not_redirect
     post :create, :login => 'quentin', :password => 'bad password'
-    assert_nil session[:use_id]
+    assert_nil session[:user_id]
     assert_response :success
   end
 
   def test_should_logout
     login_as :quentin
     get :destroy
-    assert_nil session[:use_id]
+    assert_nil session[:user_id]
     assert_response :redirect
   end
 
@@ -50,22 +50,22 @@ class SessionsControllerTest < ActionController::TestCase
   end
 
   def test_should_login_with_cookie
-    uses(:quentin).remember_me
+    users(:quentin).remember_me
     @request.cookies["auth_token"] = cookie_for(:quentin)
     get :new
     assert @controller.send(:logged_in?)
   end
 
   def test_should_fail_expired_cookie_login
-    uses(:quentin).remember_me
-    uses(:quentin).update_attribute :remember_token_expires_at, 5.minutes.ago
+    users(:quentin).remember_me
+    users(:quentin).update_attribute :remember_token_expires_at, 5.minutes.ago
     @request.cookies["auth_token"] = cookie_for(:quentin)
     get :new
     assert !@controller.send(:logged_in?)
   end
 
   def test_should_fail_cookie_login
-    uses(:quentin).remember_me
+    users(:quentin).remember_me
     @request.cookies["auth_token"] = auth_token('invalid_auth_token')
     get :new
     assert !@controller.send(:logged_in?)
@@ -76,7 +76,7 @@ class SessionsControllerTest < ActionController::TestCase
       CGI::Cookie.new('name' => 'auth_token', 'value' => token)
     end
     
-    def cookie_for(use)
-      auth_token uses(use).remember_token
+    def cookie_for(user)
+      auth_token users(user).remember_token
     end
 end

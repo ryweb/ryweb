@@ -1,4 +1,4 @@
-module UsesHelper
+module UsersHelper
   
   #
   # Use this to wrap view elements that the user can't access.
@@ -18,38 +18,38 @@ module UsesHelper
   end
 
   #
-  # Link to user's page ('uses/1')
+  # Link to user's page ('users/1')
   #
   # By default, their login is used as link text and link title (tooltip)
   #
   # Takes options
-  # * :content_text => 'Content text in place of use.login', escaped with
+  # * :content_text => 'Content text in place of user.login', escaped with
   #   the standard h() function.
-  # * :content_method => :use_instance_method_to_call_for_content_text
-  # * :title_method => :use_instance_method_to_call_for_title_attribute
+  # * :content_method => :user_instance_method_to_call_for_content_text
+  # * :title_method => :user_instance_method_to_call_for_title_attribute
   # * as well as link_to()'s standard options
   #
   # Examples:
-  #   link_to_use @use
-  #   # => <a href="/uses/3" title="barmy">barmy</a>
+  #   link_to_user @user
+  #   # => <a href="/users/3" title="barmy">barmy</a>
   #
   #   # if you've added a .name attribute:
   #  content_tag :span, :class => :vcard do
-  #    (link_to_use use, :class => 'fn n', :title_method => :login, :content_method => :name) +
-  #          ': ' + (content_tag :span, use.email, :class => 'email')
+  #    (link_to_user user, :class => 'fn n', :title_method => :login, :content_method => :name) +
+  #          ': ' + (content_tag :span, user.email, :class => 'email')
   #   end
-  #   # => <span class="vcard"><a href="/uses/3" title="barmy" class="fn n">Cyril Fotheringay-Phipps</a>: <span class="email">barmy@blandings.com</span></span>
+  #   # => <span class="vcard"><a href="/users/3" title="barmy" class="fn n">Cyril Fotheringay-Phipps</a>: <span class="email">barmy@blandings.com</span></span>
   #
-  #   link_to_use @use, :content_text => 'Your user page'
-  #   # => <a href="/uses/3" title="barmy" class="nickname">Your user page</a>
+  #   link_to_user @user, :content_text => 'Your user page'
+  #   # => <a href="/users/3" title="barmy" class="nickname">Your user page</a>
   #
-  def link_to_use(use, options={})
-    raise "Invalid use" unless use
+  def link_to_user(user, options={})
+    raise "Invalid user" unless user
     options.reverse_merge! :content_method => :login, :title_method => :login, :class => :nickname
     content_text      = options.delete(:content_text)
-    content_text    ||= use.send(options.delete(:content_method))
-    options[:title] ||= use.send(options.delete(:title_method))
-    link_to h(content_text), use_path(use), options
+    content_text    ||= user.send(options.delete(:content_method))
+    options[:title] ||= user.send(options.delete(:title_method))
+    link_to h(content_text), user_path(user), options
   end
 
   #
@@ -76,15 +76,15 @@ module UsesHelper
   end
 
   #
-  # Link to the current user's page (using link_to_use) or to the login page
+  # Link to the current user's page (using link_to_user) or to the login page
   # (using link_to_login_with_IP).
   #
-  def link_to_current_use(options={})
-    if current_use
-      link_to_use current_use, options
+  def link_to_current_user(options={})
+    if current_user
+      link_to_user current_user, options
     else
       content_text = options.delete(:content_text) || 'not signed in'
-      # kill ignored options from link_to_use
+      # kill ignored options from link_to_user
       [:content_method, :title_method].each{|opt| options.delete(opt)} 
       link_to_login_with_IP content_text, options
     end
