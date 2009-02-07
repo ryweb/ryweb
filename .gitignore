@@ -1,0 +1,7 @@
+log/*.log
+tmp/**/*
+db/*.sqlite3
+.DS_Store
+doc/api
+doc/app
+
