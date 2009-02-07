@@ -1,6 +1,6 @@
 require 'digest/sha1'
 
-class User < ActiveRecord::Base
+class User < CustomerData
   include Authentication
   include Authentication::ByPassword
   include Authentication::ByCookieToken
