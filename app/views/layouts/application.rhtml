@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fi" lang="fi">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<%= stylesheet_link_tag "application" %>
+<title>Yhdistys ry - intra</title>
+<%= javascript_include_tag :defaults %>
+</head>
+
+<body>
+<!-- wrap starts here -->
+<div id="wrap">
+        <!-- header -->
+        <div id="header">
+            <h1 id="logo-text"><a href="index.html">Yhdistys ry - intra</a></h1>
+            <div id="header-links">
+              <p>
+                <a href="index.html">Omat tiedot</a> |
+                <a href="index.html">Kirjaudu ulos</a>
+              </p>
+            </div>
+        </div> <!-- header ends here -->
+
+        <!-- menu -->
+        <div  id="menu">
+          <ul>
+            <li><%= link_to 'Etusivu', :controller => 'dashboard' %></li>
+            <li><%= link_to 'CMS', :controller => 'pages', :action => 'list' %></li>
+            <li><%= link_to 'Tapahtumakalenteri', :controller => 'occasions' %></li>
+            <li class="last"><%= link_to 'Henkilörekisterit', :controller => 'users' %></li>
+          </ul>
+        </div> <!-- menu ends here -->
+
+        <!-- content-wrap starts here -->
+        <div id="content-wrap">
+
+            <div id="sidebar">
+              <ul class="sidemenu">
+                <!-- Tähän pitäisi renderöidä kontekstikohtainen menu. (
+<% if ['occasions', 'occasion_types', 'locations', 'users'].include?(params[:controller]) %>
+    <%= render :partial => params[:controller] + '/context_menu' %>
+<% end %>
+
+) -->
+              </ul>
+            </div><!-- sidebar ends here -->
+
+            <div id="main">
+              <div class="notice"><%= flash[:notice] %></div>
+              <div class="error"><%= flash[:error] %></div>
+
+              <%= yield %>
+            </div><!-- main ends here -->
+        </div><!-- content-wrap ends here -->
+
+        <!--footer starts here-->
+        <div id="footer">
+            <p>&copy; 2009 <strong>Your Association</strong></p>
+        </div>  <!-- footer ends here -->
+
+</div> <!-- wrap ends here -->
+
+</body>
+</html>
