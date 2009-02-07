@@ -17,8 +17,18 @@ class ApplicationController < ActionController::Base
   before_filter :set_current_customer
 
   private
+
   def set_current_customer
-    self.current_customer=(session[:customer_id])
+    if params[:customer] == 'admin'
+      Customer.current = nil
+    else
+      Customer.current = params[:customer] 
+    end
+    unless current_user.nil?
+      if current_user.customer_id != Customer.current_id
+        access_denied
+      end
+    end
   end
 
 end

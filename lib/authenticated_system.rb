@@ -18,14 +18,6 @@ module AuthenticatedSystem
       @current_user = new_user || false
     end
 
-    def current_customer=(new_customer)
-      Customer.current = new_customer
-      session[:customer_id] = Customer.current_id
-    end
-
-    def current_customer
-      Customer.current
-    end
 
     # Check if the user is authorized
     #
@@ -148,7 +140,6 @@ module AuthenticatedSystem
       @current_user = false     # not logged in, and don't do it for me
       kill_remember_cookie!     # Kill client-side auth cookie
       session[:user_id] = nil   # keeps the session but kill our variable
-      session[:customer_id] = nil
       # explicitly kill any other session variables you set
     end
 

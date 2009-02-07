@@ -49,6 +49,13 @@ class User < CustomerData
     write_attribute :email, (value ? value.downcase : nil)
   end
 
+  def superuser?
+    if customer_id == nil
+      return true
+    end
+    false
+  end
+
   protected
 
 
