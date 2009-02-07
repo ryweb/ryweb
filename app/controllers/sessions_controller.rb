@@ -3,10 +3,12 @@ class SessionsController < ApplicationController
 
   # render new.rhtml
   def new
+    @customer = params[:id]
   end
 
   def create
     logout_keeping_session!
+    self.current_customer = params[:customer]
     user = User.authenticate(params[:login], params[:password])
     if user
       # Protects against session fixation attacks, causes request forgery

@@ -6,10 +6,15 @@ class Customer < ActiveRecord::Base
   end
 
   def self.current_id
-    Thread.current['customer'].id or nil
+    unless Customer.current.nil?
+      Customer.current.id
+    else
+      nil
+    end
   end
 
   def self.current=(customer)
+    cust = nil
     case customer
     when Integer
       cust = Customer.find(customer)
@@ -17,8 +22,8 @@ class Customer < ActiveRecord::Base
       cust = Customer.find_by_name(customer)
     when Customer
       cust = customer
-    else
-      raise TypeError
+    when nil
+      cust = nil
     end
     Thread.current['customer'] = cust
   end

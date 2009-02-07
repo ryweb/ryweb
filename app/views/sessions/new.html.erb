@@ -1,6 +1,7 @@
 <h1>Log In</h1>
 
 <% form_tag session_path do -%>
+
 <p><%= label_tag 'login' %><br />
 <%= text_field_tag 'login', @login %></p>
 
@@ -11,6 +12,7 @@
 <p><%= label_tag 'remember_me', 'Remember me' %>
 <%= check_box_tag 'remember_me', '1', @remember_me %></p>
 -->
+<%= hidden_field_tag 'customer', @customer %>
 
 <p><%= submit_tag 'Log in' %></p>
 <% end -%>

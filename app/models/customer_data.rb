@@ -2,7 +2,7 @@ class CustomerData < ActiveRecord::Base
   self.abstract_class = true
 
   def self.scope_conditions
-    return {:find => { :conditions => {:customer => Customer.current_id}} ,:create => {:customer => Customer.current_id }}
+    return {:find => { :conditions => {:customer_id => Customer.current_id}} ,:create => {:customer_id => Customer.current_id }}
   end
 
   def self.find(*args)
