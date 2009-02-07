@@ -1,4 +1,5 @@
 class Customer < ActiveRecord::Base
+  has_many :users
 
   def self.current
     Thread.current['customer']
