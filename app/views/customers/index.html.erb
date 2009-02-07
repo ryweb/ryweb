@@ -6,6 +6,7 @@
 
 <% for customer in @customers %>
   <tr>
+    <td><%=customer.name%></td>
     <td><%= link_to 'Show', customer %></td>
     <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
     <td><%= link_to 'Destroy', customer, :confirm => 'Are you sure?', :method => :delete %></td>
