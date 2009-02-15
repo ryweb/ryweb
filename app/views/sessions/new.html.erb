@@ -1,11 +1,11 @@
-<h1>Log In</h1>
+<h1>Kirjautuminen</h1>
 
 <% form_tag session_path do -%>
 
-<p><%= label_tag 'login' %><br />
+<p><%= label_tag 'login', 'Käyttäjätunnus' %><br />
 <%= text_field_tag 'login', @login %></p>
 
-<p><%= label_tag 'password' %><br/>
+<p><%= label_tag 'password', 'Salasana' %><br/>
 <%= password_field_tag 'password', nil %></p>
 
 <!-- Uncomment this if you want this functionality
@@ -14,5 +14,5 @@
 -->
 <%= hidden_field_tag 'customer', @customer %>
 
-<p><%= submit_tag 'Log in' %></p>
+<p><%= submit_tag 'Kirjaudu' %></p>
 <% end -%>
