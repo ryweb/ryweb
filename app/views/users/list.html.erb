@@ -1,0 +1,17 @@
+<h1>Käyttäjälista</h1>
+
+<table>
+  <thead>
+  	<th>Käyttäjätunnus</th>
+	<th>Sähköposti</th>
+	<th>&nbsp;</th>
+  </thead>
+<% for user in @users %>
+  <tr>
+    <td><%= link_to user.login, user_path(:id => user) %></td>
+	<td><%= user.email%></td>
+    <td><%= link_to 'Muokkaa', edit_user_path(:id => user) %>  
+    <!-- = link_to 'Poista', :id => user, :confirm => 'Oletko varma?', :method => :delete % --></td>
+  </tr>
+<% end %>
+</table>

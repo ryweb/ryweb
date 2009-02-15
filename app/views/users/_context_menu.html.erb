@@ -1,3 +1,6 @@
 <% if ['show'].include?(params[:action]) %>
 	<li><%= link_to 'Muokkaa tietoja', edit_user_path(:id => @user) %></li>
 <% end %>
+<% if ['list'].include?(params[:action]) %>
+	<li><%= link_to 'Lisää käyttäjä', new_user_path %>
+<% end %>

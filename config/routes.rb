@@ -2,6 +2,7 @@ ActionController::Routing::Routes.draw do |map|
 
   
   map.resources :customers, :path_prefix => '/:customer'
+  map.userlist '/:customer/users/list', :controller => 'users', :action => 'list'
   map.logout '/:customer/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/:customer/login/:id', :controller => 'sessions', :action => 'new'
   map.register '/:customer/register', :controller => 'users', :action => 'create'
