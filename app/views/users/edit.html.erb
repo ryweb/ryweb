@@ -1,0 +1,14 @@
+<h1>Käyttäjän tietojen muokkaus</h1>
+
+<% form_for :user,
+			:url => user_path(:id => @user),
+			:html => {:method => :put } do |f| -%>
+  <%= f.error_messages %>
+
+  <p><%= f.label :email, 'Sähköposti:' %>
+  <%= f.text_field :email %><br /></p>
+  
+  <p>
+    <%= f.submit "Tallenna" %>
+  </p>
+<% end %>
