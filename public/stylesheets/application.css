@@ -7,7 +7,8 @@
 body {
     background: #d6ddcc;
     font: Verdana, Tahoma, arial, sans-serif;
-    font-size: 70%/1.5em;
+/*    font-size: 70%/1.5em; */
+	font-size: 0.85em;
     color: #555;
     text-align: center;
 }
@@ -137,14 +138,14 @@ form {
 
 label {
     display:block;
-    font-weight:bold;
+    font: bold 0.85em Verdana, sans-serif;
     margin:5px 0;
 }
 
 input {
     padding:2px;
     border:1px solid #eee;
-    font: normal 1em Verdana, sans-serif;
+    font: normal 0.85em Verdana, sans-serif;
     color:#777;
 }
 
