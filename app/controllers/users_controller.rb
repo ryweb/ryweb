@@ -71,4 +71,17 @@ class UsersController < ApplicationController
     end
   end
 
+  # DELETE /locations/1
+  # DELETE /locations/1.xml
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(:action => "list") }
+      format.xml  { head :ok }
+    end
+  end
+
+
 end
