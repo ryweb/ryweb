@@ -1,0 +1,7 @@
+	<li><%= link_to 'Paikat', locations_path %>
+	<ul>
+		<li><%= link_to 'Uusi paikka', new_location_path %></li>
+		<% if ['show'].include?(params[:action]) %>
+			<li><%= link_to 'Muokkaa tietoja', edit_location_path(:id => @location) %></li>
+		<% end %>
+	</ul>

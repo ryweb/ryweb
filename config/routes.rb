@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-
+  map.resources :locations, :path_prefix => '/:customer'
   
   map.resources :customers, :path_prefix => '/:customer'
   map.userlist '/:customer/users/list', :controller => 'users', :action => 'list'
