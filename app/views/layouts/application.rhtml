@@ -18,7 +18,7 @@
              	<% if logged_in? -%>
 					<%= 'Kirjauduttu nimellä '%>
 					<strong><%= link_to @current_user.login, user_path(:id => @current_user) %></strong>
-					<%= link_to "Kirjaudu ulos", logout_path, { :title => "Log out" }    %>
+					<%= link_to "Kirjaudu ulos", logout_path, { :title => "Log out" } %>
 				<% else -%>
 					<%= link_to "Kirjaudu sisään",  login_path,  { :title => "Kirjautuminen" } %>
 				<% end -%>                
