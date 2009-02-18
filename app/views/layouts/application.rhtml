@@ -30,10 +30,13 @@
         <div  id="menu">
           <ul>
 	        <li><%= link_to 'Etusivu', users_url %></li>
+			<% if current_user %>
             <li><%= link_to 'CMS', :controller => 'pages', :action => 'list' %></li>
             <li><%= link_to 'Tapahtumakalenteri', :controller => 'occasions' %></li>
-            <li class="last"><%= link_to 'Henkilörekisterit', :controller => 'users' %></li>
-      		<li><%= link_to 'Käyttäjälista', :controller => 'users', :action => 'list' %></li>			
+				<% if current_user && current_user.user_level <= 10 %>
+		      		<li><%= link_to 'Käyttäjälista', :controller => 'users', :action => 'list' %></li>			
+				<% end %>
+			<% end %>
           </ul>
         </div> <!-- menu ends here -->
 

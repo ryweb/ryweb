@@ -20,12 +20,15 @@ class User < CustomerData
   validates_uniqueness_of   :email
   validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
 
+#  validates_presence_of     :user_level
+#  validates_numericality_of :user_level
+
 
 
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
-  attr_accessible :login, :email, :name, :password, :password_confirmation
+  attr_accessible :login, :email, :name, :password, :password_confirmation, :user_level
 
 
 
@@ -54,6 +57,16 @@ class User < CustomerData
       return true
     end
     false
+  end
+  
+  def getOptionsForSelectList(method)
+   case method
+     when :user_level
+       @options = {
+         'yhdistyksen pääkäyttäjä' => 10,
+         'normaali käyttäjä' => 20,
+       }          
+   end
   end
 
   protected

@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     @user = self.current_user
   end
   
-    def list
+  def list
     @users = User.find(:all)
 
     respond_to do |format|
@@ -37,6 +37,7 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(params[:user])
+        
     success = @user && @user.save
     if success && @user.errors.empty?
       @user.update_attribute(:customer_id,current_user.customer_id)
@@ -45,8 +46,8 @@ class UsersController < ApplicationController
       # protection if visitor resubmits an earlier form using back
       # button. Uncomment if you understand the tradeoffs.
       # reset session
-
-      redirect_to(user_url (:id => @user))
+      
+      redirect_to(user_url(:id => @user))
       flash[:notice] = "Uusi käyttäjä lisätty onnistuneesti."
     else
       flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."

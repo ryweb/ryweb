@@ -16,5 +16,8 @@
 <p><%= label_tag 'password_confirmation', 'Salasanan vahvistus' %><br/>
 <%= f.password_field :password_confirmation %></p>
 
+<p><%= label_tag 'user_level', 'Käyttäjätaso' %><br/>
+<%= f.select :user_level, @user.getOptionsForSelectList(:user_level), options ={:prompt => ""} %></p>
+
 <p><%= submit_tag 'Lisää käyttäjä' %></p>
 <% end -%>

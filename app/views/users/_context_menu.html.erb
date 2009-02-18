@@ -1,9 +1,14 @@
+
+<% if current_user.user_level <= 10 %>
+
+<% if !['index'].include?(params[:action]) %>
 <li><%= link_to 'Käyttäjät', :controller => 'users', :action => 'list' %></li>			
-	<ul>
-		<% if ['list'].include?(params[:action]) %>
-			<li><%= link_to 'Lisää käyttäjä', new_user_path %></li>
-		<% end %>			
-		<% if ['show'].include?(params[:action]) %>
-			<li><%= link_to 'Muokkaa tietoja', edit_user_path(:id => @user) %></li>
-		<% end %>
-	</ul>
+	<% if ['list'].include?(params[:action]) %>
+		<li><%= link_to 'Lisää käyttäjä', new_user_path %></li>
+	<% end %>			
+<% end %>
+<% end %>
+
+<% if ['show'].include?(params[:action]) %>
+	<li><%= link_to 'Muokkaa tietoja', edit_user_path(:id => @user) %></li>
+<% end %>
