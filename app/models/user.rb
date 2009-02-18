@@ -20,9 +20,7 @@ class User < CustomerData
   validates_uniqueness_of   :email
   validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
 
-#  validates_presence_of     :user_level
-#  validates_numericality_of :user_level
-
+  validates_presence_of     :user_level
 
 
   # HACK HACK HACK -- how to do attr_accessible from here?
