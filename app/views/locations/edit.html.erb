@@ -1,13 +1,13 @@
-<h1>Paikan tietojen muokkaus</h1>
+<h2>Paikan tietojen muokkaus</h2>
 
 <% form_for :location,
 			:url => location_path(:id => @location),
 			:html => {:method => :put } do |f| -%>
   <%= f.error_messages %>
-  <p><%= f.label :name, 'Paikan nimi:' %>
+  <p><%= f.label :name, 'Paikan nimi' %>
   <%= f.text_field :name %><br /></p>
 
-  <p><%= f.label :address, 'Osoite:' %>
+  <p><%= f.label :address, 'Osoite' %>
   <%= f.text_field :address %><br /></p>
 
   <p>

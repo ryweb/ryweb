@@ -12,7 +12,7 @@
 <div id="wrap">
         <!-- header -->
         <div id="header">
-            <h1 id="logo-text"><a href="index.html">Yhdistys ry - intra</a></h1>
+            <h1 id="logo-text"><%= link_to 'Yhdistys ry - intra', users_url %></h1>
             <div id="header-links">
               <p>
              	<% if logged_in? -%>
@@ -31,7 +31,7 @@
           <ul>
 	        <li><%= link_to 'Etusivu', users_url %></li>
             <li><%= link_to 'CMS', :controller => 'pages', :action => 'list' %></li>
-            <li><%= link_to 'Tapahtumakalenteri', locations_path %></li>
+            <li><%= link_to 'Tapahtumakalenteri', occasions_path %></li>
       		<li><%= link_to 'Käyttäjälista', :controller => 'users', :action => 'list' %></li>			
           </ul>
         </div> <!-- menu ends here -->
@@ -42,7 +42,7 @@
             <div id="sidebar">
               <ul class="sidemenu">
                 
-<% if ['users', 'locations'].include?(params[:controller]) %>
+<% if ['users', 'occasions', 'locations', 'occasion_types'].include?(params[:controller]) %>
     <%= render :partial => params[:controller] + '/context_menu' %>
 <% end %>
 
