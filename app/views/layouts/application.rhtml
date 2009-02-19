@@ -34,7 +34,8 @@
             <li><%= link_to 'CMS', :controller => 'pages', :action => 'list' %></li>
             <li><%= link_to 'Tapahtumakalenteri', :controller => 'occasions' %></li>
 				<% if current_user && current_user.user_level <= 10 %>
-		      		<li><%= link_to 'Käyttäjälista', :controller => 'users', :action => 'list' %></li>			
+		      		<!-- li><%= link_to 'Käyttäjälista', :controller => 'users', :action => 'list' %></li -->			
+					<li><%= link_to 'Asetukset', :controller => 'settings' %></li>								
 				<% end %>
 			<% end %>
           </ul>
@@ -46,7 +47,7 @@
             <div id="sidebar">
               <ul class="sidemenu">
                 
-<% if ['users'].include?(params[:controller]) %>
+<% if ['users', 'settings'].include?(params[:controller]) %>
     <%= render :partial => params[:controller] + '/context_menu' %>
 <% end %>
 

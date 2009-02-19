@@ -1,11 +1,11 @@
-<h1>Kirjautuminen</h1>
+<h2>Kirjautuminen</h2>
 
 <% form_tag session_path do -%>
 
-<p><%= label_tag 'login', 'Käyttäjätunnus' %><br />
+<p><%= label_tag 'login', 'Käyttäjätunnus' %>
 <%= text_field_tag 'login', @login %></p>
 
-<p><%= label_tag 'password', 'Salasana' %><br/>
+<p><%= label_tag 'password', 'Salasana' %>
 <%= password_field_tag 'password', nil %></p>
 
 <!-- Uncomment this if you want this functionality
