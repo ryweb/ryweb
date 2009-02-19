@@ -1,0 +1,6 @@
+<div id="buttonbar">
+	<%= link_to 'Muokkaa tietoja', edit_location_path(:id => @location) %>
+</div>
+<h2>Paikan tiedot: <%= @location.name %></h2>
+
+<p><strong>Osoite: </strong><%= @location.address %></p>

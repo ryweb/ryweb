@@ -1,0 +1,15 @@
+<h2>Uusi paikka</h2>
+
+<% form_for :location, :url => locations_path do |f| -%>
+  <%= f.error_messages %>
+
+<p><%= label_tag 'name', 'Paikan nimi' %>
+<%= f.text_field :name %></p>
+
+<p><%= label_tag 'address', 'Osoite' %>
+<%= f.text_field :address %></p>
+
+  <p>
+    <%= f.submit "Tallenna" %>
+  </p>
+<% end %>	

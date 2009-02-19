@@ -1,0 +1,27 @@
+<div id="buttonbar">
+	<%= link_to 'Uusi paikka', new_location_path %>
+</div>	
+<h2>Paikat</h2>
+
+<table>
+  <thead>
+  	<tr>
+		<th>Paikka</th>
+		<th>Osoite</th>
+		<th>&nbsp;</th>
+	</tr>
+  </thead>
+
+<tbody>
+<% for location in @locations %>
+  <tr>
+	<td><%= link_to location.name, location_path(:id => location) %></td>
+	<td><%= location.address %></td>
+    <td><%= link_to 'Muokkaa', edit_location_path(:id => location) %>
+    <%= link_to 'Poista', location_path(:id => location), :confirm => 'Oletko varma?', :method => :delete %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<br />

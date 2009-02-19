@@ -12,13 +12,13 @@
 <div id="wrap">
         <!-- header -->
         <div id="header">
-            <h1 id="logo-text"><a href="index.html">Yhdistys ry - intra</a></h1>
+            <h1 id="logo-text"><%= link_to 'Yhdistys ry - intra', users_url %></h1>
             <div id="header-links">
               <p>
              	<% if logged_in? -%>
 					<%= 'Kirjauduttu nimellä '%>
 					<strong><%= link_to @current_user.login, user_path(:id => @current_user) %></strong>
-					<%= link_to "Kirjaudu ulos", logout_path, { :title => "Log out" }    %>
+					<%= link_to "Kirjaudu ulos", logout_path, { :title => "Log out" } %>
 				<% else -%>
 					<%= link_to "Kirjaudu sisään",  login_path,  { :title => "Kirjautuminen" } %>
 				<% end -%>                
@@ -31,10 +31,9 @@
           <ul>
 	        <li><%= link_to 'Etusivu', users_url %></li>
 			<% if current_user %>
-            <li><%= link_to 'CMS', :controller => 'pages', :action => 'list' %></li>
-            <li><%= link_to 'Tapahtumakalenteri', :controller => 'occasions' %></li>
+	            <li><%= link_to 'CMS', :controller => 'pages', :action => 'list' %></li>
+	            <li><%= link_to 'Tapahtumakalenteri', occasions_path %></li>
 				<% if current_user && current_user.user_level <= 10 %>
-		      		<!-- li><%= link_to 'Käyttäjälista', :controller => 'users', :action => 'list' %></li -->			
 					<li><%= link_to 'Asetukset', :controller => 'settings' %></li>								
 				<% end %>
 			<% end %>
@@ -47,7 +46,7 @@
             <div id="sidebar">
               <ul class="sidemenu">
                 
-<% if ['users', 'settings'].include?(params[:controller]) %>
+<% if ['users', 'settings', 'occasions', 'locations', 'occasion_types'].include?(params[:controller]) %>
     <%= render :partial => params[:controller] + '/context_menu' %>
 <% end %>
 

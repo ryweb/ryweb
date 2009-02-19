@@ -1,0 +1,27 @@
+<div id="buttonbar">
+	<%= link_to 'Uusi tapahtumatyyppi', new_occasion_type_path %>
+</div>	
+<h2>Tapahtumatyypit</h2>
+
+<table>
+  <thead>
+  	<tr>
+		<th>Tyyppi</th>
+		<th>Näkyvyys</th>
+		<th>&nbsp;</th>
+	</tr>
+  </thead>
+
+<tbody>
+<% for occasion_type in @occasion_types %>
+  <tr>
+	<td><%= link_to occasion_type.name, occasion_type_path(:id => occasion_type) %></td>
+	<td><%= occasion_type.getOptionsForSelectList(:visibility).index(occasion_type.visibility) %></td>
+    <td><%= link_to 'Muokkaa', edit_occasion_type_path(:id => occasion_type) %>
+    <%= link_to 'Poista', occasion_type_path(:id => occasion_type), :confirm => 'Oletko varma?', :method => :delete %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<br />
