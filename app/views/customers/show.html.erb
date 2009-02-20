@@ -1,4 +1,4 @@
-<%= @customer.name %>
-
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
+<div id="buttonbar">
+	<%= link_to 'Muokkaa tietoja', edit_customer_path(:id => @customer) %>
+</div>
+<h2>Yhdistyksen tiedot: <%= @customer.name %></h2>

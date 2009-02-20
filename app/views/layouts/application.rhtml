@@ -46,7 +46,7 @@
             <div id="sidebar">
               <ul class="sidemenu">
                 
-<% if ['users', 'settings', 'occasions', 'locations', 'occasion_types'].include?(params[:controller]) %>
+<% if ['users', 'settings', 'customers', 'occasions', 'locations', 'occasion_types'].include?(params[:controller]) %>
     <%= render :partial => params[:controller] + '/context_menu' %>
 <% end %>
 

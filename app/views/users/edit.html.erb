@@ -1,24 +1,24 @@
-<h1>Käyttäjän tietojen muokkaus</h1>
+<h2>Käyttäjän tietojen muokkaus</h2>
 
 <% form_for :user,
 			:url => user_path(:id => @user),
 			:html => {:method => :put } do |f| -%>
   <%= f.error_messages %>
  
-<p><%= label_tag 'login', 'Käyttäjätunnus' %><br/>
+<p><%= label_tag 'login', 'Käyttäjätunnus' %>
 <%= @user.login %></p>
 
-<p><%= label_tag 'email', 'Sähköposti' %><br/>
+<p><%= label_tag 'email', 'Sähköposti' %>
 <%= f.text_field :email %></p>
 
-<p><%= label_tag 'password', 'Salasana' %><br/>
+<p><%= label_tag 'password', 'Salasana' %>
 <%= f.password_field :password %></p>
 
-<p><%= label_tag 'password_confirmation', 'Salasanan vahvistus' %><br/>
+<p><%= label_tag 'password_confirmation', 'Salasanan vahvistus' %>
 <%= f.password_field :password_confirmation %></p>
 
 <% if current_user.user_level <= 10 %>
-<p><%= label_tag 'user_level', 'Käyttäjätaso' %><br/>
+<p><%= label_tag 'user_level', 'Käyttäjätaso' %>
 <%= f.select :user_level, @user.getOptionsForSelectList(:user_level), options ={:prompt => ""} %></p>
 <% end %>
   

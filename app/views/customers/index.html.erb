@@ -1,19 +1,24 @@
-<h1>Listing customers</h1>
+<div id="buttonbar">
+	<%= link_to 'Uusi yhdistys', new_customer_path %>
+</div>	
+<h2>Yhdistykset</h2>
 
 <table>
-  <tr>
-  </tr>
-
+  <thead>
+  	<tr>
+		<th>Nimi</th>
+		<th>&nbsp;</th>
+	</tr>
+  </thead>
+<tbody>
 <% for customer in @customers %>
   <tr>
-    <td><%=customer.name%></td>
-    <td><%= link_to 'Show', customer %></td>
-    <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-    <td><%= link_to 'Destroy', customer, :confirm => 'Are you sure?', :method => :delete %></td>
+  	<td><%= link_to customer.name, customer_path(:id => customer) %></td>
+    <td><%= link_to 'Muokkaa', edit_customer_path(:id => customer) %>
+    <%= link_to '(Poista)', customer_path(:id => customer), :confirm => 'Oletko varma?', :method => :delete %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
 
 <br />
-
-<%= link_to 'New customer', new_customer_path %>
