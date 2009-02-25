@@ -208,8 +208,14 @@ input.button {
 #buttonbar {
 	float: right;
 	margin-right:10px;
-    padding:4px;
+/*    padding:4px;
     border:1px solid #eee;
+    font: normal 0.85em Verdana, sans-serif;*/
+}
+
+#buttonbar a {
+    padding:4px;
+    border:1px solid #ccc;
     font: normal 0.85em Verdana, sans-serif;
 }
 
@@ -328,7 +334,7 @@ input.button {
 }
 
 #main ul li {
-    list-style-image: url(../images/bullet.gif);
+/*    list-style-image: url(../images/bullet.gif); */
 }
 
 #sidebar {

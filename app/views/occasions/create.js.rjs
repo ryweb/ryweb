@@ -1,0 +1,4 @@
+page.replace_html :occ_list, :partial => 'occasion'
+page['quick_create_form'].reset
+page['occasion_start_time'].focus
+flash.discard

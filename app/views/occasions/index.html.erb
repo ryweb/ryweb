@@ -1,1 +1,9 @@
-<h2>Tapahtumakalenteri</h2>
+<div id="buttonbar">
+	<%= link_to '< Edellinen kk <', occasions_path(:direction => 'back', :year => @date.year, :month => @date.month) %>
+	<%= link_to '> Seuraava kk >', occasions_path(:direction => 'forward', :year => @date.year, :month => @date.month) %>	
+	<%= link_to 'Uusi tapahtuma', new_occasion_path %>
+</div>	
+
+<div id ='quick_create'>
+	<%= render :partial => 'quick_create' %>
+</div>

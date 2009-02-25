@@ -1,0 +1,7 @@
+<h2>Tapahtuman tietojen muokkaus</h2>
+
+<% form_for :occasion,
+			:url => occasion_path(:id => @occasion),
+			:html => {:method => :put } do |f| -%>
+	<%= render :partial => 'form', :locals => {:f => f}%>	 
+<% end %>

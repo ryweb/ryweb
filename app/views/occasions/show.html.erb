@@ -1,0 +1,23 @@
+<div id="buttonbar">
+	<%= link_to 'Muokkaa tietoja', edit_occasion_path(:id => @occasion) %>
+	<%= link_to 'Uusi tapahtuma', new_occasion_path %>	
+</div>
+<h2>Tapahtuman tiedot: <%= @occasion.name %></h2>
+
+<p><%= label_tag 'start_time', 'Aloitusaika' %>
+<%= @occasion.start_time %></p>
+
+<p><%= label_tag 'occasion_type_id', 'Tapahtuman tyyppi' %>
+<%= @occasion.occasion_type.name %></p>
+
+<p><%= label_tag 'location_id', 'Paikka' %>
+<%= @occasion.location.name %></p>
+
+<p><%= label_tag 'state', 'Tila' %>
+<%= @occasion.getOptionsForSelectList(:state).index(@occasion.state) %></p>
+
+<p><%= label_tag 'internal_info', 'Sisäinen lisätieto' %>
+<%= @occasion.internal_info %></p>
+
+<p><%= label_tag 'public_info', 'Julkinen (internet) lisätieto' %>
+<%= @occasion.public_info %></p>

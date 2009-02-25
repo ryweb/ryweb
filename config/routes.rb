@@ -1,8 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :occasion_types, :path_prefix => '/:customer'
-  map.resources :occasions, :path_prefix => '/:customer'
-  map.resources :locations, :path_prefix => '/:customer'
-  
+
   map.resources :customers, :path_prefix => '/:customer'
   map.userlist '/:customer/users/list', :controller => 'users', :action => 'list'
   map.logout '/:customer/logout', :controller => 'sessions', :action => 'destroy'
@@ -11,6 +8,10 @@ ActionController::Routing::Routes.draw do |map|
   map.signup '/:custome/signup', :controller => 'users', :action => 'new'
   map.resources :users, :path_prefix => '/:customer'
   map.resource :session, :path_prefix => '/:customer'
+  map.resources :occasion_types, :path_prefix => '/:customer'
+  map.occasionlist '/:customer/occasions/list', :controller =>'occasions', :action =>'list'
+  map.resources :occasions, :path_prefix => '/:customer'
+  map.resources :locations, :path_prefix => '/:customer'
   map.connect ':customer/:controller/:action/:id'
   map.connect ':customer/:controller/:action/:id.:format'
   map.connect ':customer/', :controller => 'users'
