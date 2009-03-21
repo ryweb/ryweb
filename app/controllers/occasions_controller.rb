@@ -7,12 +7,11 @@ class OccasionsController < ApplicationController
   # GET /occasions
   # GET /occasions.xml
   def index
-   redirect_to :action => 'list'
-#    if params[:view].to_s == "calendar"
-#      redirect_to :action => 'calendar'          
-#    else
-#      redirect_to :action => 'list'
-#    end
+    if params[:view].to_s == "list"
+      redirect_to :action => 'list'
+    else
+      redirect_to :action => 'calendar', :start_date =>params[:start_date]          
+    end
   end
 
   def list
@@ -27,7 +26,19 @@ class OccasionsController < ApplicationController
       format.xml  { render :xml => @occasions }
     end    
   end
+
+  def calendar
+   @occasion = Occasion.new
   
+   select_month
+
+   locations_and_occasion_types
+    
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @occasions }
+    end    
+  end    
   # GET /occasions/1
   # GET /occasions/1.xml
   def show
@@ -46,7 +57,10 @@ class OccasionsController < ApplicationController
   # GET /occasions/new.xml
   def new
     @occasion = Occasion.new
-
+    unless params[:occasion_date].nil?
+      @occasion.start_time = params[:occasion_date]      
+    end
+    
     locations_and_occasion_types
 
     respond_to do |format|
@@ -75,10 +89,10 @@ class OccasionsController < ApplicationController
         @occasion.update_attribute(:customer_id,current_user.customer_id)   
 
         select_month
-        
+
         flash[:notice] = 'Tapahtuma tallennettu.'
-#        format.html { redirect_to(occasion_url(:id => @occasion)) }
-        format.html { redirect_to(occasions_url)}
+        # Välitetään luodun tapahtuman päiväys, jotta osataan näyttää oikea kuukausi
+        format.html { redirect_to(occasions_url(:start_date => @occasion.start_time))}
         format.xml  { render :xml => @occasion, :status => :created, :location => @occasion }
         format.js
       else
@@ -114,7 +128,11 @@ class OccasionsController < ApplicationController
     @occasion.destroy
 
     respond_to do |format|
-      format.html { redirect_to(occasions_url) }
+      if params[:view]
+        format.html { redirect_to(occasions_url(:view => params[:view])) }
+      else
+        format.html { redirect_to(occasions_url) }
+      end
       format.xml  { head :ok }
     end
   end  
@@ -163,15 +181,27 @@ class OccasionsController < ApplicationController
           new_date = new_date.advance(:months => 1)
         end
 
-      @occasions = Occasion.find(:all, :conditions => ["start_time > ? AND start_time < ?", new_date.beginning_of_month.to_date, new_date.end_of_month.to_date],:order => "start_time ASC")
+       first_date = new_date.beginning_of_month # first day at 0:00:00
+       last_date = first_date
+       last_date = last_date.advance(:months => 1)
+       last_date = last_date.beginning_of_month # first day of next month at 0:00:00
+
+      @occasions = Occasion.find(:all, :conditions => ["start_time > ? AND start_time < ?", first_date.to_date, last_date.to_date],:order => "start_time ASC")
+
       @date = new_date
-      
-       #tämä pitäs saada toimimaan niin, että näkyvillä oleva kuukausi vaihtuu jos syöttää tapahtumia muuhun ajankohtaan          
-#       @occasions = Occasion.find(:all)
-#       @date = DateTime.now
-     else
-       @occasions = Occasion.find(:all, :conditions => ["start_time > ? AND start_time < ?", DateTime.now.beginning_of_month.to_date, DateTime.now.end_of_month.to_date],:order => "start_time ASC")
-       @date = DateTime.now
+      else
+       if params[:start_date]
+        date_now = DateTime.parse(params[:start_date])
+       else
+          date_now = DateTime.now                
+       end
+
+       first_date = date_now.beginning_of_month # first day at 0:00:00
+       last_date = date_now.advance(:months => 1)
+       last_date = last_date.beginning_of_month # first day of next month at 0:00:00
+
+       @occasions = Occasion.find(:all, :conditions => ["start_time > ? AND start_time < ?", first_date.to_date, last_date.to_date],:order => "start_time ASC")
+       @date = date_now
     end
   end
 end

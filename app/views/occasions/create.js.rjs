@@ -1,4 +1,8 @@
-page.replace_html :occ_list, :partial => 'occasion'
+if params[:view]
+  page.replace_html :occ_list, :partial => 'occasion'
+else
+  page.replace_html :occ_list, :partial => 'occasion_calendar'
+end
 page['quick_create_form'].reset
 page['occasion_start_time'].focus
 flash.discard

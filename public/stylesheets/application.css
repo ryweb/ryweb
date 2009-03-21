@@ -400,6 +400,20 @@ input.button {
     text-decoration: none;
 }
 
+/*
+.tooltip {
+  position: absolute;
+  background-image: url(/images/widgets/tooltip_arrow.gif); 
+  background-repeat: no-repeat; 
+}
+    
+.tooltip_content {
+  padding: 20px;
+  margin-top: 5px;
+  background-color: #fdf389;
+} 
+
+*/
 .float-left  { float: left; }
 .float-right { float: right; }
 .align-left  { text-align: left; }

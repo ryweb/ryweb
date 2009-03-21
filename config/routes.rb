@@ -9,6 +9,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users, :path_prefix => '/:customer'
   map.resource :session, :path_prefix => '/:customer'
   map.resources :occasion_types, :path_prefix => '/:customer'
+  map.occasioncalendar '/:customer/occasions/calendar', :controller =>'occasions', :action =>'calendar'
   map.occasionlist '/:customer/occasions/list', :controller =>'occasions', :action =>'list'
   map.resources :occasions, :path_prefix => '/:customer'
   map.resources :locations, :path_prefix => '/:customer'

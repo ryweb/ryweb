@@ -1,6 +1,6 @@
 <li><%= link_to 'Tapahtumakalenteri', occasions_path %></li>
 	<ul>
-		<li><%= link_to 'Listanäkymä', :controller => 'occasions', :action => 'list' %></li>
+		<li><%= link_to 'Listanäkymä', occasions_path(:view => 'list') %></li>
 		<li><%= link_to 'Kalenterinäkymä', occasions_path %></li>
 	</ul>
 <li><%= link_to 'Paikat', locations_path %></li>
