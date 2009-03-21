@@ -1,7 +1,10 @@
+<div id="buttonbar">
+	<%= link_to 'Takaisin', :back %>		
+</div>
 <h2>Tapahtuman tietojen muokkaus</h2>
 
 <% form_for :occasion,
-			:url => occasion_path(:id => @occasion),
+			:url => occasion_path(:id => @occasion, :view => params[:view]),
 			:html => {:method => :put } do |f| -%>
 	<%= render :partial => 'form', :locals => {:f => f}%>	 
 <% end %>

@@ -46,12 +46,18 @@ h3 {
     color: #666666;
 }
 
+.day_number {
+	font-size: 140%;
+}
+/*
 img {
     background: #FAFAFA;
    border: 1px solid #E5E5E5;
-    padding: 5px;
+    padding: 5px; 
 }
+*/
 
+/*
 img.float-right {
   margin: 5px 0px 10px 10px;
 }
@@ -59,7 +65,7 @@ img.float-right {
 img.float-left {
   margin: 5px 10px 10px 0px;
 }
-
+*/
 h1, h2, h3, p {
     padding: 10px;
     margin: 0;

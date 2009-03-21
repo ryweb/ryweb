@@ -8,9 +8,9 @@ class OccasionsController < ApplicationController
   # GET /occasions.xml
   def index
     if params[:view].to_s == "list"
-      redirect_to :action => 'list'
+      redirect_to :action => 'list', :start_date =>params[:start_date]
     else
-      redirect_to :action => 'calendar', :start_date =>params[:start_date]          
+      redirect_to :action => 'calendar', :start_date =>params[:start_date] 
     end
   end
 
@@ -112,8 +112,16 @@ class OccasionsController < ApplicationController
     respond_to do |format|
       if @occasion.update_attributes(params[:occasion])
         flash[:notice] = 'Tapahtuman tiedot päivitetty.'
-        format.html { redirect_to(occasion_url) }         
-        format.xml  { head :ok }
+        select_month
+#        format.html { redirect_to(occasions_url) }         
+        if params[:view]
+#        format.html { redirect_to(occasions_url(:view => params[:view])) }
+          format.html { redirect_to(occasions_url(:start_date => @occasion.start_time, :view => params[:view]))}
+          format.xml  { head :ok }          
+        else
+          format.html { redirect_to(occasions_url(:start_date => @occasion.start_time))}
+          format.xml  { head :ok }          
+        end
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @occasion.errors, :status => :unprocessable_entity }
@@ -125,6 +133,9 @@ class OccasionsController < ApplicationController
   # DELETE /occasions/1.xml
   def destroy
     @occasion = Occasion.find(params[:id])
+
+    select_month
+    
     @occasion.destroy
 
     respond_to do |format|

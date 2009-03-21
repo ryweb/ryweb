@@ -17,12 +17,11 @@
 	<td><%= check_box_tag("ids[]", occasion.id, false, :id => nil) %></td>  	
   	<td><%= occasion.start_date_only_str %></td>
 	<td><%= occasion.start_time_only_str %></td>	
-	<td><%= link_to occasion.name, occasion_path(:id => occasion) %></td>
+	<td><%= link_to occasion.name, edit_occasion_path(:id => occasion,:view => 'list') %></td>
     <td><% if occasion.occasion_type %><%= occasion.occasion_type.name %><% end %></td>
     <td><% if occasion.location %><%= link_to Location.find( occasion.location ).name, :controller => 'occasions', :action => 'show', :id => occasion.location_id %><% end %></td>
 	<td><%= occasion.getOptionsForSelectList(:state).index(occasion.state) %></td>
-    <td><%= link_to 'Muokkaa', edit_occasion_path(:id => occasion) %>
-    <%= link_to 'Poista', occasion_path(:id => occasion, :view => 'list'), :confirm => 'Oletko varma?', :method => :delete %></td>
+    <td><%= link_to 'Poista', occasion_path(:id => occasion, :view => 'list'), :confirm => 'Oletko varma?', :method => :delete %></td>
   </tr>
 <% end %>
 </tbody>
