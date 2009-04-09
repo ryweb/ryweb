@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+require File.dirname(__FILE__) + '/../config/boot'
+require RAILS_ROOT + '/config/environment'
+
+
+if ARGV.empty?
+  puts "Syötä käyttäjän tiedot parametrina, esim: ./script/create_user admin admin123 admin@admin.com Admin 10"
+  exit
+end
+
+new_user = User.new
+new_user.login = ARGV[0]
+new_user.password = ARGV[1]
+new_user.password_confirmation = ARGV[1]
+new_user.email = ARGV[2]
+new_user.name = ARGV[3]
+new_user.user_level = ARGV[4]
+
+if new_user.save
+  puts "Käyttäjä (#{ARGV[0]}) lisättiin onnistuneesti"
+else
+  puts "Käyttäjän lisäys epäonnistui"
+  puts new_user.errors.full_messages
+end
