@@ -46,12 +46,18 @@ h3 {
     color: #666666;
 }
 
+.day_number {
+	font-size: 140%;
+}
+/*
 img {
     background: #FAFAFA;
    border: 1px solid #E5E5E5;
-    padding: 5px;
+    padding: 5px; 
 }
+*/
 
+/*
 img.float-right {
   margin: 5px 0px 10px 10px;
 }
@@ -59,7 +65,7 @@ img.float-right {
 img.float-left {
   margin: 5px 10px 10px 0px;
 }
-
+*/
 h1, h2, h3, p {
     padding: 10px;
     margin: 0;
@@ -208,8 +214,14 @@ input.button {
 #buttonbar {
 	float: right;
 	margin-right:10px;
-    padding:4px;
+/*    padding:4px;
     border:1px solid #eee;
+    font: normal 0.85em Verdana, sans-serif;*/
+}
+
+#buttonbar a {
+    padding:4px;
+    border:1px solid #ccc;
     font: normal 0.85em Verdana, sans-serif;
 }
 
@@ -328,7 +340,7 @@ input.button {
 }
 
 #main ul li {
-    list-style-image: url(../images/bullet.gif);
+/*    list-style-image: url(../images/bullet.gif); */
 }
 
 #sidebar {
@@ -394,6 +406,20 @@ input.button {
     text-decoration: none;
 }
 
+/*
+.tooltip {
+  position: absolute;
+  background-image: url(/images/widgets/tooltip_arrow.gif); 
+  background-repeat: no-repeat; 
+}
+    
+.tooltip_content {
+  padding: 20px;
+  margin-top: 5px;
+  background-color: #fdf389;
+} 
+
+*/
 .float-left  { float: left; }
 .float-right { float: right; }
 .align-left  { text-align: left; }

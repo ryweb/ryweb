@@ -1,6 +1,4 @@
-#class Location < ActiveRecord::Base
-
 class Location < CustomerData
-#   has_many :occasions
+  has_many :occasions
   validates_presence_of     :name
 end

@@ -1,5 +1,6 @@
 class OccasionType < CustomerData
-
+    has_many :occasions
+    
   validates_presence_of     :name
   validates_presence_of     :visibility
   

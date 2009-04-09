@@ -1,4 +1,7 @@
-<h1>Käyttäjälista</h1>
+<div id="buttonbar">
+	<%= link_to 'Lisää käyttäjä', new_user_path %>
+</div> 
+<h2>Käyttäjälista</h2>
 
 <table>
   <thead>
@@ -13,8 +16,12 @@
   <tr>
     <td><%= link_to user.login, user_path(:id => user) %></td>
 	<td><%= user.email%></td>
-    <td><%= link_to 'Muokkaa', edit_user_path(:id => user) %>  
-    <%= link_to 'Poista', user_path(:id => user), :confirm => 'Oletko varma?', :method => :delete %></td>
+	<% if current_user.user_level <= 10 %>
+	    <td><%= link_to 'Muokkaa', edit_user_path(:id => user) %>  
+    	<%= link_to 'Poista', user_path(:id => user), :confirm => 'Oletko varma?', :method => :delete %></td>
+	<% else %>
+		<td>&nbsp;</td>
+	<% end %>
   </tr>
 <% end %>
 </tbody>

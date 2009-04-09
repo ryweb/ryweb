@@ -1,3 +1,16 @@
-<h1>Käyttäjätiedot: <%= @user.login %></h1>
+<div id="buttonbar">
+	<%= link_to 'Muokkaa tietoja', edit_user_path %>
+	<%= link_to 'Lisää käyttäjä', new_user_path %>
+</div> 
+<h2>Käyttäjätiedot: <%= @user.login %></h2>
 
-<p><strong>Sähköposti: </strong><%= @user.email %></p>
+<p><%= label_tag 'login', 'Käyttäjätunnus' %>
+<%= @user.login %></p>
+
+<p><%= label_tag 'email', 'Sähköposti' %>
+<%= @user.email %></p>
+
+<% if current_user.user_level <= 10 %>
+	<p><%= label_tag 'user_level', 'Käyttäjätaso' %>
+	<%= @user.getOptionsForSelectList(:user_level).index(@user.user_level) %></p>
+<% end %>

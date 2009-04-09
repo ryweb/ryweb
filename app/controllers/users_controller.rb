@@ -37,15 +37,16 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(params[:user])
+        
     success = @user && @user.save
     if success && @user.errors.empty?
       @user.update_attribute(:customer_id,current_user.customer_id)
- 
+
       # Protects against session fixation attacks, causes request forgery
       # protection if visitor resubmits an earlier form using back
       # button. Uncomment if you understand the tradeoffs.
       # reset session
-
+      
       redirect_to(user_url(:id => @user))
       flash[:notice] = "Uusi käyttäjä lisätty onnistuneesti."
     else

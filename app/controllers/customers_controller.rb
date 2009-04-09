@@ -34,18 +34,18 @@ class CustomersController < ApplicationController
 
   # GET /customers/1/edit
   def edit
-    @customer = Customer.find(params[:id])
+    @edit_customer = Customer.find(params[:id])
   end
 
   # POST /customers
   # POST /customers.xml
   def create
-    @customer = Customer.new(params[:customer])
+    @customer = Customer.new(params[:new_customer])
 
     respond_to do |format|
       if @customer.save
-        flash[:notice] = 'Customer was successfully created.'
-        format.html { redirect_to(@customer) }
+        flash[:notice] = 'Uusi yhdistys lisätty.'
+        format.html { redirect_to(customer_url(:id => @customer)) }        
         format.xml  { render :xml => @customer, :status => :created, :location => @customer }
       else
         format.html { render :action => "new" }
@@ -60,9 +60,10 @@ class CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
 
     respond_to do |format|
-      if @customer.update_attributes(params[:customer])
-        flash[:notice] = 'Customer was successfully updated.'
-        format.html { redirect_to(@customer) }
+      if @customer.update_attributes(params[:edit_customer])
+        flash[:notice] = 'Yhdistyksen tiedot päivitetty.'
+        format.html { redirect_to(customer_url) }        
+#        format.html { redirect_to(@customer) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
