@@ -56,8 +56,8 @@
             </div><!-- sidebar ends here -->
 
             <div id="main">
-              <div class="notice"><%= flash[:notice] %></div>
-              <div class="error"><%= flash[:error] %></div>
+              <% unless flash[:notice].nil? %><div class="notice"><%= flash[:notice] %></div><% end %>
+              <% unless flash[:error].nil? %><div class="error"><%= flash[:error] %></div> <% end %>
 
               <%= yield %>
             </div><!-- main ends here -->
