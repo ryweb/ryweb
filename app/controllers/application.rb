@@ -26,7 +26,9 @@ class ApplicationController < ActionController::Base
     end
     unless current_user.nil?
       if current_user.customer_id != Customer.current_id
-        access_denied
+        unless current_user.superuser?
+          access_denied
+        end
       end
     end
   end
