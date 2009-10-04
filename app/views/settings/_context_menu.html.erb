@@ -4,7 +4,7 @@
 	<% if current_user.user_level <= 5 %>
 		<li><%= link_to 'Yhdistykset', customers_path %></li>
 	<% else %>
-		<li><%= link_to 'Yhdistyksen tiedot', customer_path(:id => current_user.customer_id) %></li>
+		<li><%= link_to 'Yhdistyksen tiedot', customer_path(:id => Customer.current.id) %></li>
 	<% end %>
 <% end %>
 <% end %>
