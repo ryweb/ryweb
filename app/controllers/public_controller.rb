@@ -5,6 +5,8 @@ class PublicController < ApplicationController
   before_filter :generate_menu
 
   def index
+    default_page = Configuration.get_one('default_page').to_i
+    redirect_to(:action => 'page', :id => default_page)
   end
 
 
