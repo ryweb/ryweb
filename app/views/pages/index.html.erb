@@ -1,0 +1,34 @@
+<div id="buttonbar">
+  <%= link_to 'Uusi sivu', new_page_path %>
+</div>
+
+<h2>Sivut</h2>
+<table style="width: 90%">
+  <tr>
+    <th>Otsikko</th>
+    <th>Tila</th>
+    <th>Tekijä</th>
+    <th>Tehty</th>
+    <th>Muokattu</th>
+    <th colspan="4"></th>
+  </tr>
+
+<% for page in @pages %>
+  <tr>
+    <td><%=h page.title %></td>
+    <td><%=h page.state_str %></td>
+    <td><%=h page.author_name%></td>
+    <td><small><%=h localize page.created_at%></small></td>
+    <td><small><%=h localize page.updated_at%></small></td>
+
+    <td><%= link_to 'Näytä', page_path(:id => page) %></td>
+    <td><%= link_to 'Muokkaa', edit_page_path(:id => page) %></td>
+    <td><%= link_to 'Historia', :action => 'versions', :id => page %></td>
+    <td><%= link_to 'Poista', page_path(:id => page), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

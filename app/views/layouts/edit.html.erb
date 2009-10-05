@@ -1,0 +1,25 @@
+<div id="buttonbar">
+<%= link_to 'Näytä', layout_path(:id => @layout) %>
+</div>
+<h2>Ulkoasun muokkaus <%=@layout.name %></h2>
+
+
+<% form_for( :layout, :url => layout_path(:id => @layout), :html => {:method => :put}) do |f| %>
+
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name, "Nimi" %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :content,"Sisältö" %><br />
+    <%= f.text_area :content %>
+  </p>
+  <p>
+    <%= f.submit 'Päivitä' %>
+  </p>
+<% end %>
+
+
+

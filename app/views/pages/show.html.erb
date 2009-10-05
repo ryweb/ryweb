@@ -1,0 +1,25 @@
+<div id="buttonbar">
+<%= link_to 'Muokkaa', edit_page_path(:id => @page) %>
+</div>
+<p>
+  <b>Title:</b>
+  <%=h @page.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%=h @page.content %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @page.name %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%=h @page.state %>
+</p>
+
+
+

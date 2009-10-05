@@ -1,5 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :layouts, :path_prefix => '/:customer'
 
+  map.resources :pages, :path_prefix => '/:customer'
   map.resources :customers, :path_prefix => '/:customer'
   map.userlist '/:customer/users/list', :controller => 'users', :action => 'list'
   map.logout '/:customer/logout', :controller => 'sessions', :action => 'destroy'
@@ -13,9 +15,9 @@ ActionController::Routing::Routes.draw do |map|
   map.occasionlist '/:customer/occasions/list', :controller =>'occasions', :action =>'list'
   map.resources :occasions, :path_prefix => '/:customer'
   map.resources :locations, :path_prefix => '/:customer'
-  map.connect ':customer/:controller/:action/:id'
-  map.connect ':customer/:controller/:action/:id.:format'
-  map.connect ':customer/', :controller => 'users'
+  map.connect '/:customer/:controller/:action/:id'
+  map.connect '/:customer/:controller/:action/:id.:format'
+  map.connect '/:customer/', :controller => 'users'
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

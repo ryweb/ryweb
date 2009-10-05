@@ -1,0 +1,20 @@
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title, "Otsikko" %><br />
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%= f.label :name, "Nimi" %><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :content, "Sisältö" %><br />
+    <%= f.tinymce :content %>
+  </p>
+  <p>
+    <%= f.label :state, "Tila" %><br />
+    <%= f.select :state, Page.states.map {|s| [s[1],s[0]]}.sort {|x,y| x[1] <=> y[1]} %>
+  </p>
