@@ -12,9 +12,19 @@ class CustomerData < ActiveRecord::Base
   
 
   def self.find(*args)
+    user = nil
     with_scope(CustomerData.scope_conditions) do
-      super
+      user = super
     end
+    if user.nil?
+      user = super
+      unless user.nil?
+        unless user.superuser?
+          user = nil
+        end
+      end
+    end
+    return user
   end
 
   def self.create(*args)
