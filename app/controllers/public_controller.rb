@@ -10,6 +10,11 @@ class PublicController < ApplicationController
 
   def page
     @page = Page.find(params[:id])
+    if @page.nil? or @page.public == 0 or @page.state != 2
+      render :text => 'Virheellinen sivu'
+      return
+    end
+    @layout = @page.layout
   end
 
   private
@@ -18,7 +23,7 @@ class PublicController < ApplicationController
   end
 
   def generate_menu
-    @mainmenu = ['eka','toka','kolmas']
+    @mainmenu = Page.find(:all, :conditions => {:public => 1, :state => 2})
   end
   
 

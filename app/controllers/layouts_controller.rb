@@ -1,4 +1,6 @@
 class LayoutsController < ApplicationController
+  before_filter :login_required
+
   # GET /layouts
   # GET /layouts.xml
   def index
