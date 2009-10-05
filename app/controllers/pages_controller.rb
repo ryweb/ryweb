@@ -101,4 +101,16 @@ class PagesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+
+  def set_default
+    @cfg = Configuration.find_or_create_by_name("default_page")
+    @cfg.value = params[:default_page]
+    if @cfg.save
+      flash[:notice] = "Oletussivu tallennettu"
+    else
+      flash[:error] = "Oletussivua ei saatu tallennettua"
+    end
+    redirect_to(pages_url)
+  end
 end

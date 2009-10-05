@@ -2,9 +2,12 @@
   <%= link_to 'Uusi sivu', new_page_path %>
 </div>
 
+<% form_tag :action => 'set_default' do %>
+
 <h2>Sivut</h2>
 <table style="width: 90%">
   <tr>
+    <th>Oletus</th>
     <th>Otsikko</th>
     <th>Tila</th>
     <th>Tekijä</th>
@@ -15,6 +18,7 @@
 
 <% for page in @pages %>
   <tr>
+    <td><%=radio_button_tag :default_page, page.id, page.id == Configuration.get_one('default_page').to_i%></td>
     <td><%=h page.title %></td>
     <td><%=h page.state_str %></td>
     <td><%=h page.author_name%></td>
@@ -28,7 +32,8 @@
   </tr>
 <% end %>
 </table>
-
+<%= submit_tag "Tallenna" %>
+<% end %>
 <br />
 
 
