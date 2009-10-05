@@ -1,7 +1,8 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Paikat</h2></div></div></div>
+<div class="border">
 <div id="buttonbar">
 	<%= link_to 'Uusi paikka', new_location_path %>
 </div>	
-<h2>Paikat</h2>
 
 <table>
   <thead>
@@ -14,7 +15,7 @@
 
 <tbody>
 <% for location in @locations %>
-  <tr>
+  <tr class="<%= cycle("even", "odd") %>">
 	<td><%= link_to location.name, location_path(:id => location) %></td>
 	<td><%= location.address %></td>
     <td><%= link_to 'Muokkaa', edit_location_path(:id => location) %>
@@ -25,3 +26,4 @@
 </table>
 
 <br />
+</div>

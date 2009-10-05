@@ -1,8 +1,8 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Käyttäjät</h2></div></div></div>
+<div class="border">
 <div id="buttonbar">
 	<%= link_to 'Lisää käyttäjä', new_user_path %>
 </div> 
-<h2>Käyttäjälista</h2>
-
 <table>
   <thead>
   	<tr>
@@ -12,8 +12,8 @@
 	</tr>
   </thead>
   <tbody>
-<% for user in @users %>
-  <tr>
+<% for user in @users %> 
+	<tr class="<%= cycle("even", "odd") %>">
     <td><%= link_to user.login, user_path(:id => user) %></td>
 	<td><%= user.email%></td>
 	<% if current_user.user_level <= 10 %>
@@ -26,3 +26,4 @@
 <% end %>
 </tbody>
 </table>
+</div>

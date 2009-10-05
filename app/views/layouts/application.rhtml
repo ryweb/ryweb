@@ -2,7 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fi" lang="fi">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<%= stylesheet_link_tag "application" %>
+<!-- %= stylesheet_link_tag "application" % -->
+<%= stylesheet_link_tag "application2" %>
+<%= stylesheet_link_tag "application3" %>
 <%= stylesheet_link_tag 'calendar_style_custom' %>
 
 <title>Yhdistys ry - intra</title>
@@ -11,21 +13,25 @@
 
 <body>
 <!-- wrap starts here -->
-<div id="wrap">
+<div id="container">
         <!-- header -->
         <div id="header">
-            <h1 id="logo-text"><%= link_to 'Yhdistys ry - intra', users_url %></h1>
-            <div id="header-links">
+			<img class="logo" src="/images/srk.jpg" title="Rauhanyhdistys.fi" />        	
+            <!-- h1 id="logo-text"><%= link_to 'Yhdistys ry - intra', users_url %></h1 -->
+			<h1 id="logo-text">Rauhanyhdistys.fi - Uuraisten Rauhanyhdistys</h1>
+            <!-- div id="header-links" -->
               <p>
+              	<ul>
              	<% if logged_in? -%>
-					<%= 'Kirjauduttu nimellä '%>
-					<strong><%= link_to @current_user.login, user_path(:id => @current_user) %></strong>
-					<%= link_to "Kirjaudu ulos", logout_path, { :title => "Log out" } %>
+					<li><%= 'Kirjauduttu nimellä '%>
+					<strong><%= link_to @current_user.login, user_path(:id => @current_user) %></strong> ::
+					<%= link_to "Kirjaudu ulos", logout_path, { :title => "Log out" } %></li>
 				<% else -%>
-					<%= link_to "Kirjaudu sisään",  login_path,  { :title => "Kirjautuminen" } %>
-				<% end -%>                
+					<li><%= link_to "Kirjaudu sisään",  login_path,  { :title => "Kirjautuminen" } %></li>
+				<% end -%>   
+				</ul>             
 			  </p>
-            </div>
+            <!-- /div -->
         </div> <!-- header ends here -->
 
         <!-- menu -->
@@ -45,30 +51,37 @@
         <!-- content-wrap starts here -->
         <div id="content-wrap">
 
-            <div id="sidebar">
-              <ul class="sidemenu">
-                
-<% if ['users', 'settings', 'customers', 'occasions', 'locations', 'occasion_types'].include?(params[:controller]) %>
-    <%= render :partial => params[:controller] + '/context_menu' %>
-<% end %>
 
-              </ul>
-            </div><!-- sidebar ends here -->
+			<!-- main starts here -->
 
             <div id="main">
-              <% unless flash[:notice].nil? %><div class="notice"><%= flash[:notice] %></div><% end %>
+              <% unless flash[:notice].nil? %><div class="notice"><% spiffy_corners :generate_css => true do %><%= flash[:notice] %><% end %></div><% end %>
               <% unless flash[:error].nil? %><div class="error"><%= flash[:error] %></div> <% end %>
 
               <%= yield %>
-            </div><!-- main ends here -->
-        </div><!-- content-wrap ends here -->
+            </div>
+			<!-- main ends here -->
 
+			<!-- sidebar starts here -->
+            <div id="sidebar">
+            		<div class="table-header"><div class="table-header r"><div class="table-header m"></div></div></div>
+						<div class="border">
+            				<ul class="sidemenu">
+            					<% if ['users', 'settings', 'customers', 'occasions', 'locations', 'occasion_types'].include?(params[:controller]) %>
+									<%= render :partial => params[:controller] + '/context_menu' %>
+								<% end %>									
+             		 		</ul>
+						</div>
+            </div>
+			<!-- sidebar ends here -->
+
+        </div><!-- content-wrap ends here -->
         <!--footer starts here-->
         <div id="footer">
-            <p>&copy; 2009 <strong>Your Association</strong></p>
+            <p>&copy; 2009 <strong>Rauhanyhdistys.fi</strong></p>
         </div>  <!-- footer ends here -->
 
-</div> <!-- wrap ends here -->
+</div> <!-- container ends here -->
 
 </body>
 </html>

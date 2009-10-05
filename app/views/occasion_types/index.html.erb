@@ -1,7 +1,8 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Tapahtumatyypit</h2></div></div></div>
+<div class="border">
 <div id="buttonbar">
 	<%= link_to 'Uusi tapahtumatyyppi', new_occasion_type_path %>
 </div>	
-<h2>Tapahtumatyypit</h2>
 
 <table>
   <thead>
@@ -14,7 +15,7 @@
 
 <tbody>
 <% for occasion_type in @occasion_types %>
-  <tr>
+  <tr class="<%= cycle("even", "odd") %>">
 	<td><%= link_to occasion_type.name, occasion_type_path(:id => occasion_type) %></td>
 	<td><%= occasion_type.getOptionsForSelectList(:visibility).index(occasion_type.visibility) %></td>
     <td><%= link_to 'Muokkaa', edit_occasion_type_path(:id => occasion_type) %>
@@ -25,3 +26,4 @@
 </table>
 
 <br />
+</div>

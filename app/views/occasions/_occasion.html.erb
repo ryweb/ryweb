@@ -13,7 +13,7 @@
   </thead>
 <tbody>	
 <% for occasion in @occasions %>
-  <tr>
+  <tr class="<%= cycle("even", "odd") %>">
 	<td><%= check_box_tag("ids[]", occasion.id, false, :id => nil) %></td>  	
   	<td><%= occasion.start_date_only_str %></td>
 	<td><%= occasion.start_time_only_str %></td>	
