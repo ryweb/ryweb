@@ -3,10 +3,7 @@
 	<%= link_to '> Seuraava kk >',  :controller => 'occasions', :action => 'list', :direction => 'forward', :year => @date.year, :month => @date.month %>	
 </div>	
 <h2>Tapahtumakalenteri
-<% for occasion in @occasions %>
- - <%= h occasion.monthname[@date.month.to_i - 1] + 'kuu' %>
-<% break %>
-<% end %>
+<%= h @occasion.monthname[@date.month.to_i - 1] + 'kuu ' + @date.year.to_s %>
 </h2>
 
 <div id='occ_list'>
