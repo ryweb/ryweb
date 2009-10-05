@@ -213,6 +213,6 @@ class OccasionsController < ApplicationController
 
        @occasions = Occasion.find(:all, :conditions => ["start_time > ? AND start_time < ?", first_date.to_date, last_date.to_date],:order => "start_time ASC")
        @date = date_now
-    end
+   end
   end
 end
