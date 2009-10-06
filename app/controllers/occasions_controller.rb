@@ -86,7 +86,7 @@ class OccasionsController < ApplicationController
     
     respond_to do |format|
       if @occasion.save
-        @occasion.update_attribute(:customer_id,current_user.customer_id)   
+#        @occasion.update_attribute(:customer_id,current_user.customer_id)   
 
         select_month
 
@@ -174,11 +174,13 @@ class OccasionsController < ApplicationController
   
   def find_or_create_locations_and_occasion_types
     occasion_name = params[:occasion][:location_id]
-    @occasion.location = Location.find_or_create_by_name(:name => occasion_name, :customer_id => current_user.customer_id)
+    @occasion.location = Location.find_or_create_by_name(:name => occasion_name)
+#, :customer_id => current_user.customer_id)
     params[:occasion][:location_id] = @occasion.location.id
     
     occasion_type_name = params[:occasion][:occasion_type_id]
-    @occasion.occasion_type = OccasionType.find_or_create_by_name(:name => occasion_type_name, :customer_id => current_user.customer_id)
+    @occasion.occasion_type = OccasionType.find_or_create_by_name(:name => occasion_type_name)
+#, :customer_id => current_user.customer_id)
     params[:occasion][:occasion_type_id] = @occasion.occasion_type.id
   end
   

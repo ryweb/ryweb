@@ -40,7 +40,7 @@ class UsersController < ApplicationController
         
     success = @user && @user.save
     if success && @user.errors.empty?
-      @user.update_attribute(:customer_id,Customer.current.id)
+#      @user.update_attribute(:customer_id,Customer.current.id)
 
       # Protects against session fixation attacks, causes request forgery
       # protection if visitor resubmits an earlier form using back

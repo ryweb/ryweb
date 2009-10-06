@@ -46,7 +46,7 @@ class OccasionTypesController < ApplicationController
 
     respond_to do |format|
       if @occasion_type.save
-        @occasion_type.update_attribute(:customer_id,current_user.customer_id)
+#        @occasion_type.update_attribute(:customer_id,current_user.customer_id)
         flash[:notice] = 'Uusi tapahtumatyyppi lisätty.'
         format.html { redirect_to(occasion_type_url(:id => @occasion_type)) }        
         format.xml  { render :xml => @occasion_type, :status => :created, :location => @occasion_type }

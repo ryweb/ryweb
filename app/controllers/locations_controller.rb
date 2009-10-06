@@ -46,7 +46,7 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if @location.save
-        @location.update_attribute(:customer_id,current_user.customer_id)
+#        @location.update_attribute(:customer_id,current_user.customer_id)
         flash[:notice] = 'Uusi paikka lisätty.'
         format.html { redirect_to(location_url(:id => @location)) }
         format.xml  { render :xml => @location, :status => :created, :location => @location }
