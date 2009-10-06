@@ -13,7 +13,7 @@
 <p><%= text_field_with_auto_complete 'occasion', 'location_id', :value => @occasion.location.name %></p>
 
 <p><%= label_tag 'state', 'Tila' %>
-<%= f.select :state, @occasion.getOptionsForSelectList(:state), options ={:selected => 10} %></p>
+<%= f.select :state, @occasion.getOptionsForSelectList(:state), options ={:prompt => ""} %></p>
 
 <p><%= label_tag 'internal_info', 'Sisäinen lisätieto' %>
 <%= f.text_area :internal_info, :rows=>10 %></p>
