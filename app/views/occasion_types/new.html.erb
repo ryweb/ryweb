@@ -1,15 +1,16 @@
-<h2>Uusi tapahtumatyyppi</h2>
-
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Uusi tapahtumatyyppi</h2></div></div></div>
+<div class="border">
 <% form_for :occasion_type, :url => occasion_types_path do |f| -%>
   <%= f.error_messages %>
 
 <p><%= label_tag 'name', 'Tyyppi' %>
 <%= f.text_field :name %></p>
 
-<p><%= label_tag 'visiblity', 'Näkyvyys' %><br/>
+<p><%= label_tag 'visiblity', 'Näkyvyys' %>
 <%= f.select :visibility, @occasion_type.getOptionsForSelectList(:visibility), options ={:prompt => ""} %></p>
 
   <p>
     <%= f.submit "Tallenna" %>
   </p>
 <% end %>
+</div>

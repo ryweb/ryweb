@@ -1,0 +1,123 @@
+/* FONTS */
+body, p, td, th, div h1, h2, li, address, textarea, button, input {
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+    color: #2f2f2f;
+}
+
+td, th, p, a, div, li, address, input, textarea, select{
+    font-size: 12px;
+}
+
+#main h2 {
+	font-size: 17px;
+    color: #0F96B4;
+	margin-bottom: 10px;
+	display:inline;
+}
+
+/* BOXES */
+.table-header { 
+	background:url(/images/header.png) no-repeat left top;
+	height: 22px !important; 
+}
+
+.table-header .m {
+	margin: 0 7px 7px 7px;
+	background-position: left -50px;
+	background-repeat:repeat-x;
+	font-size: 14px !important; 
+	font-weight:bold;
+	line-height: 21px;
+}
+
+.table-header .m a {
+	font-size: 14px;
+	display: block;
+}
+
+.table-header .r {
+	margin:0;background-position:right -100px;
+}
+
+.border {
+	border: 1px #cfcfcf solid;
+	border-top: none;
+	padding: 7px;
+	background: #fff;
+	margin-bottom: 10px;
+	position: relative;
+	text-align: left;
+}
+
+/* Form */
+
+label {
+  float:left;
+  width:25%;
+  margin-right:0.5em;
+  /* padding-top:0.2em;*/
+  text-align:right;
+  font-weight:bold;
+}
+
+textarea {
+ /*   width:400px;
+    padding:2px;
+    font: normal 1em Verdana, sans-serif;
+    border:1px solid #eee;
+    height:100px;
+    display:block;
+    color:#777;*/
+}
+
+/* NOTICES */
+.notice {
+    padding: 2px;
+}
+.error {
+    padding: 2px;
+}
+
+/* TABLE */
+table {
+    border-collapse: collapse;
+    margin: 10px;
+}
+
+th {
+	text-transform: uppercase;
+	color: #0F96B4	
+}
+
+tr {
+    height: 25px;
+}
+
+th, td {
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+tr.even {
+    background: #F8F8F8;
+}
+
+tr.odd {
+    background: #FFFFFF;
+}
+
+/* insert, edit links */
+#buttonbar {
+	float: right;
+	margin-right:10px;	
+}
+#buttonbar a {
+    padding:4px;
+    border:1px solid #ccc;
+	text-decoration: none;
+}
+
+#buttonbar a:hover {
+    color: #1773BC;
+	text-decoration: underline;	
+}

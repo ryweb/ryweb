@@ -43,9 +43,15 @@ module Widgets
       link_to name, 'javascript:void(0)', :id => "tooltip_link_#{id}"
     end
     
-    def tooltip_link_function(id)
-      "$('tooltip_link_#{id}').observe('click', function(event){toggleTooltip(event, $('tooltip_#{id}'))});"
-    end
+
+#    def tooltip_link_function(id)
+#      "$('tooltip_link_#{id}').observe('click', function(event){toggleTooltip(event, $('tooltip_#{id}'))});"
+#    end
+
+  def tooltip_link_function(id)
+      "$('tooltip_link_#{id}').observe('mouseover', function(event){showTooltip(event, $('tooltip_#{id}'))});" +
+      "$('tooltip_link_#{id}').observe('mouseout', function(event){hideTooltip(event, $('tooltip_#{id}'))});" 
+   end
  
     def close_tooltip_link(id, message = 'close')
       message ||= 'close' # if nil is passed I'll force it
@@ -56,7 +62,10 @@ module Widgets
       html = tag('div', {:id => "tooltip_#{opts[:id]}", :class=>'tooltip', :style => 'display:none'}, true)
       html << tag('div', {:id => "tooltip_content_#{opts[:id]}", :class=>'tooltip_content'},true)
       html << content
-      html << '<small>' + close_tooltip_link(opts[:id], opts[:close_message]) + '</small>'     
+
+      if opts[:close_link] == true
+	      html << '<small>' + close_tooltip_link(opts[:id], opts[:close_message]) + '</small>'     
+	    end
       html << '</div></div>' 
       html
     end

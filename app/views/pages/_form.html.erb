@@ -1,27 +1,28 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :title, "Otsikko" %><br />
+    <%= f.label :title, "Otsikko" %>
     <%= f.text_field :title %>
   </p>
 
   <p>
-    <%= f.label :name, "Nimi" %><br />
+    <%= f.label :name, "Nimi" %>
     <%= f.text_field :name %>
   </p>
 
   <p>
-    <%= f.label :content, "Sisältö" %><br />
+    <%= f.label :content, "Sisältö" %>
     <%= f.tinymce :content, :rows => 20, :cols => 80 %>
   </p>
   <p>
-    <%= f.label :state, "Tila" %><br />
+    <%= f.label :state, "Tila" %>
     <%= f.select :state, Page.states.map {|s| [s[1],s[0]]}.sort {|x,y| x[1] <=> y[1]} %>
   </p>
   <p>
+  	<%= f.label :public, "Näkyvyys" %>
     <%= f.check_box :public %> Julkinen
   </p>
   <p>
-    <%= f.label :layout_id, "Ulkoasu" %><br/>
+    <%= f.label :layout_id, "Ulkoasu" %>
     <%= f.select :layout_id, Layout.find(:all).map {|l| [l.name, l.id]} %>
   </p>

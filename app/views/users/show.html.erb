@@ -1,8 +1,9 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Käyttäjätiedot: <%= @user.login %></h2></div></div></div>
+<div class="border">
 <div id="buttonbar">
 	<%= link_to 'Muokkaa tietoja', edit_user_path %>
 	<%= link_to 'Lisää käyttäjä', new_user_path %>
 </div> 
-<h2>Käyttäjätiedot: <%= @user.login %></h2>
 
 <p><%= label_tag 'login', 'Käyttäjätunnus' %>
 <%= @user.login %></p>
@@ -14,3 +15,4 @@
 	<p><%= label_tag 'user_level', 'Käyttäjätaso' %>
 	<%= @user.getOptionsForSelectList(:user_level).index(@user.user_level) %></p>
 <% end %>
+</div>

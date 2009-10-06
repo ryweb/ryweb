@@ -1,7 +1,9 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Paikan tiedot: <%= @location.name %></h2></div></div></div>
+<div class="border">
 <div id="buttonbar">
 	<%= link_to 'Muokkaa tietoja', edit_location_path(:id => @location) %>
 	<%= link_to 'Uusi paikka', new_location_path %>	
 </div>
-<h2>Paikan tiedot: <%= @location.name %></h2>
 
 <p><strong>Osoite: </strong><%= @location.address %></p>
+</div>
