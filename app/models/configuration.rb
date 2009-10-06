@@ -1,7 +1,9 @@
 class Configuration < CustomerData
 
   def self.get_one(cfg_name)
-    Configuration.find(:first, :conditions => {:name => cfg_name}).value
+    cfg = Configuration.find(:first, :conditions => {:name => cfg_name})
+    return cfg.value unless cfg.nil?
+    nil
   end
 
 end
