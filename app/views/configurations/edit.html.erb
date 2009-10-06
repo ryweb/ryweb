@@ -1,0 +1,21 @@
+<h1>Editing configuration</h1>
+
+<% form_for( :configuration, :url => configuration_path(:id => @configuration), :html => {:method => :put}) do |f| %>
+
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :value %><br />
+    <%= f.text_field :value %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', configuration_path(:id => @configuration) %> |
+<%= link_to 'Back', configurations_path %>

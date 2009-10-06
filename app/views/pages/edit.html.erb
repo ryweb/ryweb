@@ -1,0 +1,14 @@
+<div id="buttonbar">
+<%= link_to 'Näytä sivu', page_path(:id => @page) %>
+</div>
+<h2><%=@page.title%> - Muokkaus</h2>
+
+<% form_for( :page, :url => page_path(:id => @page), :html => {:method => :put}) do |f| %>
+<%= render :partial => 'form', :locals => {:f => f} %>
+
+  <p>
+    <%= f.submit "Tallenna" %>
+  </p>
+<% end %>
+
+

@@ -1,0 +1,13 @@
+<p>
+  <b>Name:</b>
+  <%=h @configuration.name %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%=h @configuration.value %>
+</p>
+
+
+<%= link_to 'Edit', edit_configuration_path(:id => @configuration) %> |
+<%= link_to 'Back', configurations_path %>

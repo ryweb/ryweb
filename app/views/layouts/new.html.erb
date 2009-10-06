@@ -1,0 +1,19 @@
+<h2>Uusi ulkoasu</h2>
+
+<% form_for(@layout) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name, "Nimi" %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :content, "Sisältö" %><br />
+    <%= f.text_area :content %>
+  </p>
+  <p>
+    <%= f.submit 'Luo' %>
+  </p>
+<% end %>
+
+

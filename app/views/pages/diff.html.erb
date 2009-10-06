@@ -1,0 +1,55 @@
+<style type="text/css">
+ins {
+background-color: lightgreen;
+color: black;
+text-decoration: none;
+}
+del {
+background-color: red;
+color: black;
+text-decoration: none;
+}
+</style>
+<div id="buttonbar">
+<%=link_to "Versiohistoria", :action => 'versions', :id => @page %>
+</div>
+
+<h1>Versioerot <%=@dpage1.title %></h1>
+<p>
+<table>
+<tr>
+  <th></th>
+  <th>Versio <%=@dpage1.version%></td>
+  <th>Versio <%=@dpage2.version%></td>
+</tr>
+
+<tr>
+  <td>Otsikko</td>
+    <td><%=h @dpage1.title %></td>
+    <td><%=h @dpage2.title %></td>
+</tr>
+<tr>
+  <td>Nimi</td>
+    <td><%=h @dpage1.name %></td>
+    <td><%=h @dpage2.name %></td>
+</tr>
+
+<tr>
+  <td>Tila</td>
+    <td><%=h Page.states[@dpage1.state] %></td>
+    <td><%=h Page.states[@dpage2.state] %></td>
+</tr>
+<tr>
+  <td>Muokattu</td>
+    <td><%=h @dpage1.updated_at %></td>
+    <td><%=h @dpage2.updated_at %></td>
+</tr>
+<tr>
+  <td>Tekijä</td>
+    <td><%=h Page.author_name(@dpage1.author_id) %></td>
+    <td><%=h Page.author_name(@dpage2.author_id) %></td>
+</tr>
+</table>
+<h3>Sisältö</h3>
+<div style="border: 1px solid #ABABAB; background-color: white; margin: 5px;"><%= HTMLDiff.diff(@dpage1.content,@dpage2.content) %></div>
+</p>

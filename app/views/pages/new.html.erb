@@ -1,0 +1,13 @@
+<div id="buttonbar">
+</div>
+<h2>Uusi sivu</h2>
+
+<% form_for(@page) do |f| %>
+
+<%= render :partial => 'form', :locals => {:f => f} %>
+  <p>
+    <%= f.submit "Tallenna" %>
+  </p>
+
+<% end %>
+

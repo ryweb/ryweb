@@ -4,6 +4,12 @@ class CustomerData < ActiveRecord::Base
   def self.scope_conditions
     return {:find => { :conditions => {:customer_id => Customer.current_id}} ,:create => {:customer_id => Customer.current_id }}
   end
+  
+  def initialize(*args)
+    super
+    self.customer_id = Customer.current_id
+  end
+  
 
   def self.find(*args)
     user = nil

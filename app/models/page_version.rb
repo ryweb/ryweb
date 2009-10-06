@@ -1,0 +1,3 @@
+class PageVersion < CustomerData
+
+end
