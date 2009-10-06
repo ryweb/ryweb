@@ -63,7 +63,7 @@ class PagesController < ApplicationController
     @page.author_id = current_user.id
     respond_to do |format|
       if @page.save
-        flash[:notice] = 'Page was successfully created.'
+        flash[:notice] = 'Sivu luotu.'
         format.html { redirect_to(pages_url) }
         format.xml  { render :xml => @page, :status => :created, :location => @page }
       else
@@ -80,8 +80,8 @@ class PagesController < ApplicationController
     @page.author_id = current_user.id
     respond_to do |format|
       if @page.update_attributes(params[:page])
-        flash[:notice] = 'Page was successfully updated.'
-        format.html { redirect_to(page_path(:id => @page)) }
+        flash[:notice] = 'Sivun tiedot päivitetty.'
+        format.html { redirect_to(pages_url) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

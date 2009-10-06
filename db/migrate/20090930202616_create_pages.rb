@@ -8,6 +8,7 @@ class CreatePages < ActiveRecord::Migration
       t.integer :public
       t.integer :layout_id
       t.integer :author_id
+      t.integer :page_type
       t.integer :customer_id
       t.timestamps
     end

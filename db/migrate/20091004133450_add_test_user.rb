@@ -15,7 +15,7 @@ class AddTestUser < ActiveRecord::Migration
     new_user.password_confirmation = "admin123"
     new_user.email = "admin@admin.com"
     new_user.name = "Admin"
-    new_user.user_level = "10"
+    new_user.user_level = "1"
 
     if new_user.save
       puts "Käyttäjä (admin) lisättiin onnistuneesti"

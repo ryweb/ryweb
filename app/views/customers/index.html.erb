@@ -8,7 +8,8 @@
 <table>
   <thead>
   	<tr>
-		<th>Nimi</th>
+		<th>Järjestelmän nimi</th>
+		<th>Yhdistyksen nimi</th>
 		<th>&nbsp;</th>
 	</tr>
   </thead>
@@ -16,6 +17,7 @@
 <% for customer in @customers %>
   <tr>
   	<td><%= link_to customer.name, customer_path(:id => customer) %></td>
+	<td><%= customer.title %></td>
     <td><%= link_to 'Muokkaa', edit_customer_path(:id => customer) %>
     <%= link_to '(Poista)', customer_path(:id => customer), :confirm => 'Oletko varma?', :method => :delete %></td>
   </tr>

@@ -26,3 +26,44 @@
     <%= f.label :layout_id, "Ulkoasu" %>
     <%= f.select :layout_id, Layout.find(:all).map {|l| [l.name, l.id]} %>
   </p>
+
+
+  <p>
+    <%= f.label :page_type, "Sivun tyyppi" %>
+    <%= f.select :page_type, Page.page_types.map {|s| [s[1],s[0]]}.sort {|x,y| x[1] <=> y[1]} %>
+  </p>
+
+
+  <div style="background-color: lightyellow;padding-top: 1em; padding-bottom: 1em;<%if @page.page_type != 2%>display: none;<%end%> " id="page_type_options_2" class="page_type_options">
+    <p>
+    <label>Kalenterin tyyppi</label>
+    <select>
+      <option>Lista</option>
+      <option>Kalenteri</option>
+    </select>
+    </p>
+    <p>
+    <label>Montako kuukautta näytetään eteenpäin</label>
+    <input type="text" size="3"/>
+    </p>
+  </div>
+<script language="javascript">
+  var last_page_type_option = 0;
+<% if @page.page_type %>
+  var last_page_type_option = <%= @page.page_type%>;
+<% end %>
+  function toggle_page_type_options() {
+  var page_page_type_value = $('page_page_type').value;
+
+  if (last_page_type_option != 0 && $('page_type_options_'+last_page_type_option)) {
+  $('page_type_options_'+last_page_type_option).hide();
+  }
+  if ($('page_type_options_'+page_page_type_value)) {
+  $('page_type_options_'+page_page_type_value).show();
+  }
+  last_page_type_option = page_page_type_value;
+
+  }
+</script>
+
+  <%= observe_field :page_page_type, :function => "toggle_page_type_options();" %>

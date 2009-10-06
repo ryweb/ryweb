@@ -15,7 +15,10 @@
   <td><%=h Page.author_name(page.author_id)%></td>
   <td><%=h page.updated_at%></td>
   <td><%=h Page.states[page.state]%></td>
-  <td><%=link_to "Näytä muutokset", :action => 'diff', :version => page.version, :id => @page %></td>
+  <td><% if page.version > 1 %>
+<%=link_to "Näytä muutokset", :action => 'diff', :version => page.version, :id => @page %>
+<% end %>
+</td>
 </tr>
 <% end %>
 </table>

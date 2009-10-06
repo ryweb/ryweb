@@ -12,9 +12,8 @@
     <th>Oletus</th>
     <th>Otsikko</th>
     <th>Tila</th>
+    <th>Julkinen</th>
     <th>Tekijä</th>
-    <th>Tehty</th>
-    <th>Muokattu</th>
     <th colspan="4"></th>
   </tr>
 
@@ -23,11 +22,8 @@
     <td><%=radio_button_tag :default_page, page.id, page.id == Configuration.get_one('default_page').to_i%></td>
     <td><%=h page.title %></td>
     <td><%=h page.state_str %></td>
+    <td><%=h page.public == 0 ? 'Ei' : 'Kyllä' %></td>
     <td><%=h page.author_name%></td>
-    <td><small><%=h localize page.created_at%></small></td>
-    <td><small><%=h localize page.updated_at%></small></td>
-
-    <td><%= link_to 'Näytä', page_path(:id => page) %></td>
     <td><%= link_to 'Muokkaa', edit_page_path(:id => page) %></td>
     <td><%= link_to 'Historia', :action => 'versions', :id => page %></td>
     <td><%= link_to 'Poista', page_path(:id => page), :confirm => 'Are you sure?', :method => :delete %></td>

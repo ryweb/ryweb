@@ -2,7 +2,6 @@
 <div class="border">
 
 <div id="buttonbar">
-<%= link_to 'Näytä sivu', page_path(:id => @page) %>
 </div>
 
 <% form_for( :page, :url => page_path(:id => @page), :html => {:method => :put}) do |f| %>
