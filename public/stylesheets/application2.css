@@ -1,0 +1,158 @@
+/* BASICS */
+body {
+	background: #fff url(/images/tausta.gif) repeat-x;
+	font-family: Verdana,Arial,Helvetica,sans-serif;	
+}
+
+
+#container {
+	padding: 5px 5px 5px 5px;
+    margin: 10px auto 10px auto;
+    text-align: left;
+    width: 980px;
+    border: 1px solid #e2e7eb;
+	background: #fff;
+}
+
+/* HEADER */
+#header {
+	margin-bottom: 30px;
+} 
+
+#header h1#logo-text{
+	background: #2089b6;
+	color: #fff;
+ 	font-size: 16px; 
+	margin: 0px;
+	line-height: 40px;
+	padding: 0 10px 0 10px;
+    text-transform: none;
+    text-decoration: none;	
+}
+
+#header .logo {
+	float: right;
+	margin-right: 15px;
+	margin-top: 5px;
+}
+
+#header ul {
+
+	float: right;
+	margin-right: 5px;
+	margin-top: 5px;
+}
+
+#header ul li {
+	list-style: none;
+	display: inline;
+	margin-right: 10px;
+}
+
+#header li a {
+	text-decoration: none;
+	font-weight: normal;
+}
+
+#header li a:hover {
+	text-decoration: underline;
+}
+
+/* MAIN MENU */
+
+#menu {
+		display: block;
+}
+	
+#menu ul {
+	background: #2089b6;
+	padding: 10px 10px 10px 10px; 	
+	clear: right;
+	float: right;
+	margin-right: 0px;
+	margin-top: 5px;
+}
+
+#menu ul li {
+	list-style: none;
+	display: inline;
+	margin-right: 10px;
+}
+
+#menu li a {
+	text-decoration: none;
+	font-weight: normal;
+	color: #fff;
+	font-size: 12px;	
+}
+
+#menu li a:hover {
+	text-decoration: underline;
+}
+	
+/* CONTENT AREA */	
+#main {
+    float: left;
+	
+    width: 785px; 
+    padding: 0; 
+	margin: 10px 0px 0px 10px;
+      /* display: inline; */
+	 /* display: inline;*/
+}	
+
+/* SIDEBAR for sub menus*/
+
+ #sidebar {
+     float: right;
+    width: 165px;
+    padding: 0; 
+    color: #68774A;
+	margin: 10px 0 0 0;
+}
+
+#sidebar ul.sidemenu {
+    list-style: none;
+    text-align: left;
+    margin: 7px 4px 8px 0; padding: 0;
+    text-decoration: none;
+}
+
+#sidebar ul.sidemenu li {
+    list-style: none;
+    padding: 4px 0 4px 5px;
+    margin: 0 2px;
+    color: #68774A;
+}
+
+/*
+* html body #sidebar ul.sidemenu li {
+    height: 1%;
+}*/
+
+#sidebar ul.sidemenu li a {
+    text-decoration: none;
+    background-image: none;
+    color: #666666;
+}
+
+#sidebar ul.sidemenu li a:hover {
+    color: #1773BC;
+	text-decoration: underline;	
+}
+
+#sidebar ul.sidemenu ul { margin: 0 0 0 5px; padding: 0; }
+
+#sidebar ul.sidemenu ul li { background: none; }
+
+/* FOOTER */
+#footer {
+    height: 25px;
+    text-align: center;
+	clear: both;
+}
+
+#footer a {
+    color: #FFF;
+    text-decoration: none;
+}
