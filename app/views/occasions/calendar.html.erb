@@ -1,10 +1,11 @@
-<div id="buttonbar">
-	<%= link_to '< Edellinen kk <', :controller => 'occasions', :action => 'calendar', :direction => 'back', :year => @date.year, :month => @date.month	 %>
-	<%= link_to '> Seuraava kk >',  :controller => 'occasions', :action => 'calendar', :direction => 'forward', :year => @date.year, :month => @date.month %>	
-</div>	
-<h2>Tapahtumakalenteri
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Tapahtumakalenteri
 <%= h @occasion.monthname[@date.month.to_i - 1] + 'kuu ' + @date.year.to_s %>
-</h2>
+</h2></div></div></div>
+<div class="border">
+<div id="buttonbar">
+	<%= link_to '<< Edellinen kk', :controller => 'occasions', :action => 'calendar', :direction => 'back', :year => @date.year, :month => @date.month	 %>
+	<%= link_to '	Seuraava kk >>',  :controller => 'occasions', :action => 'calendar', :direction => 'forward', :year => @date.year, :month => @date.month %>	
+</div>	
 
 <div id='occ_list'>
 <%= render :partial => 'occasion_calendar' %>
@@ -14,3 +15,4 @@
 	<%= render :partial => 'quick_create_calendar' %>
 </div>
 <br />
+</div>
