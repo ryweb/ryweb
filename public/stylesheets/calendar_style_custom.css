@@ -5,7 +5,7 @@ body {
 .calendar {
   width: 98%;
   background-color: white;
-  border: 2px gray solid;
+  /* border: 2px gray solid;*/
 
 }
 
@@ -23,7 +23,7 @@ body {
   padding-bottom: 0.3em;
 
   text-align: center;
-//  background-color: #BE7523;
+  background: #2089b6;
   color: white;
 }
 
@@ -32,6 +32,7 @@ body {
   color: #eeeeee;
   border-bottom: 1px dotted #bbbbbb;
   border-left: 1px dotted #bbbbbb;
+  border-right: 1px dotted #bbbbbb;  
   background-color: white;
 }
 
@@ -40,11 +41,13 @@ body {
   vertical-align: top;
   border-bottom: 1px dotted #bbbbbb;
   border-left: 1px dotted #bbbbbb;
+  border-right: 1px dotted #bbbbbb;   
 }
 
 .day a, .day a:visited, .day a:hover {
   color: black;
   text-decoration: none; 
+  font-size: 0.9em;
 }
 
 
