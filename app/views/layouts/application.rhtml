@@ -7,7 +7,7 @@
 <%= stylesheet_link_tag 'calendar_style_custom' %>
 <%= init_tinymce_hammer_if_required %>
 
-<title>Yhdistys ry - intra</title>
+<title>Rauhanyhdistys.fi - <%= Customer.current.title %></title>
 <%= javascript_include_tag :defaults %>
 </head>
 
@@ -17,7 +17,7 @@
         <!-- header -->
         <div id="header">
 			<img class="logo" src="/images/srk.jpg" title="Rauhanyhdistys.fi" />        	
-            <h1 id="logo-text">Rauhanyhdistys.fi - Yhdistys ry</h1>
+            <h1 id="logo-text">Rauhanyhdistys.fi - <%= Customer.current.title %></h1>
             <!-- div id="header-links" -->
               <p>
               	<ul>

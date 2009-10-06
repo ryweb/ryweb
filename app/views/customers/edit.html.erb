@@ -6,13 +6,15 @@
 			:html => {:method => :put } do |f| -%>
   <%= f.error_messages %>
   
-  <p><%= f.label :name, 'Nimi' %>
-	<% if current_user.user_level <= 5 %>
-		<%= f.text_field :name %><br /></p>
-	<% else %>
-		<%= @edit_customer.name %>
-	<% end %>
-
+  <p><%= f.label :name, 'Järjestelmän nimi' %>
+    <% if current_user.user_level <= 5 %>
+           <%= f.text_field :name %><br />
+           <% else %>
+	<%= @edit_customer.name %>
+           <% end %>
+  </p>
+  <p><%= f.label :title, 'Yhdistyksen nimi' %>
+    <%= f.text_field :title %>
   <p>
     <%= f.submit "Tallenna" %>
   </p>
