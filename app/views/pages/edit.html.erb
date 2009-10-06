@@ -1,7 +1,9 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2><%=@page.title%> - Muokkaus</h2></div></div></div>
+<div class="border">
+
 <div id="buttonbar">
 <%= link_to 'Näytä sivu', page_path(:id => @page) %>
 </div>
-<h2><%=@page.title%> - Muokkaus</h2>
 
 <% form_for( :page, :url => page_path(:id => @page), :html => {:method => :put}) do |f| %>
 <%= render :partial => 'form', :locals => {:f => f} %>
@@ -10,5 +12,6 @@
     <%= f.submit "Tallenna" %>
   </p>
 <% end %>
+</div>
 
 

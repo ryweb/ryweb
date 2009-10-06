@@ -1,16 +1,18 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Ulkoasut</h2></div></div></div>
+<div class="border">
 <div id="buttonbar">
 <%= link_to 'Muokkaa', edit_layout_path(:id => @layout) %> 
 </div>
 <p>
-  <b>Name:</b>
-  <%=h @layout.name %>
+	<%= label_tag 'name', 'Nimi' %>
+  	<%=h @layout.name %>
 </p>
 
 <p>
-  <b>Content:</b>
-  <%=h @layout.content %>
+  	<%= label_tag 'content', 'Sisältö' %>
+  	<%=h @layout.content %>
 </p>
-
+</div>
 
 
 
