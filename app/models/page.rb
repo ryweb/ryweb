@@ -19,7 +19,7 @@ class Page < CustomerData
   end
 
   def self.page_types
-    {TYPE_NORMAL => 'Normaali',
+    {TYPE_NORMAL => 'Pelkkä sivu',
       TYPE_CALENDAR => 'Kalenteri'}
   end
 
@@ -37,4 +37,53 @@ class Page < CustomerData
     return nil if usr.nil?
     "#{usr.name} (#{usr.login})"
   end
+
+  def get_parameter_attrs(attrs)
+    param_attrs = attrs.select {|p,v| p.starts_with?('parameter_')}
+    attrs.delete_if {|p,v| p.starts_with?('parameter_')}
+    [attrs, param_attrs]
+  end
+
+  def initialize(attrs = nil)
+    param_attrs = []
+    (attrs,param_attrs = get_parameter_attrs(attrs)) unless attrs.nil?
+    super(attrs)
+    
+    param_attrs.each do |p,v|
+      __send__("#{p}=",v)
+    end
+  end
+
+
+  def update_attributes(attrs)
+    attrs,param_attrs = get_parameter_attrs(attrs)
+#    param_attrs = attrs.select {|p,v| p.starts_with?('parameter_')}
+#    attrs.delete_if {|p,v| p.starts_with?('parameter_')}
+    super(attrs)
+    param_attrs.each do |p,v|
+      __send__("#{p}=",v)
+    end
+  end
+
+  def calendar?
+    page_type == TYPE_CALENDAR
+  end
+
+  def method_missing(meth, *args)
+    if meth.to_s.starts_with?("parameter_")
+      meth_name = meth.to_s.split('_',2)[1]
+      if meth_name.ends_with?('=')
+        param = parameters.find_or_create_by_name(meth_name[0..-2])
+        param.value = *args
+        param.save
+        return
+      else
+        param =  parameters.find(:first, :conditions => {:name => meth_name})
+        return param.value unless param.nil?
+        return nil
+      end
+    end
+    super
+  end
+  
 end

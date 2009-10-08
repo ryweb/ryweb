@@ -13,4 +13,8 @@ class OccasionType < CustomerData
        }
    end
   end
+
+  def public_visible?
+    visibility == 20
+  end
 end

@@ -14,7 +14,16 @@ class Occasion  < CustomerData
          'peruttu' => 30
        }
    end
- end
+  end
+
+  def self.state_ready
+    20
+  end
+    
+
+  def ready?
+    state == 20
+  end
 
   def monthname
     @monthname = %w{tammi helmi maalis huhti touko kesä heinä elo syys loka marras joulu}
