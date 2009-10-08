@@ -11,8 +11,8 @@
 <% @layouts.each do |layout| %>
   <tr>
     <td><%=h layout.name %></td>
-    <td><%=h layout.created_at %></td>
-    <td><%=h layout.updated_at %></td>
+    <td><%=localize layout.created_at, :format => :long %></td>
+    <td><%=localize layout.updated_at, :format => :long %></td>
     <td><%= link_to 'Näytä', layout_path(:id => layout) %></td>
     <td><%= link_to 'Muokkaa', edit_layout_path(:id => layout) %></td>
     <td><%= link_to 'Poista', layout_path(:id => layout), :confirm => 'Haluatko varmasti poistaa', :method => :delete %></td>
