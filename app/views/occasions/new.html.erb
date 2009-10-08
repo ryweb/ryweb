@@ -1,7 +1,7 @@
 <div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Uusi tapahtuma</h2></div></div></div>
 <div class="border">
 
-<% form_for :occasion, :url => occasions_path do |f| -%>
+<% form_for :occasion, :url => occasions_path(:view => params[:view]) do |f| -%>
 	<%= render :partial => 'form', :locals => {:f => f}%>	 
 <% end %>
 </div>

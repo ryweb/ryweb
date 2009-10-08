@@ -92,9 +92,14 @@ class OccasionsController < ApplicationController
 
         flash[:notice] = 'Tapahtuma tallennettu.'
         # Välitetään luodun tapahtuman päiväys, jotta osataan näyttää oikea kuukausi
-        format.html { redirect_to(occasions_url(:start_date => @occasion.start_time))}
-        format.xml  { render :xml => @occasion, :status => :created, :location => @occasion }
-        format.js
+
+        if params[:view]
+          format.html { redirect_to(occasions_url(:start_date => @occasion.start_time, :view => params[:view]))}
+          format.xml  { head :ok }          
+        else
+          format.html { redirect_to(occasions_url(:start_date => @occasion.start_time))}
+          format.xml  { head :ok }          
+        end      
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @occasion.errors, :status => :unprocessable_entity }
@@ -113,9 +118,8 @@ class OccasionsController < ApplicationController
       if @occasion.update_attributes(params[:occasion])
         flash[:notice] = 'Tapahtuman tiedot päivitetty.'
         select_month
-#        format.html { redirect_to(occasions_url) }         
+         
         if params[:view]
-#        format.html { redirect_to(occasions_url(:view => params[:view])) }
           format.html { redirect_to(occasions_url(:start_date => @occasion.start_time, :view => params[:view]))}
           format.xml  { head :ok }          
         else
