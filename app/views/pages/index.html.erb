@@ -18,7 +18,7 @@
   </tr>
 
 <% for page in @pages %>
-  <tr>
+  <tr class="<%= cycle("even", "odd") %>">
     <td><%=radio_button_tag :default_page, page.id, page.id == Configuration.get_one('default_page').to_i%></td>
     <td><%=h page.name %></td>
     <td><%=h page.state_str %></td>

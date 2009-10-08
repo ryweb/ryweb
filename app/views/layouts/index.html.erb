@@ -9,7 +9,7 @@
   </tr>
 
 <% @layouts.each do |layout| %>
-  <tr>
+  <tr class="<%= cycle("even", "odd") %>">
     <td><%=h layout.name %></td>
     <td><%=localize layout.created_at, :format => :long %></td>
     <td><%=localize layout.updated_at, :format => :long %></td>
