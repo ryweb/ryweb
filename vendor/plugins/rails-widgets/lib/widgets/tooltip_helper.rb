@@ -13,8 +13,8 @@ module Widgets
  
       result = ''
       result << tooltip_css
+      result << javascript_tag(tooltip_link_function(opts[:id]))      
       result << tooltip_link(opts[:id],name)
-      result << javascript_tag(tooltip_link_function(opts[:id]))
       result << render_tooltip(name, tooltip_content(opts,&proc), opts)
       
       if block_given?
