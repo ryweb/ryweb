@@ -5,8 +5,12 @@ class PublicController < ApplicationController
   before_filter :generate_menu
 
   def index
-    default_page = Configuration.get_one('default_page').to_i
-    redirect_to(:action => 'page', :id => default_page)
+    default_page = Configuration.get_one('default_page')
+    if default_page.nil?
+      render :text => "Oletussivua ei ole määritetty"
+      return
+    end
+    redirect_to(:action => 'page', :id => default_page.to_i)
   end
 
 
