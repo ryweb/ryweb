@@ -19,7 +19,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :locations, :path_prefix => '/:customer'
   map.connect '/:customer/:controller/:action/:id'
   map.connect '/:customer/:controller/:action/:id.:format'
-  map.connect '/:customer/', :controller => 'users'
+  map.connect '/:customer/admin', :controller => 'users'
+  map.connect '/:customer/', :controller => 'public'
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
