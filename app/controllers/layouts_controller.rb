@@ -46,7 +46,7 @@ class LayoutsController < ApplicationController
 
     respond_to do |format|
       if @layout.save
-        flash[:notice] = 'Layout was successfully created.'
+        flash[:notice] = 'Ulkoasun luonti onnistui.'
         format.html { redirect_to(layouts_url) }
         format.xml  { render :xml => @layout, :status => :created, :location => @layout }
       else
@@ -63,7 +63,7 @@ class LayoutsController < ApplicationController
 
     respond_to do |format|
       if @layout.update_attributes(params[:layout])
-        flash[:notice] = 'Layout was successfully updated.'
+        flash[:notice] = 'Ulkoasu päivitetty onnistuneesti.'
         format.html { redirect_to(layouts_url) }
         format.xml  { head :ok }
       else
