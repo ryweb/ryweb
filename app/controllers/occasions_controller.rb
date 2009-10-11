@@ -95,10 +95,12 @@ class OccasionsController < ApplicationController
 
         if params[:view]
           format.html { redirect_to(occasions_url(:start_date => @occasion.start_time, :view => params[:view]))}
-          format.xml  { head :ok }          
+          format.xml  { head :ok }
+          format.js
         else
           format.html { redirect_to(occasions_url(:start_date => @occasion.start_time))}
-          format.xml  { head :ok }          
+          format.xml  { head :ok }
+          format.js        
         end      
       else
         format.html { render :action => "new" }
