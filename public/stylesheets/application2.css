@@ -9,9 +9,9 @@ body {
 	padding: 5px 5px 5px 5px;
     margin: 10px auto 10px auto;
     text-align: left;
-    width: 980px;
+    width: 1080px;
     border: 1px solid #e2e7eb;
-	background: #fff;
+    background: #fff;
 }
 
 /* HEADER */
@@ -94,7 +94,7 @@ body {
 #main {
     float: left;
 	
-    width: 785px; 
+    width: 885px;
     padding: 0; 
 	margin: 10px 0px 0px 10px;
       /* display: inline; */
