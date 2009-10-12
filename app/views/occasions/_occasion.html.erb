@@ -14,7 +14,7 @@
 <tbody>	
 <% for occasion in @occasions %>
   <tr class="<%= cycle("even", "odd") %>">
-	<td><%= check_box_tag("ids[]", occasion.id, false, :id => nil) %></td>  	
+	<td><%= check_box_tag("ids[]", occasion.id, false, :id => nil) %></td>
   	<td><%= occasion.start_date_only_str %></td>
 	<td><%= occasion.start_time_only_str %></td>	
 	<td><%= link_to occasion.name, edit_occasion_path(:id => occasion,:view => 'list') %></td>

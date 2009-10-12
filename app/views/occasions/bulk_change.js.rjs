@@ -1,0 +1,2 @@
+page.replace_html :occ_list, :partial => 'occasion'
+flash.discard

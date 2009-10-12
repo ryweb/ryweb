@@ -1,5 +1,0 @@
-<% form_remote_for :occasion, :url => {:action => "create", :year => @date.year, :month => @date.month}, :html => { :id => 'bulk_change_form' } do |f| %>
-	Vaihda valittujen tapahtumien tilaksi: 
-	<%= f.select :state, @occasion.getOptionsForSelectList(:state), options ={:selected => 10} %>
-	<%= f.submit "Tallenna" %>
-<% end %>	

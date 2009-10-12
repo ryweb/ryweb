@@ -9,12 +9,14 @@
 	<%= link_to '> Seuraava kk >',  :controller => 'occasions', :action => 'list', :direction => 'forward', :year => @date.year, :month => @date.month %>	
 </div>	
 
+<% form_remote_for :occasion, :url => {:action => 'bulk_change', :year => @date.year, :month => @date.month} do |f| -%>
 <div id='occ_list'>
-<%= render :partial => 'occasion' %>
+  <%= render :partial => 'occasion' %>
 </div>
-<div id='bulk_change'>
-	<%= render :partial => 'bulk_change' %>
-</div>	
+  Vaihda valittujen tapahtumien tilaksi: <%= f.select :state, @occasion.getOptionsForSelectList(:state), options ={:selected => 10} %>
+<%= f.submit "Tallenna" %>
+<% end %>
+  
 <br />
 <div class="table-header"><div class="table-header r"><div class="table-header m">Uusi tapahtuma</div></div></div>
 <div class="border">

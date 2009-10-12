@@ -135,6 +135,24 @@ class OccasionsController < ApplicationController
     end
   end
 
+  def bulk_change
+    @occasions = Occasion.find(params[:ids])
+    
+    @occasions.each do |row|
+      @occ = Occasion.find(row)
+      @occ.state = params["occasion"][:state]
+      @occ.save
+    end
+
+    # get other occasions
+    select_month
+    
+    respond_to do |format|
+          format.xml  { head :ok }
+          format.js
+    end
+  end
+
   # DELETE /occasions/1
   # DELETE /occasions/1.xml
   def destroy
