@@ -121,3 +121,7 @@ tr.odd {
     color: #1773BC;
 	text-decoration: underline;	
 }
+
+.occasion_list {
+    width: 98%;
+}
