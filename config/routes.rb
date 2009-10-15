@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :configurations, :path_prefix => '/:customer'
 
+  map.resources :graphics, :path_prefix => '/:customer'
   map.resources :layouts, :path_prefix => '/:customer'
 
   map.resources :pages, :path_prefix => '/:customer'
