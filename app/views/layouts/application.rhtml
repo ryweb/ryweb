@@ -66,7 +66,7 @@
             		<div class="table-header"><div class="table-header r"><div class="table-header m"></div></div></div>
 						<div class="border">
             				<ul class="sidemenu">
-            					<% if ['users', 'settings', 'customers', 'occasions', 'locations', 'occasion_types','pages','layouts', 'graphics'].include?(params[:controller]) %>
+            					<% if ['users', 'settings', 'customers', 'occasions', 'locations', 'occasion_types','pages','layouts', 'graphics','styles'].include?(params[:controller]) %>
 									<%= render :partial => params[:controller] + '/context_menu' %>
 								<% end %>									
              		 		</ul>

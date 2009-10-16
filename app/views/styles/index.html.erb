@@ -1,0 +1,27 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Tyylitiedostot</h2></div></div></div>
+<div class="border">
+
+<table>
+  <thead>
+  	<tr>
+		<th>Tyylitiedosto</th>
+		<th>Hakemistopolku</th>
+		<th>&nbsp;</th>
+                <th>&nbsp;</th>
+	</tr>
+  </thead>
+
+<tbody>
+  <% for style in @styles %>
+  <tr class="<%= cycle("even", "odd") %>">
+        <td><%= style.filename %></td>
+	<td><%= style.public_filename %></td>
+        <td><%= link_to 'Muokkaa', edit_style_path(:id => style) %></td>
+        <td><%= link_to 'Poista', style_path(:id => style), :confirm => 'Oletko varma?', :method => :delete %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+<br />
+
+</div>
