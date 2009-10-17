@@ -1,0 +1,14 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Uusi tyylitiedosto</h2></div></div></div>
+<div class="border">
+
+<%= error_messages_for :style %>
+<% form_for(:style, :url => styles_path, :html => { :multipart => true }) do |form| %>
+  <p>
+    <label for="uploaded_data">Valitse tiedosto:</label>
+    <%= form.file_field :uploaded_data %>
+  </p>
+  <p>
+    <%= submit_tag "Tallenna" %>
+  </p>
+<% end %>
+</div>
