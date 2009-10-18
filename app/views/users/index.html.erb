@@ -1,4 +1,17 @@
 <div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Etusivu</h2></div></div></div>
 <div class="border">
 <p>RyWeb on rekisteröidyn yhdistyksen tarpeisiin kehitettävä jäsenrekisteri-, toimintakalenteri ja julkaisujärjestelmä.</p>
+<br />
+<% unless @feedbacks.blank? %>
+<h3>Omat palautteet</h3>
+<table>
+<% @feedbacks.each do |feedback| %>
+  <tr>
+    <td><%= link_to feedback.getOptionsForSelectList(:category).index(feedback.category), feedback_path(:id => feedback) %></td>
+    <td>(<%=localize feedback.created_at, :format => :long %>)</td>
+  </tr>
+<% end %>
+</table>
+<% end  %>
+<br />
 </div>

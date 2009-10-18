@@ -1,0 +1,23 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Uusi palaute</h2></div></div></div>
+<div class="border">
+
+<% form_for(@feedback) do |f| %>
+  <%= f.error_messages %>
+
+<p><%= label_tag 'category', 'Palautteen tyyppi:' %>
+    <%= f.select :category, @feedback.getOptionsForSelectList(:category), options ={:prompt => "Valitse tyyppi"} %></p>
+
+<p><%= label_tag 'message', 'Viesti:' %>
+    <%= f.text_area :message, :rows=>20 %></p>
+
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :customer_id, :value => current_user.customer_id %>
+<!--    
+    <%= f.hidden_field :controller, :value => params[:controller] %>
+    <%= f.hidden_field :action, :value => params[:action] %>
+-->
+  <p>
+    <%= f.submit "Tallenna" %>
+  </p>
+<% end %>
+</div>
