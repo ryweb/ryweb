@@ -1,4 +1,7 @@
 class StylesController < ApplicationController
+
+before_filter :login_required
+
 def index
     @styles = Style.find(:all, :conditions => {:parent_id => nil}, :order => 'created_at DESC')
     respond_to do |format|
