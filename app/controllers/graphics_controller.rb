@@ -1,4 +1,6 @@
 class GraphicsController < ApplicationController
+  before_filter :login_required
+  
   def index
     @graphics = Graphic.find(:all, :conditions => {:parent_id => nil}, :order => 'created_at DESC')
     respond_to do |format|
