@@ -86,11 +86,10 @@ class OccasionsController < ApplicationController
     
     respond_to do |format|
       if @occasion.save
-#        @occasion.update_attribute(:customer_id,current_user.customer_id)   
 
         select_month
 
-        flash[:notice] = 'Tapahtuma tallennettu.'
+        flash[:notice] = 'Tapahtuma lisätty!'
         # Välitetään luodun tapahtuman päiväys, jotta osataan näyttää oikea kuukausi
 
         if params[:view]
@@ -148,6 +147,7 @@ class OccasionsController < ApplicationController
     select_month
     
     respond_to do |format|
+           flash[:notice] = 'Tapahtuman tiedot päivitetty.'
           format.xml  { head :ok }
           format.js
     end
@@ -163,6 +163,7 @@ class OccasionsController < ApplicationController
     @occasion.destroy
 
     respond_to do |format|
+      flash[:notice] = 'Tapahtuma poistettu!'
       if params[:view]
         format.html { redirect_to(occasions_url(:view => params[:view])) }
       else

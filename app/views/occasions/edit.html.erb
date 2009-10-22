@@ -1,9 +1,10 @@
 <div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Tapahtuman tietojen muokkaus</h2></div></div></div>
 <div class="border">
 <div id="buttonbar">
-	<%= link_to 'Takaisin', :back %>	
 	<%= link_to 'Poista tapahtuma', occasion_path(:view => params[:view]), :confirm => 'Oletko varma?', :method => :delete %>
 </div>
+
+ <%= crumbs %>
 
 <% form_for :occasion,
 			:url => occasion_path(:id => @occasion, :view => params[:view]),

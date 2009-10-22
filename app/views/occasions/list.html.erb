@@ -5,9 +5,11 @@
 
 <div id="buttonbar">
 	<%= link_to 'Lisää tapahtuma', new_occasion_path(:view => "list") %>
-	<%= link_to '< Edellinen kk <', :controller => 'occasions', :action => 'list', :direction => 'back', :year => @date.year, :month => @date.month	 %>
-	<%= link_to '> Seuraava kk >',  :controller => 'occasions', :action => 'list', :direction => 'forward', :year => @date.year, :month => @date.month %>	
-</div>	
+	<%= link_to '&laquo;&laquo;&nbsp;Edellinen kk', :controller => 'occasions', :action => 'list', :direction => 'back', :year => @date.year, :month => @date.month	 %>
+	<%= link_to 'Seuraava kk&nbsp;&raquo;&raquo;',  :controller => 'occasions', :action => 'list', :direction => 'forward', :year => @date.year, :month => @date.month %>
+</div>
+
+   
 
 <% form_remote_for :occasion, :url => {:action => 'bulk_change', :year => @date.year, :month => @date.month} do |f| -%>
 <div id='occ_list'>

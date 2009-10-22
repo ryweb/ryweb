@@ -11,7 +11,10 @@
 <div id="buttonbar">
 	<%= link_to 'Muokkaa tietoja', edit_customer_path(:id => @customer) %>
 </div>
-<div>
+
+   <%= crumbs %>
+
+  <div>
 <p><label>Järjestelmän nimi</label> <%=@customer.name %></p>
 <p><label>Yhdistyksen nimi</label> <%=@customer.title %></p>
 </div>

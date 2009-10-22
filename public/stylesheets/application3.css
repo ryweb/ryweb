@@ -109,12 +109,12 @@ tr.odd {
 /* insert, edit links */
 #buttonbar {
 	float: right;
-	margin-right:10px;	
+	margin-right:10px;
 }
 #buttonbar a {
     padding:4px;
-    border:1px solid #ccc;
-	text-decoration: none;
+    /* border:1px solid #ccc;*/
+    text-decoration: none;
 }
 
 #buttonbar a:hover {
