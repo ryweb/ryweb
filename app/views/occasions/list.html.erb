@@ -11,7 +11,7 @@
 
    
 
-<% form_remote_for :occasion, :url => {:action => 'bulk_change', :year => @date.year, :month => @date.month} do |f| -%>
+<% form_remote_for :occasion, :url => {:action => 'bulk_change', :year => @date.year, :month => @date.month}, :html =>{:id => 'bulk_change'} do |f| -%>
 <div id='occ_list'>
   <%= render :partial => 'occasion' %>
 </div>

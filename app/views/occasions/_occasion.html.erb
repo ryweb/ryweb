@@ -1,8 +1,26 @@
   <%= crumbs %>
+
+<script language="Javascript">
+  var form = $('bulk_change');
+
+  function select_all() {
+    checkboxes = form.getInputs('checkbox');
+    if (checkboxes[1].checked) {
+      checkboxes.each(function(e){ e.checked = 0 });
+    }
+    else{
+      checkboxes.each(function(e){ e.checked = 1 });
+    }
+  }
+  
+</script>
+
 <table class="occasion_list">
   <thead>
   	<tr>
-  	<th>&nbsp;</th>
+  	<th><%= check_box_tag("select_all", "", false, :id => "select_all") %>
+        <%= observe_field("select_all", :frequency => 1, :function => "select_all()") %>
+        </th>
        <th>Päiväys</th>
        <th>Klo</th>
        <th>Tapahtuma</th>
