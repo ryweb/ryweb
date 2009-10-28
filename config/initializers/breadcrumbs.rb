@@ -21,8 +21,8 @@ Breadcrumb.configure do
   trail :locations, :show, [:locations, :location_name], :unless => :calendar?
   trail :locations, :edit, [:locations, :location_name]
 
-  trail :occasions, :edit, [:occasions_list, :occasion_name], :if => :calendar?
-  trail :occasions, :edit, [:occasions_calendar, :occasion_name], :unless => :calendar?
+  trail :occasions, [:new, :edit], [:occasions_list, :occasion_name], :if => :calendar?
+  trail :occasions, [:new, :edit], [:occasions_calendar, :occasion_name], :unless => :calendar?
 
   trail :users, :list, [:settings, :users]
   trail :users, [:show, :edit, :new], [:settings, :users, :user_name]
