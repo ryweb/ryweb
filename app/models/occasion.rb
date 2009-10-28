@@ -4,7 +4,18 @@ class Occasion  < CustomerData
   
   validates_presence_of     :name
   validates_presence_of     :state  
+
+  def repeat_weekly(occasion, repeat_until)
   
+    while occasion.start_time.advance(:weeks => 1) < repeat_until
+      recurring_occasion = occasion.clone
+      recurring_occasion.start_time = occasion.start_time.advance(:weeks => 1)
+      
+      recurring_occasion.save
+      occasion = recurring_occasion
+    end
+  end
+
   def getOptionsForSelectList(method)
    case method
      when :state
@@ -12,6 +23,13 @@ class Occasion  < CustomerData
          'luonnos' => 10,
          'valmis' => 20,
          'peruttu' => 30
+       }
+      when :repeat
+       @options = {
+         'ei toistoa' => 0,
+         'kerran viikossa' => 10,
+         #'kerran kuukaudessa' => 20,
+         #'kerran vuodessa' => 30
        }
    end
   end
