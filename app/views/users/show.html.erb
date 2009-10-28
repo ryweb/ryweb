@@ -3,7 +3,9 @@
 <div id="buttonbar">
 	<%= link_to 'Muokkaa tietoja', edit_user_path %>
 	<%= link_to 'Lisää käyttäjä', new_user_path %>
-</div> 
+</div>
+
+     <%= crumbs %>
 
 <p><%= label_tag 'login', 'Käyttäjätunnus' %>
 <%= @user.login %></p>

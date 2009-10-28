@@ -81,16 +81,21 @@ class OccasionsController < ApplicationController
   # POST /occasions.xml
   def create
     @occasion = Occasion.new(params[:occasion])
-     
+
     find_or_create_locations_and_occasion_types
     
     respond_to do |format|
       if @occasion.save
-#        @occasion.update_attribute(:customer_id,current_user.customer_id)   
+        case params[:occasion][:repeat].to_s
+         when '10'
+           repeat_until_date = DateTime.new(params[:occasion][:"repeat_until(1i)"].to_i,params[:occasion][:"repeat_until(2i)"].to_i,params[:occasion][:"repeat_until(3i)"].to_i,params[:occasion][:"start_time(4i)"].to_i,params[:occasion][:"start_time(5i)"].to_i)
+           @occasion.repeat_weekly(@occasion, repeat_until_date)
+        end
 
         select_month
-
-        flash[:notice] = 'Tapahtuma tallennettu.'
+        
+        flash[:notice] = 'Tapahtuma lisätty!'
+        
         # Välitetään luodun tapahtuman päiväys, jotta osataan näyttää oikea kuukausi
 
         if params[:view]
@@ -148,6 +153,7 @@ class OccasionsController < ApplicationController
     select_month
     
     respond_to do |format|
+           flash[:notice] = 'Tapahtuman tiedot päivitetty.'
           format.xml  { head :ok }
           format.js
     end
@@ -163,8 +169,10 @@ class OccasionsController < ApplicationController
     @occasion.destroy
 
     respond_to do |format|
+      flash[:notice] = 'Tapahtuma poistettu!'
       if params[:view]
-        format.html { redirect_to(occasions_url(:view => params[:view])) }
+        #format.html { redirect_to(occasions_url(:view => params[:view])) }
+        format.html { redirect_to(occasions_url(:start_date => @occasion.start_time, :view => params[:view]))}
       else
         format.html { redirect_to(occasions_url) }
       end

@@ -64,10 +64,10 @@ body {
     background-color: #FFFAAA;
 }
 
-.day cancelled a {
+.day cancelled a, .day cancelled a:visited, .day cancelled a:hover {
     text-decoration: line-through;
 }
 
-.day draft a {
+.day draft a, .day draft a:visited, .day draft a:hover {
     font-style: italic;
 }

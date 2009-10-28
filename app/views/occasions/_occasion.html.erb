@@ -1,7 +1,26 @@
+  <%= crumbs %>
+
+<script language="Javascript">
+  var form = $('bulk_change');
+
+  function select_all() {
+    checkboxes = form.getInputs('checkbox');
+    if (checkboxes[1].checked) {
+      checkboxes.each(function(e){ e.checked = 0 });
+    }
+    else{
+      checkboxes.each(function(e){ e.checked = 1 });
+    }
+  }
+  
+</script>
+
 <table class="occasion_list">
   <thead>
   	<tr>
-  	<th>&nbsp;</th>
+  	<th><%= check_box_tag("select_all", "", false, :id => "select_all") %>
+        <%= observe_field("select_all", :frequency => 1, :function => "select_all()") %>
+        </th>
        <th>Päiväys</th>
        <th>Klo</th>
        <th>Tapahtuma</th>
@@ -17,9 +36,9 @@
 	<td><%= check_box_tag("ids[]", occasion.id, false, :id => nil) %></td>
   	<td><%= occasion.start_date_only_str %></td>
 	<td><%= occasion.start_time_only_str %></td>	
-	<td><%= link_to occasion.name, edit_occasion_path(:id => occasion,:view => 'list') %></td>
+	<td><%= link_to occasion.name, edit_occasion_path(:id => occasion,:view => 'list', :start_date => occasion.start_time) %></td>
     <td><% if occasion.occasion_type %><%= occasion.occasion_type.name %><% end %></td>
-    <td><% if occasion.location %><%= link_to occasion.location.name, location_path(:id => occasion.location ) %><% end %></td>
+    <td><% if occasion.location %><%= link_to occasion.location.name, location_path(:id => occasion.location, :view => 'list', :start_date => occasion.start_time) %><% end %></td>
 	<td><%= occasion.getOptionsForSelectList(:state).index(occasion.state) %></td>
     <td><%= link_to 'Poista', occasion_path(:id => occasion, :view => 'list'), :confirm => 'Oletko varma?', :method => :delete %></td>
   </tr>

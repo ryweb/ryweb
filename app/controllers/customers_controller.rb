@@ -34,7 +34,7 @@ class CustomersController < ApplicationController
 
   # GET /customers/1/edit
   def edit
-    @edit_customer = Customer.find(params[:id])
+    @customer = Customer.find(params[:id])
   end
 
   # POST /customers

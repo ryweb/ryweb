@@ -6,6 +6,10 @@
 <p><%= label_tag 'start_time', 'Aloitusaika' %>
 <%= datetime_select 'occasion', 'start_time', :use_month_numbers => true, :order => [:day,:month,:year],:default => Time.now.at_beginning_of_day%>
 
+<p><%= label_tag 'repeat', 'Toisto' %>
+  <%= f.select :repeat, @occasion.getOptionsForSelectList(:repeat), options ={:prompt => ""} %>
+  <%= date_select 'occasion', 'repeat_until', :use_month_numbers => true, :order => [:day,:month,:year], :default => @occasion.start_time %> asti</p>
+
 <p><%= label_tag 'occasion_type_id', 'Tapahtuman tyyppi' %>
 <p><%= text_field_with_auto_complete 'occasion', 'occasion_type_id', :value => @occasion.occasion_type.name %></p>
 

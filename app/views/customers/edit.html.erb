@@ -1,8 +1,10 @@
 <div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Yhdistyksen tietojen muokkaus</h2></div></div></div>
 <div class="border">
 
-<% form_for :edit_customer,
-			:url => customer_path(:id => @edit_customer),
+  <%= crumbs %>
+
+<% form_for :customer,
+			:url => customer_path(:id => @customer),
 			:html => {:method => :put } do |f| -%>
   <%= f.error_messages %>
   

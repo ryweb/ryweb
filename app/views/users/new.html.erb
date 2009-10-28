@@ -1,5 +1,8 @@
 <div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Uuden käyttäjän lisääminen</h2></div></div></div>
 <div class="border">
+
+  <%= crumbs %>
+  
 <% @user.password = @user.password_confirmation = nil %>
 
 <%= error_messages_for :user %>

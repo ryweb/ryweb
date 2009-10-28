@@ -3,10 +3,12 @@
 </h2></div></div></div>
 <div class="border">
 <div id="buttonbar">
-	<%= link_to '<< Edellinen kk', :controller => 'occasions', :action => 'calendar', :direction => 'back', :year => @date.year, :month => @date.month	 %>
-	<%= link_to '	Seuraava kk >>',  :controller => 'occasions', :action => 'calendar', :direction => 'forward', :year => @date.year, :month => @date.month %>	
+	<%= link_to '&laquo;&laquo;&nbsp;Edellinen kk', :controller => 'occasions', :action => 'calendar', :direction => 'back', :year => @date.year, :month => @date.month	 %>
+	<%= link_to 'Seuraava kk&nbsp;&raquo;&raquo;',  :controller => 'occasions', :action => 'calendar', :direction => 'forward', :year => @date.year, :month => @date.month %>
 </div>	
 
+   <%= crumbs %>
+  
 <div id='occ_list'>
 <%= render :partial => 'occasion_calendar' %>
 </div>
