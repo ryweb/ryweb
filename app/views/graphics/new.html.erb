@@ -1,6 +1,9 @@
 <div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Uusi kuva</h2></div></div></div>
 <div class="border">
 
+      <%= crumbs %>
+  
+
 <%= error_messages_for :graphic %>
 <% form_for(:graphic, :url => graphics_path, :html => { :multipart => true }) do |form| %>
   <p>

@@ -1,8 +1,7 @@
 <div class="table-header"><div class="table-header r"><div class="table-header m"><h2><%=@page.title%> - Muokkaus</h2></div></div></div>
 <div class="border">
 
-<div id="buttonbar">
-</div>
+  <%= crumbs %>
 
 <% form_for( :page, :url => page_path(:id => @page), :html => {:method => :put}) do |f| %>
 <%= render :partial => 'form', :locals => {:f => f} %>

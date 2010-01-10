@@ -5,5 +5,7 @@
 	<%= link_to 'Uusi tapahtumatyyppi', new_occasion_type_path %>	
 </div>
 
+  <%= crumbs %>
+
 <p><strong>Näkyvyys: </strong><%= @occasion_type.getOptionsForSelectList(:visibility).index(@occasion_type.visibility) %></p>
 </div>
