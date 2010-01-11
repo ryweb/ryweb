@@ -1,6 +1,12 @@
 <div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Kuvat</h2></div></div></div>
 <div class="border">
 
+<div id="buttonbar">
+  <%= link_to 'Uusi kuva', new_graphic_path %>
+</div>
+<%= crumbs %>
+
+
 <table>
   <thead>
   	<tr>
@@ -13,7 +19,7 @@
 <tbody>
   <% for graphic in @graphics %>
   <tr class="<%= cycle("even", "odd") %>">
-	<td><%= image_tag(graphic.public_filename) %><br /></td>
+        <td><%= link_to graphic.filename, graphic.public_filename %></td>
 	<td><%= graphic.public_filename %></td>
     <td><%= link_to 'Poista', graphic_path(:id => graphic), :confirm => 'Oletko varma?', :method => :delete %></td>
   </tr>

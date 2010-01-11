@@ -64,13 +64,21 @@
 			<!-- sidebar starts here -->
             <div id="sidebar">
             		<div class="table-header"><div class="table-header r"><div class="table-header m"></div></div></div>
-						<div class="border">
-            				<ul class="sidemenu">
-            					<% if ['users', 'settings', 'customers', 'occasions', 'locations', 'occasion_types','pages','layouts', 'graphics','styles'].include?(params[:controller]) %>
-									<%= render :partial => params[:controller] + '/context_menu' %>
-								<% end %>									
-             		 		</ul>
-						</div>
+                          <div class="border">
+                            <ul class="sidemenu">
+                              <% if ['users', 'settings', 'customers', 'occasions', 'locations', 'occasion_types','pages','layouts', 'graphics','styles'].include?(params[:controller]) %>
+                                  <%= render :partial => params[:controller] + '/context_menu' %>
+                              <% end %>
+                            </ul>
+			</div>
+
+                        <% spiffy_corners :generate_css => true do %><br /><strong>Uusia ideoita?<br />
+                          Palautetta?<br />
+                        Virhetoimintoja?<br /></strong>
+                        <br /><br />
+                        <%= link_to "Lähetä viesti kehittäjille", new_feedback_path %>
+                        <br />
+                        <% end %>
             </div>
 			<!-- sidebar ends here -->
 

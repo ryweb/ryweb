@@ -3,6 +3,13 @@ class UsersController < ApplicationController
 
   def index
     @user = self.current_user
+
+    # Näytetään etusivulla käyttäjän lähettämät palautteet
+    if current_user.superuser?
+     @feedbacks = Feedback.find(:all, :order => "created_at DESC")
+    else
+     @feedbacks = Feedback.find_all_by_user_id (@user.id, :order => "created_at DESC")
+    end
   end
   
   def list
