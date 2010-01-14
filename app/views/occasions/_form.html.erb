@@ -25,6 +25,9 @@
 <p><%= label_tag 'public_info', 'Julkinen (internet) lisätieto' %>
 <%= f.text_area :public_info, :rows=>10 %></p>
 
+<p><%= label_tag 'inform_changes', 'Tiedota muutoksesta?' %>
+<%= f.select :inform_changes, @occasion.getOptionsForSelectList(:inform_changes), options ={:prompt => ""} %></p>
+
 <p>
     <%= f.submit "Tallenna" %>
 </p>

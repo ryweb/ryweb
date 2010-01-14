@@ -1,5 +1,29 @@
 <%= @page.content %>
 
 <% if @page.calendar? %>
-<%= public_calendar(@page) %>
+
+<table class="occasion_list">
+  <thead></thead>
+  <tbody>
+    <% if @modified_occasions %>
+    <tr><td colspan ="5"><strong>Muuttuneet tapahtumat</strong></td></tr>
+      <% for modified_occasion in @modified_occasions %>
+        <tr>
+          <td><%= t('date.abbr_day_names')[modified_occasion.start_time.wday] %></td>
+          <td><%= localize modified_occasion.start_time, :format => :very_short %></td>
+          <td><%= modified_occasion.start_time_only_str %></td>
+          <td><%= modified_occasion.name %></td>
+          <td><% if modified_occasion.location %><%= modified_occasion.location.name %><% end %></td>
+          <td><%= modified_occasion.public_info %>
+        </tr>
+      <% end %>
+  <% end %>
+  </tbody>
+</table>
+
+<% if @page.parameter_calendar_type == 'kk' %>
+<%= render :partial => 'month_view' %>
+<% else %>
+<%= render :partial => 'week_view' %>
+<% end %>
 <% end %>

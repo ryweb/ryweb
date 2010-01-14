@@ -1,0 +1,23 @@
+  <table class="occasion_list">
+  <thead></thead>
+  <tbody>
+  <% prevWeek = ""%>
+  <% for occasion in @occasions %>
+    <% thisWeek = occasion.start_date_week_str %>
+    <% if prevWeek.empty? || prevWeek < thisWeek %>
+      <tr><td colspan ="5"><strong><%= "Viikko &nbsp;" + thisWeek.to_i.to_s %></strong></td></tr>
+    <% end %>
+    <% prevWeek = occasion.start_date_week_str  %>
+
+  <tr>
+    <td><%= t('date.abbr_day_names')[occasion.start_time.wday] %></td>
+    <td><%= localize occasion.start_time, :format => :very_short %></td>
+    <td><%= occasion.start_time_only_str %></td>
+    <td><%= occasion.name %></td>
+    <td><% if occasion.location %><%= occasion.location.name %><% end %></td>
+    <td><%= occasion.public_info %>
+  </tr>
+<% end %>
+    </tbody>
+</table>
+
