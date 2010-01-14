@@ -8,7 +8,7 @@ fi:
     formats:
       default: "%e. %Bta %Y"
       long: "%A%e. %Bta %Y"
-      short: "%e.%m.%Y"
+      short: "%e.%m.%Y"      
  
     day_names: [sunnuntai, maanantai, tiistai, keskiviikko, torstai, perjantai, lauantai]
     abbr_day_names: [su, ma, ti, ke, to, pe, la]
@@ -21,6 +21,7 @@ fi:
       default: "%a, %e. %b %Y %H:%M:%S %z"
       short: "%e. %b %H:%M"
       long: "%B %d, %Y %H:%M"
+      very_short: "%e.%m."
     am: "aamupäivä"
     pm: "iltapäivä"
 
