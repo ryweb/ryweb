@@ -5,7 +5,7 @@
 <table class="occasion_list">
   <thead></thead>
   <tbody>
-    <% if @modified_occasions %>
+    <% unless @modified_occasions.blank? %>
     <tr><td colspan ="5"><strong>Muuttuneet tapahtumat</strong></td></tr>
       <% for modified_occasion in @modified_occasions %>
         <tr>
