@@ -6,9 +6,14 @@
   <thead></thead>
   <tbody>
     <% unless @modified_occasions.blank? %>
-    <tr><td colspan ="5"><strong>Muuttuneet tapahtumat</strong></td></tr>
+    <tr><td colspan ="7"><strong>Muuttuneet tapahtumat</strong></td></tr>
       <% for modified_occasion in @modified_occasions %>
         <tr>
+          <% if modified_occasion.state == 30 %>
+          <td><strong><%= modified_occasion.getOptionsForSelectList(:state).index(modified_occasion.state) %></strong></td>
+          <% else %>
+          <td>&nbsp</td>
+          <% end %>
           <td><%= t('date.abbr_day_names')[modified_occasion.start_time.wday] %></td>
           <td><%= localize modified_occasion.start_time, :format => :very_short %></td>
           <td><%= modified_occasion.start_time_only_str %></td>

@@ -5,7 +5,7 @@
   <% for occasion in @occasions %>
     <% thisMonth = occasion.start_date_month_str %>
     <% if prevMonth.empty? || prevMonth < thisMonth %>
-      <tr><td colspan ="5"><strong><%= t('date.month_names')[thisMonth.to_i] %></strong></td></tr>
+      <tr><td colspan ="6"><strong><%= t('date.month_names')[thisMonth.to_i] %></strong></td></tr>
     <% end %>
     <% prevMonth = occasion.start_date_month_str  %>
 
