@@ -10,6 +10,9 @@ class UsersController < ApplicationController
     else
      @feedbacks = Feedback.find_all_by_user_id (@user.id, :order => "created_at DESC")
     end
+
+    #Näytetään etusivulla muuttuneet tapahtumat
+    @modified_occasions = Occasion.find(:all, :joins => :occasion_type, :conditions => ["start_time >= ? AND (state = ? OR state =?) AND inform_changes = ? ", Time.now.beginning_of_day, 20,30, true], :order => 'start_time ')
   end
   
   def list

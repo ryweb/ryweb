@@ -2,6 +2,30 @@
 <div class="border">
 <p>RyWeb on rekisteröidyn yhdistyksen tarpeisiin kehitettävä jäsenrekisteri-, toimintakalenteri ja julkaisujärjestelmä.</p>
 <br />
+<% unless @modified_occasions.blank? %>
+<h3>Muuttuneet tapahtumat</h3>
+<table>
+  <thead></thead>
+  <tbody>
+      <% for modified_occasion in @modified_occasions %>
+        <tr>
+          <% if modified_occasion.state == 30 %>
+          <td><strong><%= modified_occasion.getOptionsForSelectList(:state).index(modified_occasion.state) %></strong></td>
+          <% else %>
+          <td>&nbsp</td>
+          <% end %>
+          <td><%= t('date.abbr_day_names')[modified_occasion.start_time.wday] %></td>
+          <td><%= localize modified_occasion.start_time, :format => :very_short %></td>
+          <td><%= modified_occasion.start_time_only_str %></td>
+          <td><%= modified_occasion.name %></td>
+          <td><% if modified_occasion.location %><%= modified_occasion.location.name %><% end %></td>
+          <td><%= modified_occasion.public_info %></td>
+          <td><%= modified_occasion.internal_info %></td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>
+<% end %>
 <% unless @feedbacks.blank? %>
 <h3>Omat palautteet</h3>
 <table>
