@@ -12,19 +12,23 @@ class CustomerData < ActiveRecord::Base
   
 
   def self.find(*args)
-    user = nil
+    retval = nil
     with_scope(CustomerData.scope_conditions) do
-      user = super
+      retval = super
     end
-    if user.nil?
+
+    if retval.nil?      
       user = super
-      unless user.nil?
-        unless user.superuser?
-          user = nil
+      if user.is_a? User
+        unless user.nil?
+          unless user.superuser?
+            user = nil
+          end
         end
+        retval = user
       end
     end
-    return user
+    return retval
   end
 
   def self.create(*args)
