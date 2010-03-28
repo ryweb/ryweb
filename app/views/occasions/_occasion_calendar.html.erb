@@ -12,7 +12,14 @@
 				when 10: cell_text += "<draft>"
 				when 30: cell_text += "<cancelled>"
 			end
-			cell_text += link_to e.start_time.strftime("%H:%M") + " - " + e.name + "<br />", edit_occasion_path(:id => e, :start_date => e.start_time), {:id => "tooltip_link_" + e.id.to_s}
+
+                        unless e.start_time.strftime("%H:%M") == "00:00"
+                          time = e.start_time.strftime("%H:%M") + " - "
+                        else
+                          time = ""
+                        end
+
+                        cell_text += link_to time + e.name + "<br />", edit_occasion_path(:id => e, :start_date => e.start_time), {:id => "tooltip_link_" + e.id.to_s}
 			case e.state
 				when 10: cell_text += "</draft>"
 				when 30: cell_text += "</cancelled>"
