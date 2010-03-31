@@ -5,6 +5,23 @@ class Occasion  < CustomerData
   validates_presence_of     :name
   validates_presence_of     :state  
 
+  alias_method :orig_location=, :location=
+  alias_method :orig_occasion_type=, :occasion_type=
+
+  def location=(new_location)
+    if new_location.class == String
+      new_location = Location.find_or_create_by_name(new_location)
+    end
+    self.orig_location = new_location
+  end
+
+  def occasion_type=(new_occasion_type)
+    if new_occasion_type.class == String
+      new_occasion_type = OccasionType.find_or_create_by_name(new_occasion_type)
+    end
+    self.orig_occasion_type = new_occasion_type
+  end
+
   def repeat_weekly(occasion, repeat_until)
   
     while occasion.start_time.advance(:weeks => 1) < repeat_until
