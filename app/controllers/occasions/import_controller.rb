@@ -30,7 +30,7 @@ class Occasions::ImportController < ApplicationController
     @data = params[:occasion_import][:column_data]
 
     @occasions = []
-    0.upto(@data.first.length-1) do |data_index|
+    0.upto(@data["0"].length-1) do |data_index|
       new_occasion = {}
       0.upto(@columns.length-1) do |column_index|
         new_occasion[ @columns[column_index] ] = @data[column_index.to_s][data_index]

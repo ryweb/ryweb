@@ -25,12 +25,12 @@ ActionController::Routing::Routes.draw do |map|
 
   # Tapahtumien massalisäys
   map.with_options :controller => 'occasions/import', :path_prefix => '/:customer' do |import|
-    import.new_occasion_import 'occasions/import/new', :action => 'new', :conditions => {:method => :get} 
-    import.refine_occasion_import 'occasions/import/refine', :action => 'refine', :conditions => {:method => :put} 
-    import.validate_occasion_import 'occasions/import/validate', :action => 'validate', :conditions => {:method => :put} 
-    import.preview_occasion_import 'occasions/import/preview', :action => 'preview', :conditions => {:method => :get} 
-    import.create_occasion_import 'occasions/import/create', :action => 'create', :conditions => {:method => :post} 
-    import.show_occasion_import 'occasions/import/show', :action => 'show', :conditions => {:method => :get} 
+    import.new_occasion_import 'occasions/import/new', :action => 'new'
+    import.refine_occasion_import 'occasions/import/refine', :action => 'refine'
+    import.validate_occasion_import 'occasions/import/validate', :action => 'validate'
+    import.preview_occasion_import 'occasions/import/preview', :action => 'preview'
+    import.create_occasion_import 'occasions/import/create', :action => 'create'
+    import.show_occasion_import 'occasions/import/show', :action => 'show'
   end
 
   map.connect '/:customer/:controller/:action/:id'
