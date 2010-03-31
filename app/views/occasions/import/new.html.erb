@@ -1,0 +1,14 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m">
+<h2>Tapahtumien massalisäys</h2>
+</div></div></div>
+<div class="border">
+<p>Aloita tapahtumien massalisäys luomalla tapahtumista lista taulukkolasketaohjelmalla. Listassa pitää olla jokaisesta tapahtumasta seuraavat tiedot: Päiväys ja kellonaika (1.1.2010 16:00), tapahtuman nimi, paikka ja tapahtumatyyppi.</p>
+<p>Kopioi valmis lista taulukkolaskennasta seuraavaan tekstikenttään ja valitse "Käsittele"</p>
+
+<% form_for :occasion_import, :url => refine_occasion_import_path do |f| %>
+<%= f.text_area :csv_data, :size => "80x20" %>
+<br />
+<%= f.submit "Käsittele" %>
+<% end %>
+
+</div>
