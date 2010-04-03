@@ -1,0 +1,22 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Kuvan muokkaus</h2></div></div></div>
+<div class="border">
+
+      <%= crumbs %>
+  
+
+<%= error_messages_for :graphic %>
+<% form_for( :graphic, :url => graphic_path(:id => @graphic), :html => {:multipart => true, :method => :put}) do |f| %>
+<!-- % form_for(:graphic, :url => {:id => @graphic, :action => "update" }, :html => { :multipart => true }) do |f| -% -->
+  <p>
+    <label for="">Nykyinen kuva:</label>
+    <%= link_to @graphic.filename, @graphic.public_filename %>
+  </p>
+  <p>
+    <label for="uploaded_data">Valitse korvaava kuva:</label>
+    <%= f.file_field :uploaded_data %>
+  </p>
+  <p>
+    <%= submit_tag "Tallenna" %>
+  </p>
+<% end %>
+</div>

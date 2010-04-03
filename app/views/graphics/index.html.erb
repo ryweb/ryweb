@@ -21,6 +21,7 @@
   <tr class="<%= cycle("even", "odd") %>">
         <td><%= link_to graphic.filename, graphic.public_filename %></td>
 	<td><%= graphic.public_filename %></td>
+        <td><%= link_to 'Muokkaa', edit_graphic_path(:id => graphic) %></td>
     <td><%= link_to 'Poista', graphic_path(:id => graphic), :confirm => 'Oletko varma?', :method => :delete %></td>
   </tr>
 <% end %>

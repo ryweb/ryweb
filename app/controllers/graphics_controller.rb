@@ -36,4 +36,26 @@ class GraphicsController < ApplicationController
       format.js
     end
   end
+
+  def edit
+    @graphic = Graphic.find(params[:id])
+  end
+
+  def update
+    @graphic = Graphic.find(params[:id])
+    respond_to do |format|
+      if @graphic.update_attributes(params[:graphic])
+        flash[:notice] = 'Photo was successfully updated.'
+        format.html { redirect_to graphics_url(:id => @graphic) }
+        format.xml  { head :created, :location => graphics_url(:id => @graphic) }
+        format.js
+      else
+        flash[:notice] = 'Something awful just happend!'
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @graphic.errors.to_xml }
+        format.js
+      end
+    end
+  end
+
 end
