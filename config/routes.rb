@@ -32,7 +32,11 @@ ActionController::Routing::Routes.draw do |map|
     import.create_occasion_import 'occasions/import/create', :action => 'create'
     import.show_occasion_import 'occasions/import/show', :action => 'show'
   end
-
+  map.with_options :controller => 'occasions/export', :path_prefix => '/:customer' do |export|
+    export.new_occasion_export 'occasions/export/new', :action => 'new'
+    export.csv_occasion_export 'occasions/export/csv', :action => 'csv'
+  end
+  
   map.connect '/:customer/:controller/:action/:id'
   map.connect '/:customer/:controller/:action/:id.:format'
   map.connect '/:customer/admin', :controller => 'users'
