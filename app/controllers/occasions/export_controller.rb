@@ -29,8 +29,8 @@ class Occasions::ExportController < ApplicationController
         @occasions.each do |o|
           csv << [ o.start_date_only_str,
                    o.name,
-                   o.location.name,
-                   o.occasion_type.name ]
+                   o.location.nil? ? "" : o.location.name,
+                   o.occasion_type.nil? ? "" : o.occasion_type.name ]
         end
       end
       filename = "Tapahtumat-#{start_time.strftime("%d_%m") + "-" + end_time.strftime("%d_%m")}.csv"
