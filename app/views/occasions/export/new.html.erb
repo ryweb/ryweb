@@ -1,0 +1,14 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m">
+<h2>Tapahtumien lataus tiedostoon</h2>
+</div></div></div>
+<div class="border">
+<p>Valitse aikaväli, jolta haluat ladata tapahtumat tiedostoon (pp.kk.vvvv - pp.kk.vvvv)</p>
+
+<% form_for :occasion_export, :url => csv_occasion_export_path do |f| %>
+<%= f.text_field :start_date, :size => 15, :value => Time.now.strftime("%d.%m.%Y") %> -
+<%= f.text_field :end_date, :size => 15 %>
+<br />
+<%= f.submit "Lataa tapahtumat" %>
+<% end %>
+
+</div>

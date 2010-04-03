@@ -1,0 +1,4 @@
+csv << ["Päiväys ja klo", "Tapahtuma", "Paikka", "Tapahtumatyyppi"]
+@occasions.each do |o|
+    csv << [ o.start_time, o.name, o.location.name, o.occasion_type.name ]
+end
