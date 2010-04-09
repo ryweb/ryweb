@@ -1,9 +1,0 @@
-<% headers = ["Päiväys ja klo", "Tapahtuma", "Paikka", "Tapahtumatyyppi"] %>
-<%= CSV.generate_line headers %>
-<% @occasions.each do |occasion| %>
-<% row = [ occasion.start_time,
-           occasion.name,
-           occasion.location.name,
-           occasion.occasion_type.name ] %>
-<%= CSV.generate_line row %>
-<% end %>
