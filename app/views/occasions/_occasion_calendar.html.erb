@@ -1,9 +1,14 @@
 <%= calendar(:year => @date.year, :month => @date.month, :first_day_of_week => 1,:abbrev => 0..1 ) do |d|
-	cell_text = "<span class='day_number'>#{d.mday}</span><small>"
-	cell_text += link_to image_tag("11.png", :border=>0), new_occasion_path(:occasion_date => "#{d.year}-#{d.month}-#{d.day}"), {:style => "display: none;",:id => "date_#{d.mday}_#{d.month}_#{d.year}"}
-	cell_text += "<div>"
-	cell_attrs = {:class => 'day', :onMouseOver => "document.getElementById('date_#{d.mday}_#{d.month}_#{d.year}').show();",
-       :onMouseOut => "document.getElementById('date_#{d.mday}_#{d.month}_#{d.year}').hide();"}
+	cell_text = "<span class='day_number'>#{d.mday}</span>"
+#	cell_text += link_to image_tag("11.png", :border=>0), new_occasion_path(:occasion_date => "#{d.year}-#{d.month}-#{d.day}"), {:style => "display: none;",:id => "date_#{d.mday}_#{d.month}_#{d.year}"}
+    cell_text += "<span class='add_event_link'>"
+    cell_text += link_to image_tag("11.png", :border=>0), new_occasion_path(:occasion_date => "#{d.year}-#{d.month}-#{d.day}"), {:style => "display: inline;", :id => "date_#{d.mday}_#{d.month}_#{d.year}"}
+    cell_text += "</span><div>"   
+
+#	cell_attrs = {:class => 'day', :onMouseOver => "document.getElementById('date_#{d.mday}_#{d.month}_#{d.year}').show();" ,
+#       :onMouseOut => "document.getElementById('date_#{d.mday}_#{d.month}_#{d.year}').hide();"}
+
+#    cell_attrs = {:class => 'day'}
 
 	@occasions.each do |e|
 		if e.start_time.strftime("%Y-%m-%d") == d.strftime("%Y-%m-%d")
@@ -27,8 +32,10 @@
 			cell_text += tooltip :name => '', :partial => 'tooltip', :id => e.id
 		end
 	end
-	cell_text += "</div></small>"
-	[cell_text, cell_attrs]
+	cell_text += "</div></span>"
+
+
+#	[cell_text, cell_attrs]
 end
 %>
 

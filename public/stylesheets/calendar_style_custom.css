@@ -71,3 +71,19 @@ body {
 .day draft a, .day draft a:visited, .day draft a:hover {
     font-style: italic;
 }
+
+.day_number {
+    display: inline;
+    font-size: 120%;
+    color: black;
+    text-align: left;
+}
+
+.add_event_link {
+    display: inline;
+    vertical-align: top;
+    margin-right: 1em;
+}
+
+
+
