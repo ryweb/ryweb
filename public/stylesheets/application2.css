@@ -71,6 +71,7 @@ body {
 	float: left;
 	margin-left: 10px;
 	margin-top: 5px;
+        width: 96%;
 }
 
 #menu ul li {
@@ -83,7 +84,7 @@ body {
 	text-decoration: none;
 	font-weight: normal;
 	color: #fff;
-	font-size: 12px;	
+	font-size: 16px;
 }
 
 #menu li a:hover {
