@@ -97,7 +97,7 @@ class Occasion  < CustomerData
  	  end
    def date_only_str(time)
     unless time.nil?
-      time.strftime("%d.%m.%y")
+      time.strftime("%d.%m.%Y")
     end
   end
 
