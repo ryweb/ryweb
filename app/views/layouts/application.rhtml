@@ -38,7 +38,7 @@
           <ul>
 	        <li><%= link_to 'Etusivu', users_url %></li>
 			<% if current_user %>
-	            <li><%= link_to 'CMS', pages_path %></li>
+	            <li><%= link_to 'Nettisivut', pages_path %></li>
 	            <li><%= link_to 'Tapahtumakalenteri', occasions_path %></li>
 				<% if current_user && current_user.user_level <= 10 %>
 					<li><%= link_to 'Asetukset', :controller => 'settings' %></li>								
@@ -63,12 +63,13 @@
 
 			<!-- sidebar starts here -->
             <div id="sidebar">
+              <% if current_user %>
             		<div class="table-header"><div class="table-header r"><div class="table-header m"></div></div></div>
                           <div class="border">
                             <ul class="sidemenu">
                               <% if ['users', 'settings', 'customers', 'occasions', 'occasions/import', 'occasions/export', 'locations', 'occasion_types','pages','layouts', 'graphics','styles'].include?(params[:controller]) %>
                                   <%= render :partial => params[:controller] + '/context_menu' %>
-                              <% end %>
+                                <% end %>                              
                             </ul>
 			</div>
 
@@ -79,6 +80,7 @@
                         <%= link_to "Lähetä viesti kehittäjille", new_feedback_path %>
                         <br />
                         <% end %>
+              <% end %>
             </div>
 			<!-- sidebar ends here -->
 

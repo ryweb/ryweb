@@ -37,8 +37,8 @@ class Occasion  < CustomerData
    case method
      when :state
        @options = {
-         'luonnos' => 10,
-         'valmis' => 20,
+         'alustava' => 10,
+         'vahvistettu' => 20,
          'peruttu' => 30
        }
       when :repeat
@@ -97,7 +97,7 @@ class Occasion  < CustomerData
  	  end
    def date_only_str(time)
     unless time.nil?
-      time.strftime("%d.%m.%y")
+      time.strftime("%d.%m.%Y")
     end
   end
 
