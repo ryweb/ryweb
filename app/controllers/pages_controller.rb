@@ -120,8 +120,11 @@ class PagesController < ApplicationController
 
   def order
     pages = Page.find(:all, :order => :menu_order)
+    index = 0
     pages.each do |p|
-      p.update_attribute( :menu_order, params[:pages].index(p.menu_order.to_s) )
+      p.update_attribute( :menu_order,
+                          params[:pages].index( p.menu_order.nil? ? index.to_s : p.menu_order.to_s ) )
+      index += 1
     end
     @pages = pages.sort { |a,b| a.menu_order <=> b.menu_order }
     render :update do |page|

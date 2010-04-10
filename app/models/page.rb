@@ -1,6 +1,8 @@
 class Page < CustomerData
   acts_as_versioned :class_name => 'PageVersion'
 
+  before_create :set_menu_order
+
   STATE_DRAFT = 1
   STATE_READY = 2
 
@@ -85,5 +87,10 @@ class Page < CustomerData
     end
     super
   end
-  
+
+  private
+
+  def set_menu_order
+    self.menu_order = Page.maximum(:menu_order) + 1
+  end
 end
