@@ -41,7 +41,7 @@ class PublicController < ApplicationController
   end
 
   def generate_menu
-    @mainmenu = Page.find(:all, :conditions => {:public => 1, :state => 2})
+    @mainmenu = Page.find(:all, :conditions => {:public => 1, :state => 2}, :order => :menu_order)
   end
   
 

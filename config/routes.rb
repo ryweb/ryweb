@@ -7,6 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :graphics, :path_prefix => '/:customer'
   map.resources :layouts, :path_prefix => '/:customer'
 
+  map.menu_page '/:customer/pages/menu', :controller => "pages", :action => "menu"
   map.resources :pages, :path_prefix => '/:customer'
   map.resources :customers, :path_prefix => '/:customer'
   map.userlist '/:customer/users/list', :controller => 'users', :action => 'list'

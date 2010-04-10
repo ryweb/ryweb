@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   # GET /pages.xml
   def index
 
-    @pages = Page.find(:all)
+    @pages = Page.find(:all, :order => :menu_order)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -112,5 +112,21 @@ class PagesController < ApplicationController
       flash[:error] = "Oletussivua ei saatu tallennettua"
     end
     redirect_to(pages_url)
+  end
+
+  def menu
+     @pages = Page.find(:all, :order => :menu_order)
+   end
+
+  def order
+    pages = Page.find(:all, :order => :menu_order)
+    pages.each do |p|
+      p.update_attribute( :menu_order, params[:pages].index(p.menu_order.to_s) )
+    end
+    @pages = pages.sort { |a,b| a.menu_order <=> b.menu_order }
+    render :update do |page|
+      page.replace 'pages',
+      render( :partial => "menu_list", :object => @pages )
+    end
   end
 end
