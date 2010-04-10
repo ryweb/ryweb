@@ -37,8 +37,8 @@ class Occasion  < CustomerData
    case method
      when :state
        @options = {
-         'luonnos' => 10,
-         'valmis' => 20,
+         'alustava' => 10,
+         'vahvistettu' => 20,
          'peruttu' => 30
        }
       when :repeat
