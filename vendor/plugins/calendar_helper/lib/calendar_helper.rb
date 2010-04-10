@@ -101,15 +101,46 @@ module CalendarHelper
     # TODO Use some kind of builder instead of straight HTML
     cal = %(<table class="#{options[:table_class]}" border="0" cellspacing="0" cellpadding="0">)
     cal << %(<thead><tr>)
-    if options[:previous_month_text] or options[:next_month_text]
-      cal << %(<th colspan="2">#{options[:previous_month_text]}</th>)
-      colspan=3
-    else
-      colspan=7
-    end
-#    cal << %(<th colspan="#{colspan}" class="#{options[:month_name_class]}">"#{Date::MONTHNAMES[options[:month]]}"</th>)
-    cal << %(<th colspan="#{colspan}" class="#{options[:month_name_class]}">#{month_names[options[:month]]}</th>)
-    cal << %(<th colspan="2">#{options[:next_month_text]}</th>) if options[:next_month_text]
+    
+    3.downto(1) { |i|
+      if options[:month] - i < 1
+        previous_month = options[:month] - i + 12
+      else
+        previous_month = options[:month] - i
+      end
+
+      if options[:month] - i < 0
+       this_month = options[:month] + 13 - i
+       previous_year = -1
+      else
+        this_month = options[:month]-(i-1)
+        previous_year = 0
+      end
+
+      cal << %(<th class="monthName2">#{link_to "&laquo;&laquo;&nbsp;" + month_names[previous_month], :controller => 'occasions', :action => 'calendar', :direction => 'back', :year => @date.year+previous_year, :month => this_month}</th>)
+    }
+
+    cal << %(<th class="#{options[:month_name_class]}">#{month_names[options[:month]]}</th>)
+
+   for i in (1..3)
+     if options[:month] + i > 12
+       next_month = options[:month] + i - 12
+      else
+        next_month = options[:month] + i
+      end
+     if options[:month] + i > 13
+       this_month = options[:month]+(i-13)
+       next_year = 1
+     else
+       this_month = options[:month]+(i-1)
+       next_year = 0
+     end
+      
+      cal << %(<th class="monthName2">#{link_to month_names[next_month] + "&nbsp;&raquo;&raquo;", :controller => 'occasions', :action => 'calendar', :direction => 'forward', :year => @date.year + next_year, :month => this_month}</th>)
+   end
+#RAQUO
+
+
     cal << %(</tr><tr class="#{options[:day_name_class]}">)
     day_names.each do |d|
       unless d[options[:abbrev]].eql? d
