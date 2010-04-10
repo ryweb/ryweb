@@ -74,15 +74,15 @@ body {
 
 .day_number {
     display: inline;
-    font-size: 120%;
+    font-size: 100%;
+    font-style: bold;
     color: black;
     text-align: left;
 }
 
 .add_event_link {
     display: inline;
-    vertical-align: top;
-    margin-right: 1em;
+    float: right;
 }
 
 
