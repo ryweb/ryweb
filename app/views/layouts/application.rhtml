@@ -38,7 +38,7 @@
           <ul>
 	        <li><%= link_to 'Etusivu', users_url %></li>
 			<% if current_user %>
-	            <li><%= link_to 'CMS', pages_path %></li>
+	            <li><%= link_to 'Nettisivut', pages_path %></li>
 	            <li><%= link_to 'Tapahtumakalenteri', occasions_path %></li>
 				<% if current_user && current_user.user_level <= 10 %>
 					<li><%= link_to 'Asetukset', :controller => 'settings' %></li>								
