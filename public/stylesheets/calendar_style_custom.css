@@ -11,9 +11,25 @@ body {
 
 .monthName {
   font-weight: bold;
+  font-size: 1.2em;
   text-align: center;
   padding-top: 1em;
   padding-bottom: 0.7em;
+}
+
+.monthName2 {
+     text-align: center;
+}
+
+
+.monthName2 a {
+  font-size: 0.7em;
+
+  text-decoration: none;
+}
+
+.monthName2 a:hover {
+    text-decoration: underline;
 }
 
 .dayName th {
