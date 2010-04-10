@@ -26,7 +26,7 @@
     <td><%=h page.author_name%></td>
     <td><%= link_to 'Muokkaa', edit_page_path(:id => page) %></td>
     <td><%= link_to 'Historia', :action => 'versions', :id => page %></td>
-    <td><%= link_to 'Poista', page_path(:id => page), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Poista', page_path(:id => page), :confirm => 'Oletko varma?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

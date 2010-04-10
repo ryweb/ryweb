@@ -125,3 +125,13 @@ tr.odd {
 .occasion_list {
     width: 98%;
 }
+
+.menu_button {
+    padding: 10px;
+}
+
+#pages {
+    background: #2089b6;
+    padding: 10px;
+    color: white;
+}

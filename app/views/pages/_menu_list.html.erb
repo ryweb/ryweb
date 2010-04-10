@@ -1,0 +1,8 @@
+<span id="pages">
+  <% for page in @pages %>
+  <span class="menu_button" id="page_<%= page.menu_order %>"><%=h page.name %></span>
+  <% end %>
+</span>
+
+<%= sortable_element( "pages", :url => { :action => "order" }, :tag => "span", :constraint => "horizontal" ) %>
+
