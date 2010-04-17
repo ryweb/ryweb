@@ -1,10 +1,15 @@
 <div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Tapahtumakalenteri
-<%= h @occasion.monthname[@date.month.to_i - 1] + 'kuu ' + @date.year.to_s %>
+<%= h @date.month.to_s + '/' + @date.year.to_s %>
 </h2></div></div></div>
 <div class="border">
 
-   <%= crumbs %>
-  
+<div id="backforward">
+  <p>
+    <ul>
+      <%= navigation_back(:view => 'calendar') %><li><%= h @occasion.monthname[@date.month.to_i - 1] + 'kuu' %></li><%= navigation_forward(:view => 'calendar') %>
+    </ul>
+  </p>
+</div>
 <div id='occ_list'>
 <%= render :partial => 'occasion_calendar' %>
 </div>

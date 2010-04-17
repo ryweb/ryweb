@@ -17,21 +17,6 @@ body {
   padding-bottom: 0.7em;
 }
 
-.monthName2 {
-     text-align: center;
-}
-
-
-.monthName2 a {
-  font-size: 0.7em;
-
-  text-decoration: none;
-}
-
-.monthName2 a:hover {
-    text-decoration: underline;
-}
-
 .dayName th {
   width: 14%;
   font-size: 0.7em;
@@ -101,5 +86,29 @@ body {
     float: right;
 }
 
+/* month navigation */
 
+#backforward ul {
+    text-transform: uppercase;
+    display: inline;
+}
 
+#backforward li {
+    list-style: none;
+    display: inline;
+    color: #0F96B4;
+    font-weight: bold;
+    font-size: 1.3em;
+    text-align: center;
+    padding: 0 0 0 15px;
+}
+
+#backforward li a {
+    text-decoration: none;
+    font-size: 0.6em;
+    color: #0F96B4
+}
+
+#backforward li a:hover {
+    text-decoration: underline;
+}
