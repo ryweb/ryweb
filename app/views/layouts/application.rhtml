@@ -38,12 +38,14 @@
           <ul>
 	        <li><%= link_to 'Etusivu', users_url %></li>
 			<% if current_user %>
-	            <li><%= link_to 'Nettisivut', pages_path %></li>
-	            <li><%= link_to 'Tapahtumakalenteri', occasions_path %></li>
+	            
+                    <li<%= current(['pages', 'layouts','graphics', 'styles']) %>><%= link_to 'Nettisivut', pages_path %></li>
+	            <li<%= current(['occasions', 'locations', 'occasion_types','occasions/import','occasions/export']) %>><%= link_to 'Tapahtumakalenteri', occasions_path %></li>
 				<% if current_user && current_user.user_level <= 10 %>
-					<li><%= link_to 'Asetukset', settings_path %></li>
+					<li<%= current(['settings','customers']) %>><%= link_to 'Asetukset', settings_path %></li>
 				<% end %>
 			<% end %>
+
           </ul>
         </div> <!-- menu ends here -->
 

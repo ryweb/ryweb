@@ -7,4 +7,10 @@ module ApplicationHelper
       false
     end
   end
+
+  def current(args)
+    if args.include?(params[:controller])
+      return ' class="current"'
+    end
+  end
 end

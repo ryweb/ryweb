@@ -77,7 +77,7 @@ body {
 #menu ul li {
 	list-style: none;
 	display: inline;
-	margin-right: 10px;
+        padding: 6px 5px 10px 5px;
 }
 
 #menu li a {
@@ -89,6 +89,11 @@ body {
 
 #menu li a:hover {
 	text-decoration: underline;
+}
+
+#menu .current {
+        color: #fff;
+        border-top: 8px solid #afd4ed;
 }
 	
 /* CONTENT AREA */	
