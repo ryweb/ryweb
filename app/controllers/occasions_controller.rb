@@ -174,7 +174,7 @@ class OccasionsController < ApplicationController
         #format.html { redirect_to(occasions_url(:view => params[:view])) }
         format.html { redirect_to(occasions_url(:start_date => @occasion.start_time, :view => params[:view]))}
       else
-        format.html { redirect_to(occasions_url) }
+        format.html { redirect_to(occasions_url(:start_date => @occasion.start_time)) }
       end
       format.xml  { head :ok }
     end

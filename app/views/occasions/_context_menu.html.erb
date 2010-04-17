@@ -1,8 +1,5 @@
-<li><%= link_to 'Tapahtumakalenteri', occasions_path %></li>
-	<ul>
-		<li><%= link_to 'Listanäkymä', occasions_path(:view => 'list') %></li>
-		<li><%= link_to 'Kalenterinäkymä', occasions_path %></li>
-	</ul>
+<li><%= link_to 'Listanäkymä', occasions_path(:view => 'list', :start_date => @date) %></li>
+<li><%= link_to 'Kalenterinäkymä', occasions_path(:start_date => @date) %></li>
 <li><%= link_to 'Paikat', locations_path %></li>
 <li><%= link_to 'Tapahtumatyypit', occasion_types_path %></li>
 <li><%= link_to 'Tapahtumien massalisäys', new_occasion_import_path %></li>
