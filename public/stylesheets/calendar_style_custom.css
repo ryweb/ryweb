@@ -75,15 +75,16 @@ body {
 
 .day_number {
     display: inline;
-    font-size: 100%;
-    font-style: bold;
-    color: black;
+    font-size: 1.2em;
+    font-weight: normal;
+    color: #0F96B4;
     text-align: left;
 }
 
 .add_event_link {
     display: inline;
     float: right;
+    padding-top: 2px;
 }
 
 /* month navigation */
