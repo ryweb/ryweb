@@ -70,6 +70,15 @@ textarea {
     color:#777;*/
 }
 
+.fieldhelp {
+    font-style: italic;
+    color: graytext;
+}
+
+.activefield {
+    font-style: normal;
+}
+
 /* NOTICES */
 .notice {
     padding: 2px;
