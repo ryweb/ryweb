@@ -91,6 +91,6 @@ class Page < CustomerData
   private
 
   def set_menu_order
-    self.menu_order = Page.maximum(:menu_order) + 1
+    self.menu_order = Page.maximum(:menu_order).to_i + 1
   end
 end
