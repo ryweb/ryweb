@@ -87,6 +87,8 @@ module CalendarHelper
     }
     options = defaults.merge options
 
+    week_number_width = "20"
+    
     first = Date.civil(options[:year], options[:month], 1)
     last = Date.civil(options[:year], options[:month], -1)
 
@@ -102,10 +104,10 @@ module CalendarHelper
 
     # TODO Use some kind of builder instead of straight HTML
     cal = %(<table class="#{options[:table_class]}" border="0" cellspacing="0" cellpadding="0">)
-   
     cal << %(<thead>)
-    
     cal << %(<tr class="#{options[:day_name_class]}">)
+    cal << %(<th scope='col' width="#{week_number_width}"></th>)    # Add empty cell for before day names (MaLi)
+       
     day_names.each do |d|
       unless d[options[:abbrev]].eql? d
         cal << "<th scope='col'><abbr title='#{d}'>#{d[options[:abbrev]]}</abbr></th>"
@@ -114,6 +116,7 @@ module CalendarHelper
       end
     end
     cal << "</tr></thead><tbody><tr>"
+    cal << %(<td scope='col' width="#{week_number_width}">)+week_number(beginning_of_week(first,first_weekday))+"</td>" unless first.wday == first_weekday  # Week number for the first week (MaLi)
     beginning_of_week(first, first_weekday).upto(first - 1) do |d|
       cal << %(<td class="#{options[:other_month_class]})
       cal << " weekendDay" if weekend?(d)
@@ -131,6 +134,7 @@ module CalendarHelper
       cell_attrs[:class] += " weekendDay" if [0, 6].include?(cur.wday) 
       cell_attrs[:class] += " today" if (cur == Date.today) and options[:show_today]  
       cell_attrs = cell_attrs.map {|k, v| %(#{k}="#{v}") }.join(" ")
+      cal << %(<td scope='col' width="#{week_number_width}">)+week_number(cur)+"</td>" if cur.wday == first_weekday     # Week number of other weeks (MaLi)
       cal << "<td #{cell_attrs}>#{cell_text}</td>"
       cal << "</tr><tr>" if cur.wday == last_weekday
     end
