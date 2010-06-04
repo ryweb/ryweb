@@ -1,0 +1,20 @@
+body {
+	background-image: url(images/body-bg.jpg);
+	background-color: #f2f2f2;
+}
+
+h1 {
+	color: #7b432c;
+}
+
+h2 {
+	color: #7b432c;
+}
+
+#header {
+	border-bottom-color: #87ad00;
+}
+
+#nav li a.current {
+	background-color: #87ad00;
+}

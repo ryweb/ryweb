@@ -1,0 +1,446 @@
+/* IMPORT */
+@import "reset.css";
+
+html body div.clear {
+	background: none;
+	border: 0;
+	clear: both;
+	display: block;
+	float: none;
+	font-size: 0;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+body {
+	margin: 0;
+	padding: 5px 0 0 0;
+	text-align: center;
+	color: #000000;
+	font-family: Verdana, Tahoma, Arial, sans-serif;
+	font-size: 62.5%;
+	line-height: 1.5;
+	background-position: 50% 5px;
+	background-repeat: no-repeat;
+}
+
+a {
+	color: #1f4fc6;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+h1 {
+	font-size: 240%;
+	font-family: Georgia, serif;
+	font-weight: normal;
+	margin: 0 0 0.5em 0;
+}
+
+h2 {
+	font-size: 140%;
+	margin: 0 0 0.5em 0;
+	font-weight: bold;
+}
+
+h3 {
+	font-size: 125%;
+}
+
+h4 {
+	font-size: 110%;
+}
+
+h5 {
+	font-size: 100%;
+}
+
+h3, h4, h5 {
+	font-weight: bold;
+	margin: 0 0 0.75em 0;
+}
+
+h6 {
+	font-size: 100%;
+	font-weight: normal;
+}
+
+p {
+	margin: 0 0 1.0em 0;
+	font-size: 110%;
+}
+
+ul.ul, ol.ol {
+	margin: 0 0 1.25em 0;
+	font-size: 1.1em;
+}
+
+ul.ul li, ol.ol li {
+	margin: 0 0 0.25em 0;
+	list-style-position:inside;
+	position: relative;
+	left: 10px;
+}
+
+ul.ul li {
+	list-style-type: disc;
+}
+
+ol.ol li {
+	list-style-type: decimal;
+}
+
+.hide {
+	display: none !important;
+}
+
+.padding {
+	height: 20px;
+	clear: both;
+}
+
+strong {
+	font-weight: bold;
+}
+
+.image_right {
+	display: block;
+	margin: 0 0 10px 15px;
+	float: right;
+}
+
+.image_left {
+	display: block;
+	margin: 0 10px 15px 0;
+	float: left;
+}
+
+.image_center {
+	display: block;
+	width: auto;
+	margin: 0 auto 15px auto;
+}
+
+.image_normal {
+	margin: 0 0 15px 0;
+}
+
+.hr {
+	clear: both;
+	height: 10px;
+	border-bottom: 1px solid #aaaaaa;
+	margin-bottom: 20px;
+	clear: both;
+}
+
+hr {
+	display: none;
+}
+
+.line-through {
+	text-decoration: line-through;
+}
+
+#top-line {
+	background: url(../images/body-bg-top.png) repeat-x;
+	height: 5px;
+	position: absolute;
+	width: 100%;
+	top: 0;
+	left: 0;
+}
+
+#container {
+	width: 936px;
+	margin: 0 auto 100px auto;
+	text-align: left;
+	background: url(../images/container-bg-trans.png) repeat-y 50% 0;
+	padding: 0 12px 0 12px;
+	position: relative;
+}
+
+#header {
+	background-color: #ffffff;
+	height: 110px;
+	border-bottom-width: 5px;
+	border-bottom-style: solid;
+	margin-bottom: 12px;
+	position: relative;
+}
+
+#logo {
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	position: absolute;
+	left: 30px;
+}
+
+#nav {
+	position: absolute;
+	float: right;
+	right: 30px;
+	top: 50%;
+	height: 1.8em;
+	margin: -0.9em -1em 0 0;
+	white-space: nowrap;
+	font-size: 185%;
+}
+
+#nav li {
+	float: left;
+	display: block;
+	background: url(../images/nav-separator.png) no-repeat 0 50%;
+}
+
+#nav li a {
+	float: left;
+	display: block;
+	padding: 0 1em;
+	line-height: 1.8em;
+	text-decoration: none;
+	color: #262626;
+	font-family: Georgia, serif;
+}
+
+#nav li a:hover {
+	color: #777777;
+}
+
+#nav li a.current {
+	color: #ffffff;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+}
+
+#logo a {
+	display: block;
+	text-indent: -2000em;
+}
+
+#content {
+	background-color: #ffffff;
+	padding: 25px 30px 15px 30px;
+}
+
+#main {
+	width: 570px;
+	float: left;
+}
+
+#column {
+	width: 270px;
+	float: right;
+}
+
+#calendar-min {
+	background: #e8ecda;
+	padding: 15px 22px 10px 22px;
+	margin-bottom: 20px;
+}
+
+#calendar-min table {
+	width: 270px;
+	margin: 0 -22px 15px -22px;
+}
+
+#calendar-min tbody td {
+	padding: 3px 5px 4px 7px;
+}
+
+#calendar-min tbody tr.even td {
+	background-color: #f3f6ea;
+}
+
+#calendar-min tr td.date {
+	white-space: nowrap;
+	padding-left: 22px;
+}
+
+#calendar-min tr td.time {
+	white-space: nowrap;
+}
+
+#calendar-min h2 {
+	color: #87ad00;
+}
+
+#calendar {
+	font-size: 110%;
+	border: 5px solid #d5d5d5;
+	margin-bottom: 20px;
+}
+
+#calendar .day, #calendar .date, #calendar .time {
+	white-space: nowrap;
+}
+
+#calendar td {
+	padding: 4px 8px;
+	background-color: #f8f8f8;
+	border-bottom: 1px solid #d5d5d5;
+	color: #333333;
+}
+
+#calendar th {
+	background-color: #d5d5d5;
+	padding: 10px 8px;
+	color: #000000;
+	text-align: left;
+	font-size: 120%;
+}
+
+#calendar tr.even td {
+	background-color: #f0f0f0;
+}
+
+#calendar tr.next td {
+	background-color: #e1f0fb;
+}
+
+#calendar td.event {
+	font-weight: bold;
+}
+
+
+#calendar-modified {
+	font-size: 110%;
+	border: 5px solid #d5d5d5;
+	margin-bottom: 20px;
+}
+
+#calendar-modified .day, #calendar .date, #calendar .time {
+	white-space: nowrap;
+}
+
+#calendar-modified td {
+	padding: 4px 8px;
+	background-color: #f8f8f8;
+	border-bottom: 1px solid #d5d5d5;
+	color: #333333;
+}
+
+#calendar-modified th {
+	background-color: #d5d5d5;
+	padding: 10px 8px;
+	color: #000000;
+	text-align: left;
+	font-size: 120%;
+}
+
+#calendar-modified tr.even td {
+	background-color: #f0f0f0;
+}
+
+#calendar-modified tr.next td {
+	background-color: #e1f0fb;
+}
+
+#calendar-modified td.event {
+	font-weight: bold;
+}
+
+#column .nosto_box {
+	display: block;
+	margin-bottom: 20px;
+}
+
+#footer {
+	clear: left;
+	padding-top: 25px;
+	height: 25px;
+	background: url(../images/footer-bg.png) no-repeat 50% 0;
+	position: absolute;
+	bottom: -50px;
+	left: 0;	
+	width: 960px;
+}
+
+#footer .contact {
+	display: block;
+	padding-left: 42px;
+	font-size: 105%;
+}
+
+#footer .contact li {
+	display: inline;
+	padding: 0 8px 0 12px;
+	background: url(../images/separator.png) no-repeat 0 50%;
+	color: #5f5f5f;
+}
+
+#footer .contact li.first {
+	background: transparent;
+	padding-left: 0;
+}
+
+#footer .contact li i {
+	color: #999999;
+}
+
+/* dl luettelot */
+
+dl.dl {
+	margin-bottom: 20px;
+}
+
+dl.dl dt {
+	float: left;
+	clear: left;
+	display: block;
+	width: 25%;
+	padding-top: 5px;
+	font-weight: bold;
+	text-align: left;
+	font-size: 1.2em;
+}
+
+dl.dl dd {
+	padding-top: 5px;
+	display: block;
+	padding-left: 27% !important;
+	font-size: 1.1em;
+}
+
+/* Taulukot */
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.table {
+	width: 100%;
+	margin-bottom: 20px;
+	font-size: 1.1em;
+}
+
+.table th {
+	font-weight: bold;
+	font-size: 1.1em;
+	border-bottom: 1px solid #ddd;
+}
+                
+.table {
+	border-bottom: 1px solid #ddd;
+}
+
+.table tr {
+	background: #fff;
+}
+              
+.table tr.even td {
+	background: #f3f3f3;
+}
+                
+.table td, .table th {
+	padding: 10px;
+	line-height: 1.3em;
+}
+  
