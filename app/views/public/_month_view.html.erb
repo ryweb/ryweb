@@ -1,25 +1,25 @@
-  <table class="occasion_list">
-  <thead></thead>
-  <tbody>
+  <table id="calendar">
+  <thead>
   <% prevMonth = ""%>
   <% for occasion in @occasions %>
     <% thisMonth = occasion.start_date_month_str %>
     <% if prevMonth.empty? || prevMonth < thisMonth %>
-      <tr><td colspan ="6"><strong><%= t('date.month_names')[thisMonth.to_i] %></strong></td></tr>
+      <tr><th colspan ="6"><strong><%= t('date.month_names')[thisMonth.to_i] %></strong></th></tr>
     <% end %>
     <% prevMonth = occasion.start_date_month_str  %>
-
+  </thead>
+  <tbody>
   <tr>
-    <td><%= t('date.abbr_day_names')[occasion.start_time.wday] %></td>
-    <td><%= localize occasion.start_time, :format => :very_short %></td>
-    <td>
+    <td class="day"><%= t('date.abbr_day_names')[occasion.start_time.wday] %></td>
+    <td class="date"><%= localize occasion.start_time, :format => :very_short %></td>
+    <td class="time">
       <% unless occasion.start_time_only_str == "00:00" %>
         <%= occasion.start_time_only_str %>
       <% end %>
     </td>
-    <td><%= occasion.name %></td>
-    <td><% if occasion.location %><%= occasion.location.name %><% end %></td>
-    <td><%= occasion.public_info %></td>
+    <td class="event"><%= occasion.name %></td>
+    <td class="locale"><% if occasion.location %><%= occasion.location.name %><% end %></td>
+    <td class="info"><%= occasion.public_info %></td>
 
   </tr>
 <% end %>
