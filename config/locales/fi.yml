@@ -21,7 +21,7 @@ fi:
       default: "%a, %e. %b %Y %H:%M:%S %z"
       short: "%e. %b %H:%M"
       long: "%B %d, %Y %H:%M"
-      very_short: "%e.%m."
+      very_short: "%d.%m."
     am: "aamupäivä"
     pm: "iltapäivä"
 
