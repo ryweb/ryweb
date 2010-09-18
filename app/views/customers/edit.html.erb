@@ -17,8 +17,25 @@
   </p>
   <p><%= f.label :title, 'Yhdistyksen nimi' %>
     <%= f.text_field :title %>
-  <p>
-    <%= f.submit "Tallenna" %>
+  </p>
+    
+   
+   <p><%= f.label :address, 'Lähiosoite' %>
+    <%= f.text_field :address %>
+    </p>
+      <p><%= f.label :zip_code, 'Postinumero' %>
+    <%= f.text_field :zip_code %>
+    </p>
+       <p><%= f.label :city, 'Paikkakunta' %>
+    <%= f.text_field :city %>
+    </p>
+
+    <p><%= f.submit "Tallenna" %>
+    </p>
+   
+    	
+    	
+
   </p>
 <% end %>
 </div>
