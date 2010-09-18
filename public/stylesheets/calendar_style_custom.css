@@ -18,7 +18,7 @@ body {
 }
 
 .dayName th {
-  width: 14%;
+  width: 13%;
   font-size: 0.7em;
   padding-top: 0.6em;
   padding-bottom: 0.3em;
@@ -27,7 +27,7 @@ body {
   background: #2089b6;
   color: white;
 }
-
+   
 .otherMonth {
   vertical-align: top;
   color: #eeeeee;
@@ -85,6 +85,14 @@ body {
     display: inline;
     float: right;
     padding-top: 2px;
+}
+
+#week_number {
+  width: 3%;
+  font-size: 0.5em;
+  text-align: center;
+  color: rgb(150,150,150);
+  background-color: white;
 }
 
 /* month navigation */
