@@ -1,0 +1,17 @@
+<% if action_name == 'edit'%>
+<p>
+    
+    <label for="">Nykyinen kuva:</label>
+    <%= link_to @graphic.filename, @graphic.public_filename %>
+  </p>
+ <% end %> 
+<p>
+    <label for="uploaded_data">Valitse korvaava kuva:</label>
+    <%= f.file_field :uploaded_data %>
+  </p>
+
+<p>
+    <label for="uploaded_data">Valitse kuva:</label>
+    <%= f.file_field :uploaded_data %>
+  </p>
+  <p>
