@@ -12,6 +12,8 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:login], params[:password])
     customer = Customer.find_by_name(params[:customer_key])
     if user and customer
+      Authorization.current_user = user
+
       # Protects against session fixation attacks, causes request forgery
       # protection if user resubmits an earlier form using back
       # button. Uncomment if you understand the tradeoffs.

@@ -1,8 +1,10 @@
 class CustomersController < ApplicationController
+  filter_resource_access
+  
   # GET /customers
   # GET /customers.xml
   def index
-    @customers = Customer.find(:all)
+    @customers = Customer.with_permissions_to(:index).find(:all)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +15,7 @@ class CustomersController < ApplicationController
   # GET /customers/1
   # GET /customers/1.xml
   def show
-    @customer = Customer.find(params[:id])
+    @customer = Customer.with_permissions_to(:show).find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -34,7 +36,7 @@ class CustomersController < ApplicationController
 
   # GET /customers/1/edit
   def edit
-    @customer = Customer.find(params[:id])
+    @customer = Customer.with_permissions_to(:edit).find(params[:id])
   end
 
   # POST /customers
@@ -57,7 +59,7 @@ class CustomersController < ApplicationController
   # PUT /customers/1
   # PUT /customers/1.xml
   def update
-    @customer = Customer.find(params[:id])
+    @customer = Customer.with_permissions_to(:update).find(params[:id])
 
     respond_to do |format|
       if @customer.update_attributes(params[:customer])
@@ -75,7 +77,7 @@ class CustomersController < ApplicationController
   # DELETE /customers/1
   # DELETE /customers/1.xml
   def destroy
-    @customer = Customer.find(params[:id])
+    @customer = Customer.with_permissions_to(:destroy).find(params[:id])
     @customer.destroy
 
     respond_to do |format|

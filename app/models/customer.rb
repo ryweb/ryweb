@@ -1,4 +1,5 @@
 class Customer < ActiveRecord::Base
+  using_access_control
   has_many :users
 
   def self.current
