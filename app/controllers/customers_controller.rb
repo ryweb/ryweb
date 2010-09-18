@@ -40,7 +40,7 @@ class CustomersController < ApplicationController
   # POST /customers
   # POST /customers.xml
   def create
-    @customer = Customer.new(params[:new_customer])
+    @customer = Customer.new(params[:customer])
 
     respond_to do |format|
       if @customer.save
@@ -60,7 +60,7 @@ class CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
 
     respond_to do |format|
-      if @customer.update_attributes(params[:edit_customer])
+      if @customer.update_attributes(params[:customer])
         flash[:notice] = 'Yhdistyksen tiedot päivitetty.'
         format.html { redirect_to(customer_url) }        
 #        format.html { redirect_to(@customer) }

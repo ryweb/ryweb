@@ -3,7 +3,7 @@
 
   <%= crumbs %>
 
-<% form_for :new_customer, :url => customers_path do |f| -%>
+<% form_for :customer, :url => customers_path do |f| -%>
   <%= f.error_messages %>
 
 <p><%= label_tag 'name', 'Nimi' %>
