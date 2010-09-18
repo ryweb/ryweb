@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # This controller handles the login/logout function of the site.  
 class SessionsController < ApplicationController
 
@@ -18,7 +19,7 @@ class SessionsController < ApplicationController
       self.current_user = user
       new_cookie_flag = (params[:remember_me] == "1")
       handle_remember_cookie! new_cookie_flag
-      redirect_back_or_default("/#{params[:customer]}/")
+      redirect_back_or_default("/#{params[:customer_key]}/")
       flash[:notice] = "Kirjauduit onnistuneesti nimellä " + self.current_user.login + "!"
     else
       note_failed_signin
@@ -31,7 +32,7 @@ class SessionsController < ApplicationController
   def destroy
     logout_killing_session!
     flash[:notice] = "You have been logged out."
-    redirect_back_or_default("/#{params[:customer]}/")
+    redirect_back_or_default("/#{params[:customer_key]}/")
   end
 
 protected

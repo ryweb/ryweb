@@ -1,31 +1,32 @@
+# -*- coding: utf-8 -*-
 ActionController::Routing::Routes.draw do |map|
 
-  map.resources :configurations, :path_prefix => '/:customer'
+  map.resources :configurations, :path_prefix => '/:customer_key'
 
-  map.resources :feedbacks, :path_prefix => '/:customer'
-  map.resources :styles, :path_prefix => '/:customer'
-  map.resources :graphics, :path_prefix => '/:customer'
-  map.resources :layouts, :path_prefix => '/:customer'
+  map.resources :feedbacks, :path_prefix => '/:customer_key'
+  map.resources :styles, :path_prefix => '/:customer_key'
+  map.resources :graphics, :path_prefix => '/:customer_key'
+  map.resources :layouts, :path_prefix => '/:customer_key'
 
-  map.menu_page '/:customer/pages/menu', :controller => "pages", :action => "menu"
-  map.resources :pages, :path_prefix => '/:customer'
-  map.resources :customers, :path_prefix => '/:customer'
-  map.userlist '/:customer/users/list', :controller => 'users', :action => 'list'
-  map.settings '/:customer/settings', :controller => 'settings'
-  map.logout '/:customer/logout', :controller => 'sessions', :action => 'destroy'
-  map.login '/:customer/login/:id', :controller => 'sessions', :action => 'new'
-  map.register '/:customer/register', :controller => 'users', :action => 'create'
-  map.signup '/:customer/signup', :controller => 'users', :action => 'new'
-  map.resources :users, :path_prefix => '/:customer'
-  map.resource :session, :path_prefix => '/:customer'
-  map.resources :occasion_types, :path_prefix => '/:customer'
-  map.occasioncalendar '/:customer/occasions/calendar', :controller =>'occasions', :action =>'calendar'
-  map.occasionlist '/:customer/occasions/list', :controller =>'occasions', :action =>'list'
-  map.resources :occasions, :path_prefix => '/:customer'
-  map.resources :locations, :path_prefix => '/:customer'
+  map.menu_page '/:customer_key/pages/menu', :controller => "pages", :action => "menu"
+  map.resources :pages, :path_prefix => '/:customer_key'
+  map.resources :customers, :path_prefix => '/:customer_key'
+  map.userlist '/:customer_key/users/list', :controller => 'users', :action => 'list'
+  map.settings '/:customer_key/settings', :controller => 'settings'
+  map.logout '/:customer_key/logout', :controller => 'sessions', :action => 'destroy'
+  map.login '/:customer_key/login/:id', :controller => 'sessions', :action => 'new'
+  map.register '/:customer_key/register', :controller => 'users', :action => 'create'
+  map.signup '/:customer_key/signup', :controller => 'users', :action => 'new'
+  map.resources :users, :path_prefix => '/:customer_key'
+  map.resource :session, :path_prefix => '/:customer_key'
+  map.resources :occasion_types, :path_prefix => '/:customer_key'
+  map.occasioncalendar '/:customer_key/occasions/calendar', :controller =>'occasions', :action =>'calendar'
+  map.occasionlist '/:customer_key/occasions/list', :controller =>'occasions', :action =>'list'
+  map.resources :occasions, :path_prefix => '/:customer_key'
+  map.resources :locations, :path_prefix => '/:customer_key'
 
   # Tapahtumien massalisäys
-  map.with_options :controller => 'occasions/import', :path_prefix => '/:customer' do |import|
+  map.with_options :controller => 'occasions/import', :path_prefix => '/:customer_key' do |import|
     import.new_occasion_import 'occasions/import/new', :action => 'new'
     import.refine_occasion_import 'occasions/import/refine', :action => 'refine'
     import.validate_occasion_import 'occasions/import/validate', :action => 'validate'
@@ -33,15 +34,15 @@ ActionController::Routing::Routes.draw do |map|
     import.create_occasion_import 'occasions/import/create', :action => 'create'
     import.show_occasion_import 'occasions/import/show', :action => 'show'
   end
-  map.with_options :controller => 'occasions/export', :path_prefix => '/:customer' do |export|
+  map.with_options :controller => 'occasions/export', :path_prefix => '/:customer_key' do |export|
     export.new_occasion_export 'occasions/export/new', :action => 'new'
     export.csv_occasion_export 'occasions/export/csv', :action => 'csv'
   end
   
-  map.connect '/:customer/:controller/:action/:id'
-  map.connect '/:customer/:controller/:action/:id.:format'
-  map.connect '/:customer/admin', :controller => 'users'
-  map.connect '/:customer/', :controller => 'public'
+  map.connect '/:customer_key/:controller/:action/:id'
+  map.connect '/:customer_key/:controller/:action/:id.:format'
+  map.connect '/:customer_key/admin', :controller => 'users'
+  map.connect '/:customer_key/', :controller => 'public'
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
