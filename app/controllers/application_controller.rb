@@ -20,10 +20,10 @@ class ApplicationController < ActionController::Base
   private
 
   def set_current_customer
-    if params[:customer] == 'admin'
+    if params[:customer_key] == 'admin'
       Customer.current = nil
     else
-      Customer.current = params[:customer] 
+      Customer.current = params[:customer_key] 
     end
     unless current_user.nil?
       if current_user.customer_id != Customer.current_id
