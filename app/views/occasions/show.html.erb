@@ -13,6 +13,9 @@
 <p><%= label_tag 'location_id', 'Paikka' %>
 <%= @occasion.location.name %></p>
 
+<p><%= label_tag 'subject', 'Aihe' %>
+<%= @occasion.subject %></p>
+
 <p><%= label_tag 'state', 'Tila' %>
 <%= @occasion.getOptionsForSelectList(:state).index(@occasion.state) %></p>
 
