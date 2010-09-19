@@ -67,6 +67,19 @@ class User < CustomerData
    end
   end
 
+  def role_symbols
+    case self.user_level
+    when 20
+      [:standard]
+    when 10
+      [:admin]
+    when 1
+      [:superadmin]      
+    else
+      []
+    end
+  end
+
   protected
 
 
