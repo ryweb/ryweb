@@ -2,16 +2,16 @@
 <div class="border">
 
 <div id="buttonbar">
-	<%= link_to 'Uusi ulkoasu', new_layout_path %>
+	<%= link_to 'Uusi ulkoasu', new_layout_path, :class => 'button icon_add' %>
 </div>
 <%= crumbs %>
 
-<table>
+<table style="width: 95%;">
   <tr>
     <th>Nimi</th>
     <th>Luontiaika</th>
     <th>Muokkausaika</th>
-    <th colspan="3"></th>
+    <th colspan="2"></th>
   </tr>
 
 <% @layouts.each do |layout| %>
@@ -19,9 +19,9 @@
     <td><%=h layout.name %></td>
     <td><%=localize layout.created_at, :format => :long %></td>
     <td><%=localize layout.updated_at, :format => :long %></td>
-    <td><%= link_to 'Näytä', layout_path(:id => layout) %></td>
-    <td><%= link_to 'Muokkaa', edit_layout_path(:id => layout) %></td>
-    <td><%= link_to 'Poista', layout_path(:id => layout), :confirm => 'Haluatko varmasti poistaa', :method => :delete %></td>
+    <!--td><%= link_to 'Näytä', layout_path(:id => layout), :class => "icon icon_show" %></td-->
+    <td><%= link_to 'Muokkaa', edit_layout_path(:id => layout), :class => "icon icon_edit" %></td>
+    <td><%= link_to 'Poista', layout_path(:id => layout), :class => "icon icon_delete", :confirm => 'Haluatko varmasti poistaa', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

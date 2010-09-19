@@ -4,14 +4,16 @@ body {
 	font-family: Verdana,Arial,Helvetica,sans-serif;	
 }
 
-
 #container {
 	padding: 5px 5px 5px 5px;
     margin: 10px auto 10px auto;
     text-align: left;
-    width: 1080px;
+    width: 1000px;
     border: 1px solid #e2e7eb;
     background: #fff;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
 }
 
 /* HEADER */
@@ -20,24 +22,20 @@ body {
 } 
 
 #header h1#logo-text{
-	background: #2089b6;
-	color: #fff;
+	background: #69B0CC;
+	color: #134053;
  	font-size: 16px; 
 	margin: 0px;
-	line-height: 40px;
+	line-height: 30px;
 	padding: 0 10px 0 10px;
     text-transform: none;
-    text-decoration: none;	
-}
-
-#header .logo {
-	float: right;
-	margin-right: 15px;
-	margin-top: 5px;
+    text-decoration: none;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
 }
 
 #header ul {
-
 	float: right;
 	margin-right: 5px;
 	margin-top: 5px;
@@ -60,51 +58,54 @@ body {
 
 /* MAIN MENU */
 
+
 #menu {
-		display: block;
-}
-	
-#menu ul {
 	background: #2089b6;
-	padding: 10px 10px 10px 10px; 	
-	clear: right;
-	float: left;
-	margin-left: 10px;
-	margin-top: 5px;
-        width: 96%;
+	width: 980px;
+	display: block;
+	margin: 10px;
+	height: 40px;
+	padding: 0;
+	clear: both;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
 }
 
-#menu ul li {
+#menu li {
 	list-style: none;
-	display: inline;
-        padding: 6px 5px 10px 5px;
+	display: block;
+   	float: left;
 }
 
 #menu li a {
+   	padding: 10px 10px 10px 10px;
 	text-decoration: none;
 	font-weight: normal;
-	color: #fff;
 	font-size: 16px;
+	line-height: 20px;
+	display: block;
+   	float: left;
+   	color: #ffffff;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
 }
 
 #menu li a:hover {
-	text-decoration: underline;
+	background-color: #157aa6;
 }
 
-#menu .current {
-        color: #fff;
-        border-top: 8px solid #afd4ed;
+#menu .current a {
+	background-color: #00577c;
 }
 	
 /* CONTENT AREA */	
 #main {
     float: right;
-	
-    width: 885px;
+    width: 805px;
     padding: 0; 
 	margin: 10px 10px 0px 10px;
-      /* display: inline; */
-	 /* display: inline;*/
 }	
 
 /* SIDEBAR for sub menus*/
@@ -138,7 +139,6 @@ body {
 
 #sidebar ul.sidemenu li a {
     text-decoration: none;
-    background-image: none;
     color: #666666;
 }
 

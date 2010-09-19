@@ -50,7 +50,7 @@ body {
   display: block;
   color: black;
   text-decoration: none;
-  font-size: 0.9em;
+  font-size: 0.85em;
   text-overflow:ellipsis;
   overflow:hidden;
   white-space:nowrap;
@@ -73,12 +73,17 @@ body {
     font-style: italic;
 }
 
+.day div {
+	clear: both;
+}
+
 .day_number {
     display: inline;
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: normal;
     color: #0F96B4;
     text-align: left;
+    float: left;
 }
 
 .add_event_link {
@@ -87,11 +92,11 @@ body {
     padding-top: 2px;
 }
 
-#week_number {
-  width: 3%;
-  font-size: 0.5em;
+.week_number {
+  width: 3% !important;
+  font-size: 0.8em;
   text-align: center;
-  color: rgb(150,150,150);
+  color: #777777;
   background-color: white;
 }
 

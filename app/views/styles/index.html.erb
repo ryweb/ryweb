@@ -2,11 +2,11 @@
 <div class="border">
 
 <div id="buttonbar">
-    <%= link_to 'Uusi tyylitiedosto', new_style_path %>
+    <%= link_to 'Uusi tyylitiedosto', new_style_path, :class => 'button icon_add' %>
 </div>
 <%= crumbs %>
 
-<table>
+<table style="width: 95%;">
   <thead>
   	<tr>
 		<th>Tyylitiedosto</th>
@@ -21,8 +21,8 @@
   <tr class="<%= cycle("even", "odd") %>">
         <td><%= style.filename %></td>
 	<td><%= style.public_filename %></td>
-        <td><%= link_to 'Muokkaa', edit_style_path(:id => style) %></td>
-        <td><%= link_to 'Poista', style_path(:id => style), :confirm => 'Oletko varma?', :method => :delete %></td>
+        <td><%= link_to 'Muokkaa', edit_style_path(:id => style), :class => 'icon icon_edit' %></td>
+        <td><%= link_to 'Poista', style_path(:id => style), :class => 'icon icon_delete', :confirm => 'Oletko varma?', :method => :delete %></td>
   </tr>
 <% end %>
 </tbody>

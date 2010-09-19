@@ -95,7 +95,8 @@ table {
 
 th {
 	text-transform: uppercase;
-	color: #0F96B4	
+	color: #0F96B4;
+	border-bottom: 1px solid #888888;
 }
 
 tr {
@@ -108,7 +109,7 @@ th, td {
 }
 
 tr.even {
-    background: #F8F8F8;
+    background: #f2f2f2;
 }
 
 tr.odd {
@@ -117,11 +118,11 @@ tr.odd {
 
 /* insert, edit links */
 #buttonbar {
-	float: right;
-	margin-right:10px;
+	width: 100%;
+	height: 35px;
+	padding-top: 5px;
 }
 #buttonbar a {
-    padding:4px;
     /* border:1px solid #ccc;*/
     text-decoration: none;
 }
@@ -144,3 +145,129 @@ tr.odd {
     padding: 10px;
     color: white;
 }
+
+.move_pages .menu_button:hover {
+	background-color: #3e9bc3;
+	cursor: move;
+}
+
+/* BUTTONS */
+
+a.button {
+    background: transparent url(/images/bg_button_a.gif) no-repeat scroll top right;
+    color: #444;
+    display: block;
+    float: left;
+    font: normal 12px arial, sans-serif;
+    height: 24px;
+    margin-right: 6px;
+    padding-right: 18px;
+    text-decoration: none !important;
+}
+
+a.button span {
+    background: transparent url(/images/bg_button_span.gif) no-repeat;
+    display: block;
+    line-height: 24px;
+    padding: 0 0 0 18px;
+}
+
+a.button span span {
+    background: transparent no-repeat 0 50%;
+    padding: 0;
+}
+
+/*
+a.button:active {
+    background-position: bottom right;
+    color: #000;
+    outline: none;
+}
+
+a.button:active span {
+    background-position: bottom left;
+    padding: 6px 0 4px 18px;
+}
+
+a.button:active span span {
+	background-position: 0 50%;
+	padding: 0 0 0 18px;
+}*/
+
+/* ICONS */
+
+.icon {
+	padding-left: 22px !important;
+	padding-right: 8px !important;
+	background-repeat: no-repeat;
+	background-position: 0 50%;
+	line-height: 16px;
+	display: inline-block;
+}
+
+.a_icon {
+	display: block;
+	text-indent: -2000em !important;
+	text-align: left;
+	width: 25px;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+}
+
+.icon_logout { background-image: url(/images/icon_logout.png) !important; color: #CE0C0C !important; }
+.icon_styles { background-image: url(/images/icon_styles.png) !important; }
+.icon_menu { background-image: url(/images/icon_menu.png) !important; }
+.icon_images { background-image: url(/images/icon_images.png) !important; }
+.icon_themes { background-image: url(/images/icon_themes.png) !important; }
+.icon_pages { background-image: url(/images/icon_pages.png) !important; }
+.icon_add { background-image: url(/images/icon_add.png) !important; }
+.icon_edit { background-image: url(/images/icon_edit.png) !important; }
+.icon_history { background-image: url(/images/icon_history.png) !important; }
+.icon_delete { background-image: url(/images/icon_delete.png) !important; color: #CE0C0C !important; }
+.icon_show { background-image: url(/images/icon_show.png) !important; }
+.icon_move { background-image: url(/images/icon_move.png) !important; }
+.icon_list { background-image: url(/images/icon_list.png) !important; }
+.icon_calendar { background-image: url(/images/icon_calendar.png) !important; }
+.icon_places { background-image: url(/images/icon_places.png) !important; }
+.icon_event_type { background-image: url(/images/icon_event_type.png) !important; }
+.icon_add_many { background-image: url(/images/icon_add_many.png) !important; }
+.icon_excel { background-image: url(/images/icon_excel.png) !important; }
+.icon_users { background-image: url(/images/icon_users.png) !important; }
+.icon_error { background-image: url(/images/icon_error.png) !important; }
+
+/* OTHER */
+
+html body div.clear {
+	background: none;
+	border: 0;
+	clear: both;
+	display: block;
+	float: none;
+	font-size: 0;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+.padding {
+	clear: both;
+	height: 20px;
+}
+
+#errorExplanation {
+	margin-bottom: 20px;
+}
+
+#errorExplanation h2 {
+	padding-left: 22px !important;
+	background: url(/images/icon_error.png) no-repeat 0 0.1em;
+	font-size: 120%;
+}
+
+#errorExplanation h2, #errorExplanation p, #errorExplanation li {
+	color: #aa0000;
+}
+

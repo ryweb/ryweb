@@ -8,15 +8,18 @@
 
 <div class="border">
 
-<div id="buttonbar">
-	<%= link_to 'Muokkaa tietoja', edit_customer_path(:id => @customer) %>
-</div>
-
-   <%= crumbs %>
-
-  <div>
-<p><label>Järjestelmän nimi</label> <%=@customer.name %></p>
-<p><label>Yhdistyksen nimi</label> <%=@customer.title %></p>
-</div>
+	<div id="buttonbar">
+		<%= link_to 'Muokkaa tietoja', edit_customer_path(:id => @customer), :class => 'icon icon_edit' %>
+	</div>
+	
+	<%= crumbs %>
+	
+	<div>
+		<p><label>Järjestelmän nimi</label> <%=@customer.name %></p>
+		<p><label>Yhdistyksen nimi</label> <%=@customer.title %></p>
+	</div>
+	
+	<div class="padding"></div>
+	
 </div>
 

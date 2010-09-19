@@ -1,11 +1,11 @@
 <div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Tapahtumatyypit</h2></div></div></div>
 <div class="border">
 <div id="buttonbar">
-	<%= link_to 'Uusi tapahtumatyyppi', new_occasion_type_path %>
+	<%= link_to 'Uusi tapahtumatyyppi', new_occasion_type_path, :class => 'button icon_add' %>
 </div>
 <%= crumbs %>
   
-<table>
+<table style="width: 95%;">
   <thead>
   	<tr>
 		<th>Tyyppi</th>
@@ -19,8 +19,8 @@
   <tr class="<%= cycle("even", "odd") %>">
 	<td><%= link_to occasion_type.name, occasion_type_path(:id => occasion_type) %></td>
 	<td><%= occasion_type.getOptionsForSelectList(:visibility).index(occasion_type.visibility) %></td>
-    <td><%= link_to 'Muokkaa', edit_occasion_type_path(:id => occasion_type) %>
-    <%= link_to 'Poista', occasion_type_path(:id => occasion_type), :confirm => 'Oletko varma?', :method => :delete %></td>
+    <td><%= link_to 'Muokkaa', edit_occasion_type_path(:id => occasion_type), :class => 'icon icon_edit' %>
+    <%= link_to 'Poista', occasion_type_path(:id => occasion_type), :class => 'icon icon_delete', :confirm => 'Oletko varma?', :method => :delete %></td>
   </tr>
 <% end %>
 </tbody>

@@ -1,37 +1,45 @@
-<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Sivut</h2></div></div></div>
-<div class="border">
-
-<div id="buttonbar">
-  <%= link_to 'Uusi sivu', new_page_path %>
+<div class="table-header">
+	<div class="table-header r">
+		<div class="table-header m">
+			<h2>Sivut</h2>
+		</div>
+	</div>
 </div>
 
-<% form_tag :action => 'set_default' do %>
+<div class="border">
 
-<table style="width: 90%">
-  <tr>
-    <th>Oletus</th>
-    <th>Nimi</th>
-    <th>Tila</th>
-    <th>Julkinen</th>
-    <th>Tekijä</th>
-    <th colspan="4"></th>
-  </tr>
-
-<% for page in @pages %>
-  <tr class="<%= cycle("even", "odd") %>">
-    <td><%=radio_button_tag :default_page, page.id, page.id == Configuration.get_one('default_page').to_i%></td>
-    <td><%=h page.name %></td>
-    <td><%=h page.state_str %></td>
-    <td><%=h page.public == 0 ? 'Ei' : 'Kyllä' %></td>
-    <td><%=h page.author_name%></td>
-    <td><%= link_to 'Muokkaa', edit_page_path(:id => page) %></td>
-    <td><%= link_to 'Historia', :action => 'versions', :id => page %></td>
-    <td><%= link_to 'Poista', page_path(:id => page), :confirm => 'Oletko varma?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-<%= submit_tag "Tallenna" %>
-<% end %>
-<br />
+	<div id="buttonbar">
+	  <%= link_to 'Uusi sivu', new_page_path, { :class => "button icon_add" } %>
+	</div>
+	
+	<% form_tag :action => 'set_default' do %>
+	
+	<table style="width: 95%;">
+		<tr>
+		  <th>Oletus</th>
+		  <th>Nimi</th>
+		  <th>Tila</th>
+		  <th>Julkinen</th>
+		  <th>Tekijä</th>
+		  <th colspan="4"></th>
+		</tr>
+	
+		<% for page in @pages %>
+		  <tr class="<%= cycle("even", "odd") %>">
+		    <td><%=radio_button_tag :default_page, page.id, page.id == Configuration.get_one('default_page').to_i%></td>
+		    <td><%=h page.name %></td>
+		    <td><%=h page.state_str %></td>
+		    <td><%=h page.public == 0 ? 'Ei' : 'Kyllä' %></td>
+		    <td><%=h page.author_name%></td>
+		    <td><%= link_to 'Muokkaa', edit_page_path(:id => page), :class => "icon icon_edit" %></td>
+		    <td><%= link_to 'Historia', { :action => 'versions', :id => page }, { :class => "icon icon_history" } %></td>
+		    <td><%= link_to 'Poista', page_path(:id => page), :class => "icon icon_delete", :confirm => 'Oletko varma?', :method => :delete %></td>
+		  </tr>
+		<% end %>
+	</table>
+	
+	<%= submit_tag "Tallenna" %>
+	<% end %>
+	<br />
 
 </div>

@@ -3,10 +3,6 @@
 
   <%= crumbs %>
 
-<div id="buttonbar">
-<%= link_to 'Näytä', layout_path(:id => @layout) %>
-</div>
-
 <% form_for( :layout, :url => layout_path(:id => @layout), :html => {:method => :put}) do |f| %>
 
   <%= f.error_messages %>

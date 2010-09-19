@@ -2,12 +2,12 @@
 <div class="border">
 
 <div id="buttonbar">
-	<%= link_to 'Uusi yhdistys', new_customer_path %>
+	<%= link_to 'Uusi yhdistys', new_customer_path, :class => 'button icon_add' %>
 </div>	
 
   <%= crumbs %>
   
-<table>
+<table style="width: 95%;">
   <thead>
   	<tr>
 		<th>Järjestelmän nimi</th>
@@ -20,8 +20,8 @@
   <tr>
   	<td><%= link_to customer.name, customer_path(:id => customer) %></td>
 	<td><%= customer.title %></td>
-    <td><%= link_to 'Muokkaa', edit_customer_path(:id => customer) %>
-    <%= link_to '(Poista)', customer_path(:id => customer), :confirm => 'Oletko varma?', :method => :delete %></td>
+    <td><%= link_to 'Muokkaa', edit_customer_path(:id => customer), :class => 'icon icon_edit' %>
+    <%= link_to 'Poista', customer_path(:id => customer), :class => 'icon icon_delete', :confirm => 'Oletko varma?', :method => :delete %></td>
   </tr>
 <% end %>
 </tbody>

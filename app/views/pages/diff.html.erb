@@ -15,8 +15,8 @@ text-decoration: none;
 </div>
 
 <h1>Versioerot <%=@dpage1.title %></h1>
-<p>
-<table>
+
+<table style="width: 95%;">
 <tr>
   <th></th>
   <th>Versio <%=@dpage1.version%></td>
@@ -52,4 +52,4 @@ text-decoration: none;
 </table>
 <h3>Sisältö</h3>
 <div style="border: 1px solid #ABABAB; background-color: white; margin: 5px;"><%= HTMLDiff.diff(@dpage1.content,@dpage2.content) %></div>
-</p>
+
