@@ -1,5 +1,15 @@
 <%= calendar(:year => @date.year, :month => @date.month, :first_day_of_week => 1,:abbrev => 0..1 ) do |d|
-	cell_text = "<span class='day_number'>#{d.mday}</span>"
+    cell_text = "<span class='day_number'>#{d.mday}</span>"
+    hol_str = holiday(d)
+    if hol_str == nil
+       hol_str = ""
+    end
+    if hol_str != ""
+       $holName = hol_str
+       cell_text += $holName
+    else
+       $holName = ""
+    end
     cell_text += "<span class='add_event_link'>"
     cell_text += link_to image_tag("plus_16.png", :border=>0, :width =>13, :height=>13, :alt=>"Lisää uusi"), new_occasion_path(:occasion_date => "#{d.year}-#{d.month}-#{d.day}"), {:id => "date_#{d.mday}_#{d.month}_#{d.year}"}
     cell_text += "</span><div>"   
