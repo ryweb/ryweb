@@ -3,20 +3,10 @@
 
 <%= error_messages_for :style %>
 
-<% form_for(:style, :url => style_path(:id => @style), :html => { :multipart => true, :method => :put }) do |form| %>
-<p>
-  <label for="filename">Tiedosto:</label>
-  <%=h @style.filename %>
-</p>
+<% form_for(:style, :url => style_path(:id => @style), :html => { :multipart => true, :method => :put }) do |f| %>
 
-<p>
-  <label for="content_type">Content-type:</label>
-  <%=h @style.content_type %>
-</p>
-  <p>
-    <label for="uploaded_data">Valitse tiedosto:</label>
-    <%= form.file_field :uploaded_data %>
-  </p>
+<%= render :partial => 'form', :locals => {:f => f} %>
+
 
   <p>
     <%= submit_tag "Tallenna" %>

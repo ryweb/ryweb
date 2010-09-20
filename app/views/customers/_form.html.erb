@@ -1,0 +1,32 @@
+  <%= f.error_messages %>
+
+  <p><%= f.label :name, 'Järjestelmän nimi' %>
+    <% if current_user.user_level <= 5 %>
+           <%= f.text_field :name %><br />
+           <% else %>
+	<%= @edit_customer.name %>
+           <% end %>
+  </p>
+  <p><%= f.label :title, 'Yhdistyksen nimi' %>
+    <%= f.text_field :title %>
+  </p>
+
+   <p><%= f.label :address, 'Lähiosoite' %>
+    <%= f.text_field :address %>
+   </p>
+
+   <p><%= f.label :zip_code, 'Postinumero' %>
+    <%= f.text_field :zip_code %>
+   </p>
+
+   <p><%= f.label :city, 'Paikkakunta' %>
+    <%= f.text_field :city %>
+   </p>
+
+   <p><%= f.label :phone, 'Puhelinnumero' %>
+    <%= f.text_field :phone %>
+   </p>
+
+   <p><%= f.label :email, 'Sähköpostiosoite' %>
+    <%= f.text_field :email %>
+   </p>

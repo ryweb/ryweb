@@ -4,15 +4,7 @@
   <%= crumbs %>
 
 <% form_for :customer, :url => customers_path do |f| -%>
-  <%= f.error_messages %>
-
-<p><%= label_tag 'name', 'Nimi' %>
-<%= f.text_field :name %></p>
-
-  <p><%= f.label :title, 'Yhdistyksen nimi' %>
-    <%= f.text_field :title %>
-  <p>
-
+ <%= render :partial => 'form', :locals => {:f => f} %>
   <p>
     <%= f.submit "Tallenna" %>
   </p>

@@ -1,0 +1,17 @@
+<% if ['edit'].include?(params[:action]) %>
+
+<p>
+    <label for="">Nykyinen kuva:</label>
+    <%= link_to @graphic.filename, @graphic.public_filename %>
+</p>
+<p>
+  <label for="uploaded_data">Valitse korvaava kuva:</label>
+  <%= f.file_field :uploaded_data %>
+</p>
+
+  <% else %>
+<p>
+  <label for="uploaded_data">Valitse kuva:</label>
+  <%= f.file_field :uploaded_data %>
+</p>
+  <% end %>

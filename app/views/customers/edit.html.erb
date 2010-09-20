@@ -6,19 +6,10 @@
 <% form_for :customer,
 			:url => customer_path(:id => @customer),
 			:html => {:method => :put } do |f| -%>
-  <%= f.error_messages %>
   
-  <p><%= f.label :name, 'Järjestelmän nimi' %>
-    <% if current_user.user_level <= 5 %>
-           <%= f.text_field :name %><br />
-           <% else %>
-	<%= @edit_customer.name %>
-           <% end %>
-  </p>
-  <p><%= f.label :title, 'Yhdistyksen nimi' %>
-    <%= f.text_field :title %>
-  <p>
-    <%= f.submit "Tallenna" %>
-  </p>
+ <%= render :partial => 'form', :locals => {:f => f} %>
+
+    <p><%= f.submit "Tallenna" %>
+    </p>
 <% end %>
 </div>

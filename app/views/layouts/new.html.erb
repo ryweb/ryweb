@@ -4,16 +4,9 @@
   <%= crumbs %>
 
 <% form_for(@layout) do |f| %>
-  <%= f.error_messages %>
 
-  <p>
-    <%= f.label :name, "Nimi" %>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :content, "Sisältö" %>
-    <%= f.text_area :content %>
-  </p>
+    <%= render :partial => 'form', :locals => {:f => f} %>
+
   <p>
     <%= f.submit 'Luo' %>
   </p>

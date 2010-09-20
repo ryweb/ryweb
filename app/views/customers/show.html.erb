@@ -7,7 +7,6 @@
 </div>
 
 <div class="border">
-
 	<div id="buttonbar">
 		<%= link_to 'Muokkaa tietoja', edit_customer_path(:id => @customer), :class => 'icon icon_edit' %>
 	</div>
@@ -15,11 +14,15 @@
 	<%= crumbs %>
 	
 	<div>
-		<p><label>Järjestelmän nimi</label> <%=@customer.name %></p>
-		<p><label>Yhdistyksen nimi</label> <%=@customer.title %></p>
+          <p><label>Järjestelmän nimi</label> <%=@customer.name %></p>
+          <p><label>Yhdistyksen nimi</label> <%=@customer.title %></p>
+          <p><label>Lähiosoite</label> <%=@customer.address %></p>
+          <p><label>Postinumero</label> <%=@customer.zip_code %></p>
+          <p><label>Paikkakunta</label> <%=@customer.city %></p>
+          <p><label>Puhelin</label> <%=@customer.phone %></p>
+          <p><label>Sähköposti</label> <%=@customer.email %></p>
 	</div>
 	
 	<div class="padding"></div>
-	
 </div>
 

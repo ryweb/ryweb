@@ -5,16 +5,8 @@
 
 <% form_for( :layout, :url => layout_path(:id => @layout), :html => {:method => :put}) do |f| %>
 
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :name, "Nimi" %>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :content,"Sisältö" %>
-    <%= f.text_area :content %>
-  </p>
+    <%= render :partial => 'form', :locals => {:f => f} %>
+  
   <p>
     <%= f.submit 'Päivitä' %>
   </p>

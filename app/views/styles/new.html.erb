@@ -2,11 +2,10 @@
 <div class="border">
 
 <%= error_messages_for :style %>
-<% form_for(:style, :url => styles_path, :html => { :multipart => true }) do |form| %>
-  <p>
-    <label for="uploaded_data">Valitse tiedosto:</label>
-    <%= form.file_field :uploaded_data %>
-  </p>
+<% form_for(:style, :url => styles_path, :html => { :multipart => true }) do |f| %>
+  
+<%= render :partial => 'form', :locals => {:f => f} %>
+  
   <p>
     <%= submit_tag "Tallenna" %>
   </p>
