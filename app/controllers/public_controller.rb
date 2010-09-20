@@ -37,7 +37,11 @@ class PublicController < ApplicationController
 
     @next_occasions = Occasion.find(:all, :joins => :occasion_type, :conditions => ["start_time >= ? AND start_time < ? AND state = ? AND occasion_types.visibility = ? ", DateTime.now.beginning_of_day, last_date, 20,20], :order => 'start_time ')
 
-    @layout = @page.layout
+    if Customer.current.ui_template.nil?
+      @layout = @page.layout
+    else
+      @layout = Customer.current.ui_template
+    end
   end
 
   private

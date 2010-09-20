@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ActionController::Routing::Routes.draw do |map|
-
+  map.resources :ui_templates, :path_prefix => '/:customer_key'
   map.resources :configurations, :path_prefix => '/:customer_key'
 
   map.resources :feedbacks, :path_prefix => '/:customer_key'

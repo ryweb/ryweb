@@ -1,6 +1,7 @@
 class Customer < ActiveRecord::Base
   using_access_control
   has_many :users
+  belongs_to :ui_template
 
   def self.current
     Thread.current['customer']

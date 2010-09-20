@@ -14,13 +14,24 @@
 	<%= crumbs %>
 	
 	<div>
-          <p><label>Järjestelmän nimi</label> <%=@customer.name %></p>
-          <p><label>Yhdistyksen nimi</label> <%=@customer.title %></p>
-          <p><label>Lähiosoite</label> <%=@customer.address %></p>
-          <p><label>Postinumero</label> <%=@customer.zip_code %></p>
-          <p><label>Paikkakunta</label> <%=@customer.city %></p>
-          <p><label>Puhelin</label> <%=@customer.phone %></p>
-          <p><label>Sähköposti</label> <%=@customer.email %></p>
+          <p><%= label_tag 'name', 'Järjestelmän nimi' %>
+          <%=@customer.name %></p>
+          <p><%= label_tag 'title', 'Yhdistyksen nimi' %>
+          <%=@customer.title %></p>
+          <p><%= label_tag 'address', 'Lähiosoite' %>
+          <%=@customer.address %></p>
+          <p><%= label_tag 'zip_code', 'Postinumero' %>
+          <%=@customer.zip_code %></p>
+          <p><%= label_tag 'city', 'Postitoimipaikka' %>
+          <%=@customer.city %></p>
+          <p><%= label_tag 'phone', 'Puhelin' %>
+          <%=@customer.phone %></p>
+          <p><%= label_tag 'email', 'Sähköposti' %>
+          <%=@customer.email %></p>
+          <p><%= label_tag 'ui_template.name', 'Ulkoasumalli' %>
+          <%=@customer.ui_template.name %></p>
+          
+          
 	</div>
 	
 	<div class="padding"></div>

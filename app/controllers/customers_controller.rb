@@ -27,6 +27,7 @@ class CustomersController < ApplicationController
   # GET /customers/new.xml
   def new
     @customer = Customer.new
+    @ui_templates = UiTemplate.find(:all)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,6 +38,7 @@ class CustomersController < ApplicationController
   # GET /customers/1/edit
   def edit
     @customer = Customer.with_permissions_to(:edit).find(params[:id])
+    @ui_templates = UiTemplate.find(:all)
   end
 
   # POST /customers
