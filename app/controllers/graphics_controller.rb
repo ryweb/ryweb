@@ -13,7 +13,7 @@ class GraphicsController < ApplicationController
     @graphic = Graphic.new(params[:graphic])
     respond_to do |format|
       if @graphic.save
-        #flash[:notice] = ''
+        flash[:notice] = 'Kuva tallennettu onnistuneesti.'
         format.html { redirect_to graphics_url(:id => @graphic) }
         format.xml  { head :created, :location => graphics_url(:id => @graphic) }
         format.js
@@ -45,12 +45,12 @@ class GraphicsController < ApplicationController
     @graphic = Graphic.find(params[:id])
     respond_to do |format|
       if @graphic.update_attributes(params[:graphic])
-        flash[:notice] = 'Photo was successfully updated.'
+        flash[:notice] = 'Kuva onnistuneesti päivitetty.'
         format.html { redirect_to graphics_url(:id => @graphic) }
         format.xml  { head :created, :location => graphics_url(:id => @graphic) }
         format.js
       else
-        flash[:notice] = 'Something awful just happend!'
+        flash[:notice] = 'Kuvan päivitys epäonnistui.'
         format.html { render :action => "edit" }
         format.xml  { render :xml => @graphic.errors.to_xml }
         format.js
