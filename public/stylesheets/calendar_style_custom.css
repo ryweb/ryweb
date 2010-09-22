@@ -37,8 +37,17 @@ body {
   background-color: white;
 }
 
-.day, .specialDay {
+.day {
   height: 60px;
+  vertical-align: top;
+  border-bottom: 1px dotted #bbbbbb;
+  border-left: 1px dotted #bbbbbb;
+  border-right: 1px dotted #bbbbbb;
+}
+
+.specialDay {
+  height: 60px;
+  background-color: #ddffdd;
   vertical-align: top;
   border-bottom: 1px dotted #bbbbbb;
   border-left: 1px dotted #bbbbbb;

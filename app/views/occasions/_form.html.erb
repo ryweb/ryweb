@@ -13,6 +13,9 @@
 <p><%= label_tag 'occasion_type_id', 'Tapahtuman tyyppi' %>
 <p><%= text_field_with_auto_complete 'occasion', 'occasion_type_id', :value => @occasion.occasion_type.name %></p>
 
+<p><%= label_tag 'subject', 'Aihe' %>
+<p><%= text_field_with_auto_complete 'occasion', 'subject', :value => @occasion.subject %></p>
+
 <p><%= label_tag 'location_id', 'Paikka' %>
 <p><%= text_field_with_auto_complete 'occasion', 'location_id', :value => @occasion.location.name %></p>
 
