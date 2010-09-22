@@ -4,6 +4,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :configurations, :path_prefix => '/:customer_key'
 
   map.resources :index
+  map.connect '/index/:action/:id', :controller => 'index'
+  map.connect '/index/:action/:id.xml', :controller => 'index', :action => 'occasions'
+
   map.resources :feedbacks, :path_prefix => '/:customer_key'
   map.resources :styles, :path_prefix => '/:customer_key'
   map.resources :graphics, :path_prefix => '/:customer_key'
