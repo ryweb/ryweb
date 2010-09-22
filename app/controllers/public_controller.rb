@@ -22,28 +22,47 @@ class PublicController < ApplicationController
       return
     end
 
+    # Prepare for anti_spam email
+    @customer = Customer.current
+
+    if !@customer.email.nil?
+      tmp1, tmp2 = @customer.email.split(/\.([^.]*)$/)
+      @user, @organization = tmp1.split(/\@([^@]*)$/)
+      @domain = tmp2
+    end
+
+    # Variables for date counting
     calendar_length = @page.parameter_calendar_length.to_i
+
+    date_now = DateTime.now
+    first_date = date_now.beginning_of_month # first day at 0:00:00
+    last_date = date_now.advance(:months => calendar_length)
+    last_date = last_date.beginning_of_month # first day of next month at 0:00:00
     
-      date_now = DateTime.now
-      first_date = date_now.beginning_of_month # first day at 0:00:00
-      last_date = date_now.advance(:months => calendar_length)
-      last_date = last_date.beginning_of_month # first day of next month at 0:00:00
+    # Database access only if page contains a calendar
+    if @page.page_type == 2
 
-    @modified_occasions = Occasion.find(:all, :joins => :occasion_type, :conditions => ["start_time >= ? AND start_time < ? AND (state = ? OR state =?) AND occasion_types.visibility = ? AND inform_changes = ? ", Time.now.beginning_of_day, last_date, 20,30, 20, true], :order => 'start_time ')
+      @modified_occasions = Occasion.find(:all, :joins => :occasion_type, :conditions => ["start_time >= ? AND start_time < ? AND (state = ? OR state =?) AND occasion_types.visibility = ? AND inform_changes = ? ", Time.now.beginning_of_day, last_date, 20,30, 20, true], :order => 'start_time ')
 
-    @occasions = Occasion.find(:all, :joins => :occasion_type, :conditions => ["start_time >= ? AND start_time < ? AND state = ? AND occasion_types.visibility = ? ", DateTime.now.beginning_of_day, last_date, 20,20], :order => 'start_time ')
+      @occasions = Occasion.find(:all, :joins => :occasion_type, :conditions => ["start_time >= ? AND start_time < ? AND state = ? AND occasion_types.visibility = ? ", DateTime.now.beginning_of_day, last_date, 20,20], :order => 'start_time ')
 
-    last_date = date_now.advance(:weeks => 1)
+      last_date = date_now.advance(:weeks => 1)
 
-    @next_occasions = Occasion.find(:all, :joins => :occasion_type, :conditions => ["start_time >= ? AND start_time < ? AND state = ? AND occasion_types.visibility = ? ", DateTime.now.beginning_of_day, last_date, 20,20], :order => 'start_time ')
+    end
 
+    # Database access only if page contains calendar gadgets
+    if @page.show_gadgets?
+      @next_occasions = Occasion.find(:all, :joins => :occasion_type, :conditions => ["start_time >= ? AND start_time < ? AND state = ? AND occasion_types.visibility = ? ", DateTime.now.beginning_of_day, last_date, 20,20], :order => 'start_time ')
+    end
+
+    # Choose whether to use general UI template or customized layouts
     if Customer.current.ui_template.nil?
       @layout = @page.layout
     else
       @layout = Customer.current.ui_template
     end
   end
-
+  
   private
   def set_layout
     @layout = Layout.find(:first)
@@ -53,6 +72,5 @@ class PublicController < ApplicationController
     @mainmenu = Page.find(:all, :conditions => {:public => 1, :state => 2}, :order => :menu_order)
   end
   
-
 
 end

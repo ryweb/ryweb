@@ -1,44 +1,44 @@
 body {
 	background-image: url(images/body-bg.jpg);
-	background-color: #f2f2f2;
+	background-color: #F0F8FA;
 }
 
 h1 {
-	color: #7b432c;
+	color: #236aa9;
 }
 
 h2 {
-	color: #7b432c;
+	color: #236aa9;
 }
 
 #header {
-	border-bottom-color: #87ad00;
+	border-bottom-color: #dcbb00;
 }
 
 #nav li a.current {
-	background-color: #87ad00;
+	background-color: #dcbb00;
 }
 
 .calendar-min {
-	background: #e8ecda;
+	background: #faf1b7;
 }
 
 .calendar-min-theme2 {
-	background: #eadfdb;
+	background: #e3f4f5;
 }
 
 .calendar-min tbody tr.even td {
-	background-color: #f3f6ea;
+	background-color: #fffad7;
 }
 
 .calendar-min-theme2 tbody tr.even td {
-	background-color: #f5eeeb;
+	background-color: #f6fafa;
 }
 
 .calendar-min h2 {
-	color: #87ad00;
+	color: #236aa9;
 }
 
 .calendar-min-theme2 h2 {
-	color: #7b432c;
+	color: #236aa9;
 }

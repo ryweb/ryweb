@@ -24,7 +24,11 @@
   </p>
   <p>
     <%= f.label :layout_id, "Ulkoasu" %>
-    <%= f.select :layout_id, Layout.find(:all).map {|l| [l.name, l.id]} %>
+    <% if Customer.current.ui_template.nil? %>
+      <%= f.select :layout_id, Layout.find(:all).map {|l| [l.name, l.id]} %>
+    <% else %>
+      <%= Customer.current.ui_template.name %>
+    <% end %>
   </p>
 
 

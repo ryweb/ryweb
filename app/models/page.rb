@@ -71,6 +71,14 @@ class Page < CustomerData
     page_type == TYPE_CALENDAR
   end
 
+  def show_gadgets?
+    return id == default_page && page_type != TYPE_CALENDAR
+  end
+
+  def default_page
+      Configuration.get_one('default_page').to_i
+  end
+
   def method_missing(meth, *args)
     if meth.to_s.starts_with?("parameter_")
       meth_name = meth.to_s.split('_',2)[1]

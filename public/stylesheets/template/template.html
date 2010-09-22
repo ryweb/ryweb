@@ -1,0 +1,86 @@
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+            <title><%= @customer.title %></title>
+
+            <!-- CSS -->
+            <link rel="stylesheet" type="text/css" href="/stylesheets/template/css/ry-common.css" />
+            <link rel="stylesheet" type="text/css" href="/stylesheets/template/css/theme2/styles.css" />
+
+            <!-- JQUERY -->
+            <script type="text/javascript" src="/stylesheets/template/js/jquery-1.4.2.min.js"></script>
+            <script type="text/javascript" src="/stylesheets/template/js/main.js"></script>
+
+            <!-- CORNER -->
+            <script type="text/javascript" src="/stylesheets/template/js/jquery.corner.js"></script>
+
+            <!--[if lt IE 9]>
+            <script src="/stylesheets/template/js/IE9.js"></script>
+            <![endif]-->
+
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta http-equiv="Content-Language" content="fi" />
+            <meta name="Author" content="" />
+            <meta name="Copyright" content="" />
+            <meta name="Description" content="" />
+            <meta name="Keywords" content="" />
+    </head>
+    <body>
+            <div id="top-line"></div>
+            <div id="container">
+                    <div id="header">
+                            <h1 id="logo"><a href="<%= @page.default_page %>"><%= @customer.title %></a></h1>
+                            <ul id="nav">
+                                <% for item in @mainmenu %>
+                                    <li><%= link_to item.title, {:controller => "public", :action => "page", :id => item}, :class => current(item.id.to_s) %></li>
+                                <% end %>
+                            </ul>
+                    </div>
+
+                    <div id="content">
+
+                            <div id="main">
+                                <%= yield %>
+                            </div>
+
+                            <div id="column">
+                            <% if @page.show_gadgets? %>
+                                    <div class="calendar-min">
+
+                                            <h2>Lähiajan tapahtumat</h2>
+
+                                            <%= render :partial => 'near_future' %>
+
+                                            <p>Katso lisää toimintakalenterista</p>
+                                    </div>
+
+                                    <!-- LEIRI FEED NOT YET IMPLEMENTET
+                                    <div class="calendar-min calendar-min-theme2">
+
+                                            <h2>Ilmoittaudu leirille</h2>
+
+                                            < %= render :partial => 'camp' % >
+
+                                    </div>
+                                    -->
+                            <% end %>
+                            </div>
+
+                            <div class="clear"></div>
+
+                    </div>
+
+                    <div id="footer">
+                            <hr />
+                            <ul class="contact">
+                                    <li class="first">&copy; <%= @customer.title %></li>
+                                    <li><%= @customer.address %></li>
+                                    <li><%= @customer.zip_code %>&nbsp;<%= @customer.city %></li>
+                                    <li><i>puhelin&nbsp;</i><%= @customer.phone %></li>
+                                    <li><script type="text/javascript"> email_antispam('<%= @domain %>', '<%= @organization %>', '<%= @user %>'); </script></li>
+                            </ul>
+                            <div class="clear"></div>
+                    </div>
+            </div>
+    </body>
+    </html>
