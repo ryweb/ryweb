@@ -17,6 +17,8 @@ class CustomersController < ApplicationController
   def show
     @customer = Customer.with_permissions_to(:show).find(params[:id])
 
+    @customer.ui_template = UiTemplate.new unless @customer.ui_template
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @customer }
