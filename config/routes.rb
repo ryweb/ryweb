@@ -3,6 +3,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :ui_templates, :path_prefix => '/:customer_key'
   map.resources :configurations, :path_prefix => '/:customer_key'
 
+  map.resources :index
+  map.connect '/index/:action/:id', :controller => 'index'
+  map.connect '/index/:action/:id.xml', :controller => 'index', :action => 'occasions'
+
   map.resources :feedbacks, :path_prefix => '/:customer_key'
   map.resources :styles, :path_prefix => '/:customer_key'
   map.resources :graphics, :path_prefix => '/:customer_key'
@@ -75,7 +79,7 @@ ActionController::Routing::Routes.draw do |map|
   #   end
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  # map.root :controller => "welcome"
+  map.root :controller => "index"
 
   # See how all your routes lay out with "rake routes"
 
