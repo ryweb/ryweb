@@ -8,9 +8,11 @@ module ApplicationHelper
     end
   end
 
-  def current(args)
+  def highlight_current(args)
     if args.include?(params[:controller])
-      return ' class="current"'
+      if !(params[:controller] == 'users' && params[:action] == 'index')
+        return ' class="current"'
+      end
     end
   end
   
