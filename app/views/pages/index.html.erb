@@ -12,11 +12,8 @@
 	  <%= link_to 'Uusi sivu', new_page_path, { :class => "button icon_add" } %>
 	</div>
 	
-	<% form_tag :action => 'set_default' do %>
-	
 	<table style="width: 95%;">
 		<tr>
-		  <th>Oletus</th>
 		  <th>Nimi</th>
 		  <th>Tila</th>
 		  <th>Julkinen</th>
@@ -26,7 +23,6 @@
 	
 		<% for page in @pages %>
 		  <tr class="<%= cycle("even", "odd") %>">
-		    <td><%=radio_button_tag :default_page, page.id, page.id == Configuration.get_one('default_page').to_i%></td>
 		    <td><%=h page.name %></td>
 		    <td><%=h page.state_str %></td>
 		    <td><%=h page.public == 0 ? 'Ei' : 'Kyllä' %></td>
@@ -38,8 +34,6 @@
 		<% end %>
 	</table>
 	
-	<%= submit_tag "Tallenna" %>
-	<% end %>
 	<br />
 
 </div>

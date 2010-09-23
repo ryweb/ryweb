@@ -102,18 +102,6 @@ class PagesController < ApplicationController
     end
   end
 
-
-  def set_default
-    @cfg = Configuration.find_or_create_by_name("default_page")
-    @cfg.value = params[:default_page]
-    if @cfg.save
-      flash[:notice] = "Oletussivu tallennettu"
-    else
-      flash[:error] = "Oletussivua ei saatu tallennettua"
-    end
-    redirect_to(pages_url)
-  end
-
   def menu
      @pages = Page.find(:all, :order => :menu_order)
    end
@@ -127,9 +115,20 @@ class PagesController < ApplicationController
       index += 1
     end
     @pages = pages.sort { |a,b| a.menu_order <=> b.menu_order }
+
+    # set first page as a default page
+    set_default(@pages[0])
+    
     render :update do |page|
       page.replace 'pages',
       render( :partial => "menu_list", :object => @pages )
     end
+  end
+
+  private
+    def set_default(page_id)
+     @cfg = Configuration.find_or_create_by_name("default_page")
+     @cfg.value = page_id
+     @cfg.save
   end
 end
