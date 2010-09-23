@@ -47,11 +47,11 @@
                             <% if @page.show_gadgets? %>
                                     <div class="calendar-min">
 
-                                            <h2>Lähiajan tapahtumat</h2>
+                                            <h2><%= t('public.near_future') %></h2>
 
                                             <%= render :partial => 'near_future' %>
 
-                                            <p>Katso lisää toimintakalenterista</p>
+                                            <p><%= t('public.further_events') %></p>
                                     </div>
 
                                     <!-- LEIRI FEED NOT YET IMPLEMENTET
@@ -76,7 +76,7 @@
                                     <li class="first">&copy; <%= @customer.title %></li>
                                     <li><%= @customer.address %></li>
                                     <li><%= @customer.zip_code %>&nbsp;<%= @customer.city %></li>
-                                    <li><i>puhelin&nbsp;</i><%= @customer.phone %></li>
+                                    <li><i><%= t('public.phone') %>&nbsp;</i><%= @customer.phone %></li>
                                     <% if !@customer.email.empty? %><li><script type="text/javascript"> email_antispam('<%= @domain %>', '<%= @organization %>', '<%= @user %>'); </script></li><% end %>
                             </ul>
                             <div class="clear"></div>

@@ -142,3 +142,10 @@ fi:
         less_than_or_equal_to: "täytyy olla pienempi tai yhtä suuri kuin {{count}}"
         odd: "täytyy olla pariton"
         even: "täytyy olla parillinen"
+
+  public:
+    no_default_page: "Oletussivua ei ole määritelty"
+    page_not_found: "Virheellinen sivu"
+    near_future: "Lähiajan tapahtumat"
+    further_events: "Katso lisää toimintakalenterista"
+    phone: "puhelin"

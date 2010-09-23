@@ -35,3 +35,7 @@
      <%= label_tag 'ui_template_id', 'Ulkoasumalli' %>
      <%= f.select :ui_template_id, @ui_templates.map {|t| [t.name, t.id ]}, {:include_blank => true}  %>
   </p>
+
+  <p><%= label_tag 'language', 'Kieli' %>
+   <%= f.select :language, @customer.getOptionsForSelectList(:language), options ={:prompt => ""} %>
+ </p>

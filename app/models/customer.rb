@@ -29,5 +29,15 @@ class Customer < ActiveRecord::Base
     end
     Thread.current['customer'] = cust
   end
+
+  def getOptionsForSelectList(method)
+   case method
+     when :language
+       @options = {
+         'suomi' => 'fi',
+         'Русский' => 'ru',
+       }
+   end
+  end
   
 end

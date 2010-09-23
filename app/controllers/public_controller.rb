@@ -3,6 +3,8 @@ class PublicController < ApplicationController
 
   before_filter :set_layout
   before_filter :generate_menu
+  before_filter :set_locale
+
 
   def index
     default_page = Configuration.get_one('default_page')
@@ -71,6 +73,10 @@ class PublicController < ApplicationController
   def generate_menu
     @mainmenu = Page.find(:all, :conditions => {:public => 1, :state => 2}, :order => :menu_order)
   end
-  
+
+  def set_locale
+    current_customer = params[:customer]
+   I18n.locale = Customer.current.language
+  end
 
 end
