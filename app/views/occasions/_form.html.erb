@@ -4,7 +4,7 @@
 <%= f.text_field :name %></p>
 
 <p><%= label_tag 'start_time', 'Aloitusaika' %>
-<%= datetime_select 'occasion', 'start_time', :use_month_numbers => true, :order => [:day,:month,:year],:default => Time.now.at_beginning_of_day%>
+<%= datetime_select 'occasion', 'start_time', :use_month_numbers => true, :order => [:day,:month,:year],:default => Time.now.at_beginning_of_day + 8.hours, :minute_step => 15, :start_hour => 10 %>
 
 <p><%= label_tag 'repeat', 'Toisto' %>
   <%= f.select :repeat, @occasion.getOptionsForSelectList(:repeat), options ={:prompt => ""} %>

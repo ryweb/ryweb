@@ -58,7 +58,8 @@ class OccasionsController < ApplicationController
   def new
     @occasion = Occasion.new
     unless params[:occasion_date].nil?
-      @occasion.start_time = params[:occasion_date]      
+      @occasion.start_time = params[:occasion_date]
+      @occasion.start_time = @occasion.start_time + 8.hours
     end
     
     locations_and_occasion_types
