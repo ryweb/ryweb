@@ -9,7 +9,7 @@ class PublicController < ApplicationController
   def index
     default_page = Configuration.get_one('default_page')
     if default_page.nil?
-      render :text => "Oletussivua ei ole määritetty"
+      render :text => t('public.no_default_page')
       return
     end
 
@@ -20,7 +20,7 @@ class PublicController < ApplicationController
   def page
     @page = Page.find(params[:id])
     if @page.nil? or @page.public == 0 or @page.state != 2
-      render :text => 'Virheellinen sivu'
+      render :text => t('public.page_not_found')
       return
     end
 
