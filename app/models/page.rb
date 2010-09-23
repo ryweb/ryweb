@@ -3,6 +3,8 @@ class Page < CustomerData
 
   before_create :set_menu_order
 
+  validates_presence_of :name, :title
+
   STATE_DRAFT = 1
   STATE_READY = 2
 

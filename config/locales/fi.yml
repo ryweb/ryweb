@@ -125,14 +125,14 @@ fi:
       messages:
         inclusion: "ei löydy listasta"
         exclusion: "on varattu"
-        invalid: "on kelvoton"
-        confirmation: "ei vastaa varmennusta"
+        invalid: "{{attribute}} on kelvoton"
+        confirmation: "{{attribute}} ei vastaa varmennusta"
         accepted: "täytyy olla hyväksytty"
         empty: "ei voi olla tyhjä"
-        blank: "ei voi olla sisällötön"
-        too_long: "on liian pitkä (enintään {{count}} merkkiä)"
-        too_short: "on liian lyhyt (vähintään {{count}} merkkiä)"
-        wrong_length: "on väärän pituinen (täytyy olla täsmälleen {{count}} merkkiä)"
+        blank: "{{attribute}} ei voi olla sisällötön"
+        too_long: "{{attribute}} on liian pitkä (enintään {{count}} merkkiä)"
+        too_short: "{{attribute}} on liian lyhyt (vähintään {{count}} merkkiä)"
+        wrong_length: "{{attribute}} on väärän pituinen (täytyy olla täsmälleen {{count}} merkkiä)"
         taken: "on jo käytössä"
         not_a_number: "ei ole numero"
         greater_than: "täytyy olla suurempi kuin {{count}}"
@@ -142,7 +142,45 @@ fi:
         less_than_or_equal_to: "täytyy olla pienempi tai yhtä suuri kuin {{count}}"
         odd: "täytyy olla pariton"
         even: "täytyy olla parillinen"
-
+      full_messages:
+        format: "{{message}}"
+    attributes:
+      user:
+        password: "Salasana"
+        password_confirmation: "Salasanan vahvistus"
+        user_level: "Käyttäjätaso"
+        login: "Käyttäjätunnus"
+        email: "Sähköposti"
+      customer:
+        name: "Järjestelmä nimi"
+        title: "Yhdistyksen nimi"
+      layout:
+        name: "Nimi"
+        content: "Sisältö"
+      page:
+        name: "Nimi"
+        title: "Otsikko"
+      occasion:
+        name: "Tapahtuma"
+        occasion_type_id: "Tapahtumatyyppi"
+      location:
+        name: "Paikan nimi"
+      occasion_type:
+        name: "Tyyppi"
+      ui_template:
+        name: "Nimi"
+        content: "Sisältö"
+    models:
+      user: "Käyttäjä"
+      customer: "Yhdistys"
+      layout: "Ulkoasut"
+      graphic: "Kuvat"
+      style: "Tyylit"
+      page: "Sivut"
+      occasion: "Tapahtuma"
+      location: "Paikka"
+      occasion_type: "Tapahtumatyyppi"
+      ui_template: "Ulkoasumalli"
   public:
     no_default_page: "Oletussivua ei ole määritelty"
     page_not_found: "Virheellinen sivu"
