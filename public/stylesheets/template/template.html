@@ -77,7 +77,7 @@
                                     <li><%= @customer.address %></li>
                                     <li><%= @customer.zip_code %>&nbsp;<%= @customer.city %></li>
                                     <li><i>puhelin&nbsp;</i><%= @customer.phone %></li>
-                                    <% !@customer.email.empty? %><li><script type="text/javascript"> email_antispam('<%= @domain %>', '<%= @organization %>', '<%= @user %>'); </script></li><% end %>
+                                    <% if !@customer.email.empty? %><li><script type="text/javascript"> email_antispam('<%= @domain %>', '<%= @organization %>', '<%= @user %>'); </script></li><% end %>
                             </ul>
                             <div class="clear"></div>
                     </div>
