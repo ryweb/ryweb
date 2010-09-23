@@ -48,12 +48,11 @@ class PublicController < ApplicationController
 
       @occasions = Occasion.find(:all, :joins => :occasion_type, :conditions => ["start_time >= ? AND start_time < ? AND state = ? AND occasion_types.visibility = ? ", DateTime.now.beginning_of_day, last_date, 20,20], :order => 'start_time ')
 
-      last_date = date_now.advance(:weeks => 1)
-
     end
 
     # Database access only if page contains calendar gadgets
     if @page.show_gadgets?
+      last_date = date_now.advance(:weeks => 1)
       @next_occasions = Occasion.find(:all, :joins => :occasion_type, :conditions => ["start_time >= ? AND start_time < ? AND state = ? AND occasion_types.visibility = ? ", DateTime.now.beginning_of_day, last_date, 20,20], :order => 'start_time ')
     end
 
