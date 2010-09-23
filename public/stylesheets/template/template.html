@@ -74,9 +74,9 @@
                             <hr />
                             <ul class="contact">
                                     <li class="first">&copy; <%= @customer.title %></li>
-                                    <li><%= @customer.address %></li>
-                                    <li><%= @customer.zip_code %>&nbsp;<%= @customer.city %></li>
-                                    <li><i><%= t('public.phone') %>&nbsp;</i><%= @customer.phone %></li>
+                                    <% if !@customer.address.empty? %><li><%= @customer.address %></li><% end %>
+                                    <% if !@customer.zip_code.nil? && !@customer.city.empty? %><li><%= @customer.zip_code %>&nbsp;<%= @customer.city %></li><% end %>
+                                    <% if !@customer.phone.empty? %><li><i><%= t('public.phone') %>&nbsp;</i><%= @customer.phone %></li><% end %>
                                     <% if !@customer.email.empty? %><li><script type="text/javascript"> email_antispam('<%= @domain %>', '<%= @organization %>', '<%= @user %>'); </script></li><% end %>
                             </ul>
                             <div class="clear"></div>
