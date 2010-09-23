@@ -25,7 +25,7 @@ class PublicController < ApplicationController
     # Prepare for anti_spam email
     @customer = Customer.current
 
-    if !@customer.email.nil?
+    if !@customer.email.empty?
       tmp1, tmp2 = @customer.email.split(/\.([^.]*)$/)
       @user, @organization = tmp1.split(/\@([^@]*)$/)
       @domain = tmp2
