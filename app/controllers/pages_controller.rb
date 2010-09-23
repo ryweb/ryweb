@@ -61,9 +61,16 @@ class PagesController < ApplicationController
   def create
     @page = Page.new(params[:page])
     @page.author_id = current_user.id
+
     respond_to do |format|
       if @page.save
         flash[:notice] = 'Sivu luotu.'
+
+        cfg = Configuration.find_by_name("default_page")
+        if cfg.nil?
+          set_default(@page.id)
+        end
+        
         format.html { redirect_to(pages_url) }
         format.xml  { render :xml => @page, :status => :created, :location => @page }
       else
