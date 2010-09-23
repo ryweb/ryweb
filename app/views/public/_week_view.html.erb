@@ -4,7 +4,8 @@
   <% for occasion in @occasions %>
     <% thisWeek = occasion.start_date_week_str %>
     <% if prevWeek.empty? || prevWeek < thisWeek %>
-      <tr><th colspan ="6"><%= "Viikko &nbsp;" + thisWeek.to_i.to_s %></th></tr>
+      <tr><th colspan ="6"><%= t 'public.week' %><%= "&nbsp;" + thisWeek.to_i.to_s %></th></tr>
+
     <% end %>
     <% prevWeek = occasion.start_date_week_str  %>
   </thead>
