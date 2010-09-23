@@ -5,6 +5,7 @@ class AddTestUser < ActiveRecord::Migration
 Authorization::Maintenance::without_access_control do
     new_customer = Customer.new
     new_customer.name = "testi"
+    new_customer.title = "testi yhdistys ry"
 
 
     if new_customer.save

@@ -3,6 +3,9 @@ class Customer < ActiveRecord::Base
   has_many :users
   belongs_to :ui_template
 
+  validates_presence_of     :name
+  validates_presence_of     :title
+
   def self.current
     Thread.current['customer']
   end

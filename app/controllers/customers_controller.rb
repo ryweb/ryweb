@@ -30,6 +30,7 @@ class CustomersController < ApplicationController
   def new
     @customer = Customer.new
     @ui_templates = UiTemplate.find(:all)
+    @customer.ui_template = UiTemplate.new unless @customer.ui_template
 
     respond_to do |format|
       format.html # new.html.erb
@@ -54,6 +55,8 @@ class CustomersController < ApplicationController
         format.html { redirect_to(customer_url(:id => @customer)) }        
         format.xml  { render :xml => @customer, :status => :created, :location => @customer }
       else
+        @ui_templates = UiTemplate.find(:all)
+        flash[:error] = 'Uuden yhdistyksen lisäys epäonnistui.'
         format.html { render :action => "new" }
         format.xml  { render :xml => @customer.errors, :status => :unprocessable_entity }
       end
