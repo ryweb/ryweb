@@ -31,6 +31,10 @@
     <%= f.text_field :email %>
    </p>
 
+   <p><%= f.label :radio_url, 'Nettiradiolinkki' %>
+    <%= f.text_field :radio_url %>
+   </p>
+
   <p>
      <%= label_tag 'ui_template_id', 'Ulkoasumalli' %>
      <%= f.select :ui_template_id, @ui_templates.map {|t| [t.name, t.id ]}, {:include_blank => true}  %>

@@ -28,9 +28,12 @@
           <%=@customer.phone %></p>
           <p><%= label_tag 'email', 'Sähköposti' %>
           <%=@customer.email %></p>
+          <p><%= label_tag 'radio_url', 'Nettiradiolinkki' %>
+          <%=@customer.radio_url %></p>
           <p><%= label_tag 'ui_template.name', 'Ulkoasumalli' %>
           <%=@customer.ui_template.name %></p>
-          
+          <p><%= label_tag 'language', 'Kieli' %>
+          <%= @customer.getOptionsForSelectList(:language).index(@customer.language) %></p>
           
 	</div>
 	

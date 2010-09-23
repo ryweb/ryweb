@@ -13,6 +13,11 @@
 <p><%= label_tag 'occasion_type_id', 'Tapahtuman tyyppi' %>
 <p><%= text_field_with_auto_complete 'occasion', 'occasion_type_id', :value => @occasion.occasion_type.name %></p>
 
+<% if !Customer.current.radio_url.empty? %>
+  <p><%= label_tag 'net_radio', 'Nettiradiolähetys' %>
+  <%= f.check_box :net_radio %>
+<% end %>
+
 <p><%= label_tag 'subject', 'Aihe' %>
 <p><%= text_field_with_auto_complete 'occasion', 'subject', :value => @occasion.subject %></p>
 
