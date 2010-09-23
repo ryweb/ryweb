@@ -4,7 +4,7 @@ class LocationsController < ApplicationController
   # GET /locations
   # GET /locations.xml
   def index
-    @locations = Location.find(:all)
+    @locations = Location.find(:all, :order => "name ASC")
 
     respond_to do |format|
       format.html # index.html.erb

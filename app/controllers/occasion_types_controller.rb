@@ -4,7 +4,7 @@ class OccasionTypesController < ApplicationController
   # GET /occasion_types
   # GET /occasion_types.xml
   def index
-    @occasion_types = OccasionType.find(:all)
+    @occasion_types = OccasionType.find(:all, :order => "name ASC")
 
     respond_to do |format|
       format.html # index.html.erb
