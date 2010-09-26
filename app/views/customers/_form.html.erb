@@ -1,6 +1,6 @@
   <%= f.error_messages %>
 
-    <% permitted_to? :create, :ui_templates do %>
+    <% permitted_to? :create, :customers do %>
       <p><%= f.label :name, 'Järjestelmän nimi' %>
           <%= f.text_field :name %>
       </p>
