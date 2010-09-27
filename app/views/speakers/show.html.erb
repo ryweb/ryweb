@@ -1,0 +1,58 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Puhujan tiedot: <%= @speaker.first_name+"&nbsp;"+@speaker.surname %></h2></div></div></div>
+<div class="border">
+<div id="buttonbar">
+	<%= link_to 'Muokkaa tietoja', edit_speaker_path(:id => @speaker), :class => 'icon icon_edit' %>
+</div>
+
+  <%= crumbs %>
+<p>
+  <b>Etunimi:</b>
+  <%=h @speaker.first_name %>
+</p>
+
+<p>
+  <b>Sukunimi:</b>
+  <%=h @speaker.surname %>
+</p>
+<p>
+  <b>Sosiaaliturvatunnus:</b>
+  <%=h @speaker.social_security_number %>
+</p>
+
+<p>
+  <b>Sähköposti:</b>
+  <%=h @speaker.email %>
+</p>
+
+<p>
+  <b>Lähiosoite:</b>
+  <%=h @speaker.address %>
+</p>
+
+<p>
+  <b>Postinumero:</b>
+  <%=h @speaker.postcode %>
+</p>
+
+<p>
+  <b>Postitoimipaikka:</b>
+  <%=h @speaker.city %>
+</p>
+
+<p>
+  <b>Puhelin:</b>
+  <%=h @speaker.phone %>
+</p>
+<p>
+  <b>Ennakonpidätysprosentti</b>
+  <%=h @speaker.tax_rate %>
+</p>
+  <p>
+    <b>Tilinumero</b>
+    <%=h @speaker.bank_account %>
+  </p>
+  <p>
+    <b>Kutsuttu tehtävään vuonna</b>
+    <%=h @speaker.invitation_year %>
+  </p>
+</div>

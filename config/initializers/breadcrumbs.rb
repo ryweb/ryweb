@@ -22,6 +22,14 @@ Breadcrumb.configure do
   crumb :layouts, "Ulkoasut", :layouts_path
   crumb :layout_name, '#{@layout.name}', :layouts_path
 
+  crumb :people, "Henkilörekisteri", :people_path
+  crumb :person_name, '#{@person.first_name}'+ '&nbsp;' + '#{@person.surname}', :people_path
+
+  crumb :members, "Jäsenrekisteri", :members_path
+  crumb :member_name, '#{@member.first_name}'+ '&nbsp;' + '#{@member.surname}', :members_path
+
+  crumb :speakers, "Puhujarekisteri", :speakers_path
+  crumb :speaker_name, '#{@speaker.first_name}'+ '&nbsp;' + '#{@speaker.surname}', :speakers_path
 
   # Specify controller, action, and an array of the crumbs you specified above
   #trail :accounts, :show, [:root, :profile]
@@ -44,6 +52,9 @@ Breadcrumb.configure do
 
   trail :pages, [:new, :edit], [:pages, :page_name]
   trail :layouts, [:new, :edit], [:layouts, :layout_name]
+  trail :people, [:show, :new, :edit], [:people, :person_name]
+  trail :members, [:show, :new, :edit], [:members, :member_name]
+  trail :speakers, [:show, :new, :edit], [:speakers, :speaker_name]
 
 
   # Specify the delimiter for the crumbs

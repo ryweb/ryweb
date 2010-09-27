@@ -1,0 +1,43 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Henkilön tiedot: <%= @person.first_name+"&nbsp;"+@person.surname %></h2></div></div></div>
+<div class="border">
+<div id="buttonbar">
+	<%= link_to 'Muokkaa tietoja', edit_person_path(:id => @person), :class => 'icon icon_edit' %>
+	<%= link_to 'Uusi henkilö', new_person_path, :class => 'icon icon_add' %>
+        <%= link_to 'Lisää jäseneksi', edit_member_path, :class => 'icon icon_add' %>
+</div>
+
+  <%= crumbs %>
+<p>
+  <b>Etunimi:</b>
+  <%=h @person.first_name %>
+</p>
+
+<p>
+  <b>Sukunimi:</b>
+  <%=h @person.surname %>
+</p>
+<p>
+  <b>Sähköposti:</b>
+  <%=h @person.email %>
+</p>
+<p>
+  <b>Lähiosoite:</b>
+  <%=h @person.address %>
+</p>
+
+<p>
+  <b>Postinumero:</b>
+  <%=h @person.postcode %>
+</p>
+
+<p>
+  <b>Postitoimipaikka:</b>
+  <%=h @person.city %>
+</p>
+
+<p>
+  <b>Puhelin:</b>
+  <%=h @person.phone %>
+</p>
+
+</div>

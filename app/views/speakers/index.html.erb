@@ -1,0 +1,31 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Puhujat</h2></div></div></div>
+<div class="border">
+
+<div id="buttonbar">
+  <span class="icon icon_add">Uudet puhujat lisätään jäsenrekisterin kautta.</span>
+</div>
+<%= crumbs %>
+
+<table>
+  <tr>
+    <th>Nimi</th>
+    <th>Postitoimipaikka</th>
+    <th>Kutsuttu tehtävään</th>
+    <th>&nbsp;</th>
+  </tr>
+
+<% @speakers.each do |speaker| %>
+  <tr class="<%= cycle("even", "odd") %>">
+    <td><%= link_to speaker.surname + "&nbsp;" + speaker.first_name, speaker_path(Customer.current.name, speaker) %></td>
+    <td><%=h speaker.city %></td>
+    <td><%=h speaker.invitation_year %></td>
+    <td><%= link_to 'Muokkaa', edit_speaker_path(Customer.current.name, speaker), :class => 'icon icon_edit' %>
+    <%= link_to 'Poista', speaker_path(Customer.current.name, speaker), :confirm => 'Oletko varma?', :method => :delete, :class => 'icon icon_delete' %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+
+</div>

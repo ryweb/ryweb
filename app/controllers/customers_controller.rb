@@ -72,7 +72,6 @@ class CustomersController < ApplicationController
       if @customer.update_attributes(params[:customer])
         flash[:notice] = 'Yhdistyksen tiedot päivitetty.'
         format.html { redirect_to(customer_url) }        
-#        format.html { redirect_to(@customer) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

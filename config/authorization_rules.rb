@@ -1,10 +1,15 @@
 authorization do
   role :superadmin do
     has_permission_on :customers, :to => [:manage]
+    has_permission_on :people, :members, :speakers, :to => [:manage]
   end
 
   role :admin do
     has_permission_on :customers, :to => [:manage] do
+      if_attribute :id => is {user.customer_id}
+    end
+
+    has_permission_on :people, :members, :speakers, :to => [:manage] do
       if_attribute :id => is {user.customer_id}
     end
   end
