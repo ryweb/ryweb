@@ -170,6 +170,20 @@ fi:
       ui_template:
         name: "Nimi"
         content: "Sisältö"
+      person:
+        first_name: "Etunimi"
+        surname: "Sukunimi"
+      member:
+        first_name: "Etunimi"
+        surname: "Sukunimi"
+        city: "Postitoimipaikka"
+        address: "Lähiosoite"
+        postcode: "Postinumero"
+        social_security_number: "Sosiaaliturvatunnus"
+      speaker:
+        tax_rate: "Ennakonpidätysprosentti"
+        invitation_year: "Kutsuttu tehtävään vuonna"
+        bank_account: "Tilinumero"
     models:
       user: "Käyttäjä"
       customer: "Yhdistys"
@@ -181,6 +195,9 @@ fi:
       location: "Paikka"
       occasion_type: "Tapahtumatyyppi"
       ui_template: "Ulkoasumalli"
+      person: "Henkilö"
+      member: "Jäsen"
+      speaker: "Puhuja"
   public:
     no_default_page: "Oletussivua ei ole määritelty"
     page_not_found: "Virheellinen sivu"

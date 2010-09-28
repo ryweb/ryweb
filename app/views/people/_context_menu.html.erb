@@ -1,0 +1,6 @@
+<li><%= link_to 'Jäsenrekisteri', members_path if permitted_to? :manage, :members  %></li>
+<ul>
+  <li><%= link_to 'Jäsenhakemukset', members_path(:filter => 'applications') if permitted_to? :manage, :members  %></li>
+</ul>
+<li><%= link_to 'Henkilörekisteri', people_path if permitted_to? :manage, :people %></li>
+<li><%= link_to 'Puhujarekisteri', speakers_path if permitted_to? :manage, :speakers %></li>

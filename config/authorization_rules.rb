@@ -5,7 +5,7 @@ authorization do
     has_permission_on :ui_templates, :to => [:manage]
     has_permission_on :users, :to => [:manage]
     has_permission_on :pages,:layouts, :graphics, :styles, :to => [:manage]
-    has_permission_on :people, :members, :to => [:manage]
+    has_permission_on :people, :members, :speakers, :to => [:manage]
     has_permission_on :occasions, :occasion_types, :locations, :to => [:manage]
   end
 
@@ -28,6 +28,10 @@ authorization do
     has_permission_on :pages, :layouts, :graphics, :styles, :to => [:manage]
 
     has_permission_on :people, :members, :to => [:manage] do
+      if_attribute :id => is {user.customer_id}
+    end
+
+    has_permission_on :people, :members, :speakers, :to => [:manage] do
       if_attribute :id => is {user.customer_id}
     end
   end
