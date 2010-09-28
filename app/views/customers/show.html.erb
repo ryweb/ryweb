@@ -11,7 +11,7 @@
 		<%= link_to 'Muokkaa tietoja', edit_customer_path(:id => @customer), :class => 'icon icon_edit' %>
 	</div>
 	
-	<%= crumbs %>
+	<%= crumbs if permitted_to? :manage, :customers %>
 	
 	<div>
           <p><%= label_tag 'name', 'Järjestelmän nimi' %>

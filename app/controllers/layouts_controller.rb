@@ -1,10 +1,11 @@
 class LayoutsController < ApplicationController
+  filter_resource_access
   before_filter :login_required
 
   # GET /layouts
   # GET /layouts.xml
   def index
-    @layouts = Layout.all
+    @layouts = Layout.with_permissions_to(:index).all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +16,7 @@ class LayoutsController < ApplicationController
   # GET /layouts/1
   # GET /layouts/1.xml
   def show
-    @layout = Layout.find(params[:id])
+    @layout = Layout.with_permissions_to(:show).find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -36,7 +37,7 @@ class LayoutsController < ApplicationController
 
   # GET /layouts/1/edit
   def edit
-    @layout = Layout.find(params[:id])
+    @layout = Layout.with_permissions_to(:edit).find(params[:id])
   end
 
   # POST /layouts
@@ -59,7 +60,7 @@ class LayoutsController < ApplicationController
   # PUT /layouts/1
   # PUT /layouts/1.xml
   def update
-    @layout = Layout.find(params[:id])
+    @layout = Layout.with_permissions_to(:update).find(params[:id])
 
     respond_to do |format|
       if @layout.update_attributes(params[:layout])
@@ -76,7 +77,7 @@ class LayoutsController < ApplicationController
   # DELETE /layouts/1
   # DELETE /layouts/1.xml
   def destroy
-    @layout = Layout.find(params[:id])
+    @layout = Layout.with_permissions_to(:destroy).find(params[:id])
     @layout.destroy
 
     respond_to do |format|

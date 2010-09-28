@@ -1,4 +1,5 @@
 class Occasion  < CustomerData
+  using_access_control
   belongs_to :location
   belongs_to :occasion_type
   

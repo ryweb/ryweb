@@ -11,7 +11,9 @@
        $holName = ""
     end
     cell_text += "<span class='add_event_link'>"
-    cell_text += link_to image_tag("plus_16.png", :border=>0, :width =>13, :height=>13, :alt=>"Lisää uusi"), new_occasion_path(:occasion_date => "#{d.year}-#{d.month}-#{d.day}"), {:id => "date_#{d.mday}_#{d.month}_#{d.year}"}
+    if permitted_to? :manage, :occasions
+      cell_text += link_to image_tag("plus_16.png", :border=>0, :width =>13, :height=>13, :alt=>"Lisää uusi"), new_occasion_path(:occasion_date => "#{d.year}-#{d.month}-#{d.day}"), {:id => "date_#{d.mday}_#{d.month}_#{d.year}"}
+    end
     cell_text += "</span><div>"   
 
 	@occasions.each do |e|
@@ -28,7 +30,12 @@
                           time = ""
                         end
 
-                        cell_text += link_to time + e.name + "<br />", edit_occasion_path(:id => e, :start_date => e.start_time), {:id => "tooltip_link_" + e.id.to_s}
+                        if permitted_to? :manage, :occasions
+                          cell_text += link_to time + e.name + "<br />", edit_occasion_path(:id => e, :start_date => e.start_time), {:id => "tooltip_link_" + e.id.to_s}
+                        else
+                          cell_text += link_to time + e.name + "<br />", occasion_path(:id => e, :start_date => e.start_time), {:id => "tooltip_link_" + e.id.to_s}
+                        end
+
 			case e.state
 				when 10: cell_text += "</draft>"
 				when 30: cell_text += "</cancelled>"

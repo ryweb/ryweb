@@ -34,7 +34,9 @@ Breadcrumb.configure do
   trail :occasion_types, [:show, :new, :edit], [:occasion_types, :occasion_type_name]
 
   trail :occasions, [:new, :edit], [:occasions_list, :occasion_name], :if => :calendar?
+  trail :occasions, :show, [:occasions_list, :occasion_name], :if => :calendar?
   trail :occasions, [:new, :edit], [:occasions_calendar, :occasion_name], :unless => :calendar?
+  trail :occasions, :show, [:occasions_calendar, :occasion_name], :unless => :calendar?
 
   trail :users, :list, [:settings, :users]
   trail :users, [:show, :edit, :new], [:settings, :users, :user_name]

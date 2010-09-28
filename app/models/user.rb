@@ -1,6 +1,8 @@
 require 'digest/sha1'
 
 class User < CustomerData
+  using_access_control
+  
   belongs_to :customer
 
   include Authentication

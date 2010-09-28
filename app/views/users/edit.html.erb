@@ -1,7 +1,7 @@
 <div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Käyttäjän tietojen muokkaus</h2></div></div></div>
 <div class="border">
 
-  <%= crumbs %>
+  <%= crumbs if permitted_to? :manage, :users %>
   
 <% form_for :user,
 			:url => user_path(:id => @user),

@@ -2,10 +2,10 @@
 <div class="border">
 
 <div id="buttonbar">
-	<%= link_to 'Uusi yhdistys', new_customer_path, :class => 'button icon_add' %>
+	<%= link_to 'Uusi yhdistys', new_customer_path, :class => 'button icon_add' if permitted_to? :manage, :customers %>
 </div>	
 
-  <%= crumbs %>
+  <%= crumbs if permitted_to? :manage, :customers %>
   
 <table style="width: 95%;">
   <thead>

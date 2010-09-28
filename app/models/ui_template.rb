@@ -1,5 +1,6 @@
 class UiTemplate < ActiveRecord::Base
-      has_many :customers
+   using_access_control
+   has_many :customers
 
-      validates_presence_of :name, :content
+   validates_presence_of :name, :content
 end

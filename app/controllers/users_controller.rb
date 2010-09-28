@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-   before_filter :login_required
+  before_filter :login_required
+  filter_resource_access :attribute_check => true
+  filter_access_to :list, :require => :manage
 
   def index
     @user = self.current_user
@@ -16,7 +18,7 @@ class UsersController < ApplicationController
   end
   
   def list
-    @users = User.find(:all)
+    @users = User.with_permissions_to(:index).find(:all)
 
     respond_to do |format|
       format.html # list.html.erb
@@ -31,12 +33,12 @@ class UsersController < ApplicationController
   
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
+    @user = User.with_permissions_to(:edit).find(params[:id])
   end
 
   # GET /users/1
   def show
-    @user = User.find(params[:id])  
+    @user = User.with_permissions_to(:show).find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -50,7 +52,6 @@ class UsersController < ApplicationController
         
     success = @user && @user.save
     if success && @user.errors.empty?
-#      @user.update_attribute(:customer_id,Customer.current.id)
 
       # Protects against session fixation attacks, causes request forgery
       # protection if visitor resubmits an earlier form using back
@@ -67,7 +68,7 @@ class UsersController < ApplicationController
   
     # PUT /customers/1
     def update
-    @user = User.find(params[:id])
+    @user = User.with_permissions_to(:update).find(params[:id])
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -85,7 +86,7 @@ class UsersController < ApplicationController
   # DELETE /locations/1
   # DELETE /locations/1.xml
   def destroy
-    @user = User.find(params[:id])
+    @user = User.with_permissions_to(:destroy).find(params[:id])
     @user.destroy
 
     respond_to do |format|

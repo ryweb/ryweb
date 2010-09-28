@@ -1,9 +1,9 @@
 class StylesController < ApplicationController
-
+filter_resource_access
 before_filter :login_required
 
 def index
-    @styles = Style.find(:all, :conditions => {:parent_id => nil}, :order => 'created_at DESC')
+    @styles = Style.with_permissions_to(:index).find(:all, :conditions => {:parent_id => nil}, :order => 'created_at DESC')
     respond_to do |format|
       format.html # index.rhtml
       format.xml  { render :xml => @styles.to_xml }
@@ -27,7 +27,7 @@ def index
   end
 
 def show
-    @style = Style.find(params[:id])
+    @style = Style.with_permissions_to(:show).find(params[:id])
 
     respond_to do |format|
       format.html # show.rhtml
@@ -36,7 +36,7 @@ def show
   end
 
   def destroy
-    @style = Style.find(params[:id])
+    @style = Style.with_permissions_to(:destroy).find(params[:id])
     @style.destroy
 
     respond_to do |format|
@@ -47,11 +47,11 @@ def show
   end
 
   def edit
-    @style = Style.find(params[:id])
+    @style = Style.with_permissions_to(:edit).find(params[:id])
   end
 
   def update
-    @style = Style.find(params[:id])
+    @style = Style.with_permissions_to(:update).find(params[:id])
 
     respond_to do |format|
       if @style.update_attributes(params[:style])
