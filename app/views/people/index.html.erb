@@ -1,0 +1,32 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Henkilöt</h2></div></div></div>
+<div class="border">
+
+<div id="buttonbar">
+  <%= link_to 'Uusi henkilö', new_person_path, :class => 'button icon_add' %>
+</div>
+<%= crumbs %>
+
+<table>
+  <tr>
+    <th>Nimi</th>
+    <th>Lähiosoite</th>
+    <th>Postinumero</th>
+    <th>Postitoimipaikka</th>
+  </tr>
+
+<% @people.each do |person| %>
+  <tr>
+    <td><%= link_to person.surname + "&nbsp;" + person.first_name, person_path(Customer.current.name, person) %></td>
+    <td><%=h person.address %></td>
+    <td><%=h person.postcode %></td>
+    <td><%=h person.city %></td>
+    
+    <td><%= link_to 'Muokkaa', edit_person_path(Customer.current.name, person), :class => 'icon icon_edit' %></td>
+    <td><%= link_to 'Poista', person_path(Customer.current.name, person), :class => 'icon icon_delete', :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+</div>

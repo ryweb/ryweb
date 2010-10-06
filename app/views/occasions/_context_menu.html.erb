@@ -2,5 +2,5 @@
 <li><%= link_to 'Kalenterinäkymä', occasions_path(:start_date => @date), :class => 'icon icon_calendar' %></li>
 <li><%= link_to 'Paikat', locations_path, :class => 'icon icon_places' %></li>
 <li><%= link_to 'Tapahtumatyypit', occasion_types_path, :class => 'icon icon_event_type' %></li>
-<li><%= link_to 'Tapahtumien massalisäys', new_occasion_import_path, :class => 'icon icon_add_many' %></li>
-<li><%= link_to 'Tapahtumien lataus tiedostoon', new_occasion_export_path, :class => 'icon icon_excel' %></li>
+<li><%= link_to 'Tapahtumien massalisäys', new_occasion_import_path, :class => 'icon icon_add_many' if permitted_to? :manage, :occasions %></li>
+<li><%= link_to 'Tapahtumien lataus tiedostoon', new_occasion_export_path, :class => 'icon icon_excel' if permitted_to? :manage, :occasions %></li>

@@ -1,0 +1,31 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Jäsenet</h2></div></div></div>
+<div class="border">
+
+<div id="buttonbar">
+  <%= link_to 'Uusi jäsen', new_member_path, :class => 'button icon_add' %>
+</div>
+<%= crumbs %>
+
+<table>
+  <tr>
+    <th>Nimi</th>
+    <th>Postitoimipaikka</th>
+    <th>Jäsenyyden tila</th>
+    <th>&nbsp;</th>
+  </tr>
+
+<% @members.each do |member| %>
+  <tr class="<%= cycle("even", "odd") %>">
+    <td><%= link_to member.surname + "&nbsp;" + member.first_name, member_path(Customer.current.name, member) %></td>
+    <td><%=h member.city %></td>
+    <td><%=h member.state_str %></td>
+    <td><%= link_to 'Muokkaa', edit_member_path(Customer.current.name, member), :class => 'icon icon_edit' %>
+    <%= link_to 'Poista', member_path(Customer.current.name, member), :confirm => 'Oletko varma?', :method => :delete, :class => 'icon icon_delete' %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+
+</div>

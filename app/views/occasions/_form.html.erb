@@ -4,7 +4,7 @@
 <%= f.text_field :name %></p>
 
 <p><%= label_tag 'start_time', 'Aloitusaika' %>
-<%= datetime_select 'occasion', 'start_time', :use_month_numbers => true, :order => [:day,:month,:year],:default => Time.now.at_beginning_of_day%>
+<%= datetime_select 'occasion', 'start_time', :use_month_numbers => true, :order => [:day,:month,:year],:default => Time.now.at_beginning_of_day + 8.hours, :minute_step => 15, :start_hour => 10 %>
 
 <p><%= label_tag 'repeat', 'Toisto' %>
   <%= f.select :repeat, @occasion.getOptionsForSelectList(:repeat), options ={:prompt => ""} %>
@@ -12,6 +12,11 @@
 
 <p><%= label_tag 'occasion_type_id', 'Tapahtuman tyyppi' %>
 <p><%= text_field_with_auto_complete 'occasion', 'occasion_type_id', :value => @occasion.occasion_type.name %></p>
+
+<% if !Customer.current.radio_url.nil? %>
+  <p><%= label_tag 'net_radio', 'Nettiradiolähetys' %>
+  <%= f.check_box :net_radio %>
+<% end %>
 
 <p><%= label_tag 'subject', 'Aihe' %>
 <p><%= text_field_with_auto_complete 'occasion', 'subject', :value => @occasion.subject %></p>

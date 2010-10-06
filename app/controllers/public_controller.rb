@@ -12,7 +12,7 @@ class PublicController < ApplicationController
   def index
     default_page = Configuration.get_one('default_page')
     if default_page.nil?
-      render :text => "Oletussivua ei ole määritetty"
+      render :text => t('public.no_default_page')
       return
     end
 
@@ -23,7 +23,7 @@ class PublicController < ApplicationController
   def page
     @page = Page.find(params[:id])
     if @page.nil? or @page.public == 0 or @page.state != 2
-      render :text => 'Virheellinen sivu'
+      render :text => t('public.page_not_found')
       return
     end
 
@@ -51,12 +51,11 @@ class PublicController < ApplicationController
 
       @occasions = Occasion.find(:all, :joins => :occasion_type, :conditions => ["start_time >= ? AND start_time < ? AND state = ? AND occasion_types.visibility = ? ", DateTime.now.beginning_of_day, last_date, 20,20], :order => 'start_time ')
 
-      last_date = date_now.advance(:weeks => 1)
-
     end
 
     # Database access only if page contains calendar gadgets
     if @page.show_gadgets?
+      last_date = date_now.advance(:weeks => 1)
       @next_occasions = Occasion.find(:all, :joins => :occasion_type, :conditions => ["start_time >= ? AND start_time < ? AND state = ? AND occasion_types.visibility = ? ", DateTime.now.beginning_of_day, last_date, 20,20], :order => 'start_time ')
     end
 

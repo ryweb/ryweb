@@ -17,8 +17,8 @@
       <% unless occasion.start_time_only_str == "00:00" %>
         <%= occasion.start_time_only_str %>
       <% end %>
-    </td>
-    <td class="event"><%= occasion.name %></td>
+    
+    <td class="event"><%= occasion.name %>&nbsp;<% if occasion.net_radio == 1 %><%= link_to 'Kuuntele nettiradiota', @customer.radio_url, :popup => ['Nettiradio', 'height=202,width=500'], :class => 'icon icon_listen' %> <% end %></td>
     <td class="locale"><% if occasion.location %><%= occasion.location.name %><% end %></td>
     <td class="info"><%= occasion.public_info %></td>
   </tr>

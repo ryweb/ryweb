@@ -1,11 +1,13 @@
 class PagesController < ApplicationController
+  filter_resource_access
+  filter_access_to :menu, :versions, :diff, :order, :require => :read
   before_filter :login_required
 
 # GET /pages
   # GET /pages.xml
   def index
 
-    @pages = Page.find(:all, :order => :menu_order)
+    @pages = Page.with_permissions_to(:index).find(:all, :order => :menu_order)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +18,7 @@ class PagesController < ApplicationController
   # GET /pages/1
   # GET /pages/1.xml
   def show
-    @page = Page.find(params[:id])
+    @page = Page.with_permissions_to(:show).find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -53,7 +55,7 @@ class PagesController < ApplicationController
 
   # GET /pages/1/edit
   def edit
-    @page = Page.find(params[:id])
+    @page = Page.with_permissions_to(:edit).find(params[:id])
   end
 
   # POST /pages
@@ -61,9 +63,16 @@ class PagesController < ApplicationController
   def create
     @page = Page.new(params[:page])
     @page.author_id = current_user.id
+
     respond_to do |format|
       if @page.save
         flash[:notice] = 'Sivu luotu.'
+
+        cfg = Configuration.find_by_name("default_page")
+        if cfg.nil?
+          set_default(@page.id)
+        end
+        
         format.html { redirect_to(pages_url) }
         format.xml  { render :xml => @page, :status => :created, :location => @page }
       else
@@ -76,7 +85,7 @@ class PagesController < ApplicationController
   # PUT /pages/1
   # PUT /pages/1.xml
   def update
-    @page = Page.find(params[:id])
+    @page = Page.with_permissions_to(:update).find(params[:id])
     @page.author_id = current_user.id
     respond_to do |format|
       if @page.update_attributes(params[:page])
@@ -93,7 +102,7 @@ class PagesController < ApplicationController
   # DELETE /pages/1
   # DELETE /pages/1.xml
   def destroy
-    @page = Page.find(params[:id])
+    @page = Page.with_permissions_to(:destroy).find(params[:id])
     @page.destroy
 
     respond_to do |format|

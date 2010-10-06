@@ -1,5 +1,8 @@
 class OccasionsController < ApplicationController
    before_filter :login_required
+   filter_resource_access
+   filter_access_to :list, :calendar, :require => :read
+
 
    skip_before_filter :verify_authenticity_token, :only => [:auto_complete_for_occasion_location_id, :auto_complete_for_occasion_occasion_type_id]   
 #   skip_before_filter :verify_authenticity_token
@@ -42,7 +45,7 @@ class OccasionsController < ApplicationController
   # GET /occasions/1
   # GET /occasions/1.xml
   def show
-    @occasion = Occasion.find(params[:id])
+    @occasion = Occasion.with_permissions_to(:show).find(params[:id])
 
     # Varautuminen siihen, että paikkaa ja tapahtumatyyppiä ei ole annettu (eivät pakollisia)
     locations_and_occasion_types
@@ -58,7 +61,8 @@ class OccasionsController < ApplicationController
   def new
     @occasion = Occasion.new
     unless params[:occasion_date].nil?
-      @occasion.start_time = params[:occasion_date]      
+      @occasion.start_time = params[:occasion_date]
+      @occasion.start_time = @occasion.start_time + 8.hours
     end
     
     locations_and_occasion_types
@@ -71,7 +75,7 @@ class OccasionsController < ApplicationController
 
   # GET /occasions/1/edit
   def edit
-    @occasion = Occasion.find(params[:id])
+    @occasion = Occasion.with_permissions_to(:edit).find(params[:id])
 
     # Varautuminen siihen, että paikkaa ja tapahtumatyyppiä ei ole annettu (eivät pakollisia)
     locations_and_occasion_types
@@ -118,7 +122,7 @@ class OccasionsController < ApplicationController
   # PUT /occasions/1
   # PUT /occasions/1.xml
   def update
-    @occasion = Occasion.find(params[:id])
+    @occasion = Occasion.with_permissions_to(:update).find(params[:id])
     find_or_create_locations_and_occasion_types
 
     respond_to do |format|
@@ -141,7 +145,7 @@ class OccasionsController < ApplicationController
   end
 
   def bulk_change
-    @occasions = Occasion.find(params[:ids])
+    @occasions = Occasion.with_permissions_to(:manage).find(params[:ids])
     
     @occasions.each do |row|
       @occ = Occasion.find(row)
@@ -162,7 +166,7 @@ class OccasionsController < ApplicationController
   # DELETE /occasions/1
   # DELETE /occasions/1.xml
   def destroy
-    @occasion = Occasion.find(params[:id])
+    @occasion = Occasion.with_permissions_to(:destroy).find(params[:id])
 
     select_month
     
@@ -207,12 +211,12 @@ class OccasionsController < ApplicationController
   def find_or_create_locations_and_occasion_types
     occasion_name = params[:occasion][:location_id]
     @occasion.location = Location.find_or_create_by_name(:name => occasion_name)
-#, :customer_id => current_user.customer_id)
+
     params[:occasion][:location_id] = @occasion.location.id
     
     occasion_type_name = params[:occasion][:occasion_type_id]
     @occasion.occasion_type = OccasionType.find_or_create_by_name(:name => occasion_type_name)
-#, :customer_id => current_user.customer_id)
+
     params[:occasion][:occasion_type_id] = @occasion.occasion_type.id
   end
   

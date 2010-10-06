@@ -18,9 +18,11 @@
 <table class="occasion_list">
   <thead>
   	<tr>
+        <% if permitted_to? :manage, :occasions %>
   	<th><%= check_box_tag("select_all", "", false, :id => "select_all") %>
         <%= observe_field("select_all", :frequency => 1, :function => "select_all()") %>
         </th>
+        <% end %>
        <th>Päiväys</th>
        <th>Klo</th>
        <th>Tapahtuma</th>
@@ -34,15 +36,21 @@
 <tbody>	
 <% for occasion in @occasions %>
   <tr class="<%= cycle("even", "odd") %>">
-	<td><%= check_box_tag("ids[]", occasion.id, false, :id => nil) %></td>
+	<% if permitted_to? :manage, :occasions %>
+          <td><%= check_box_tag("ids[]", occasion.id, false, :id => nil) %></td>
+        <% end %>
   	<td><%= occasion.start_date_only_str %></td>
-	<td><%= occasion.start_time_only_str %></td>	
-	<td><%= link_to occasion.name, edit_occasion_path(:id => occasion,:view => 'list', :start_date => occasion.start_time) %></td>
+	<td><%= occasion.start_time_only_str %></td>
+        <% if permitted_to? :manage, :occasions %>
+          <td><%= link_to occasion.name, edit_occasion_path(:id => occasion,:view => 'list', :start_date => occasion.start_time) %></td>
+        <% else %>
+          <td><%= link_to occasion.name, occasion_path(:id => occasion,:view => 'list', :start_date => occasion.start_time) %></td>
+        <% end %>
     <td><% if occasion.occasion_type %><%= occasion.occasion_type.name %><% end %></td>
     <td><% if occasion.subject %><%= occasion.subject %><% end %></td>
     <td><% if occasion.location %><%= link_to occasion.location.name, location_path(:id => occasion.location, :view => 'list', :start_date => occasion.start_time) %><% end %></td>
 	<td><%= occasion.getOptionsForSelectList(:state).index(occasion.state) %></td>
-    <td><%= link_to 'Poista', occasion_path(:id => occasion, :view => 'list'), :class => 'icon icon_delete' , :confirm => 'Oletko varma?', :method => :delete %></td>
+    <td><%= link_to 'Poista', occasion_path(:id => occasion, :view => 'list'), :class => 'icon icon_delete' , :confirm => 'Oletko varma?', :method => :delete if permitted_to? :manage, :occasions %></td>
   </tr>
 <% end %>
 </tbody>

@@ -1,9 +1,11 @@
 class Occasion  < CustomerData
+  using_access_control
   belongs_to :location
   belongs_to :occasion_type
   
   validates_presence_of     :name
-  validates_presence_of     :state  
+  validates_presence_of     :state
+  validates_presence_of     :occasion_type_id
 
   alias_method :orig_location=, :location=
   alias_method :orig_occasion_type=, :occasion_type=

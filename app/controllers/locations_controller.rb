@@ -1,10 +1,11 @@
 class LocationsController < ApplicationController
+   filter_resource_access
    before_filter :login_required
   
   # GET /locations
   # GET /locations.xml
   def index
-    @locations = Location.find(:all)
+    @locations = Location.with_permissions_to(:index).find(:all, :order => "name ASC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +16,7 @@ class LocationsController < ApplicationController
   # GET /locations/1
   # GET /locations/1.xml
   def show
-    @location = Location.find(params[:id])
+    @location = Location.with_permissions_to(:show).find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -36,7 +37,7 @@ class LocationsController < ApplicationController
 
   # GET /locations/1/edit
   def edit
-    @location = Location.find(params[:id])
+    @location = Location.with_permissions_to(:edit).find(params[:id])
   end
 
   # POST /locations
@@ -46,7 +47,7 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if @location.save
-#        @location.update_attribute(:customer_id,current_user.customer_id)
+
         flash[:notice] = 'Uusi paikka lisätty.'
         format.html { redirect_to(location_url(:id => @location)) }
         format.xml  { render :xml => @location, :status => :created, :location => @location }
@@ -60,7 +61,7 @@ class LocationsController < ApplicationController
   # PUT /locations/1
   # PUT /locations/1.xml
   def update
-    @location = Location.find(params[:id])
+    @location = Location.with_permissions_to(:update).find(params[:id])
 
     respond_to do |format|
       if @location.update_attributes(params[:location])
@@ -77,7 +78,7 @@ class LocationsController < ApplicationController
   # DELETE /locations/1
   # DELETE /locations/1.xml
   def destroy
-    @location = Location.find(params[:id])
+    @location = Location.with_permissions_to(:destroy).find(params[:id])
     @location.destroy
 
     respond_to do |format|

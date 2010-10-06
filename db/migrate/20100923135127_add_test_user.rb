@@ -7,7 +7,6 @@ Authorization::Maintenance::without_access_control do
     new_customer.name = "testi"
     new_customer.title = "testi yhdistys ry"
 
-
     if new_customer.save
       puts "Yhdistys (testi) lisättiin onnistuneesti"
     else

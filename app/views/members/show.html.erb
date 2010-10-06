@@ -1,0 +1,55 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Jäsenen tiedot: <%= @member.first_name+"&nbsp;"+@member.surname %></h2></div></div></div>
+<div class="border">
+<div id="buttonbar">
+	<%= link_to 'Muokkaa tietoja', edit_member_path(:id => @member), :class => 'icon icon_edit' %>
+        <%= link_to 'Lisää puhujaksi', edit_speaker_path, :class => 'icon icon_add' %>
+</div>
+
+  <%= crumbs %>
+<p>
+  <b>Etunimi:</b>
+  <%=h @member.first_name %>
+</p>
+
+<p>
+  <b>Sukunimi:</b>
+  <%=h @member.surname %>
+</p>
+<p>
+  <b>Sosiaaliturvatunnus:</b>
+  <%=h @member.social_security_number %>
+</p>
+
+<p>
+  <b>Sähköposti:</b>
+  <%=h @member.email %>
+</p>
+
+<p>
+  <b>Lähiosoite:</b>
+  <%=h @member.address %>
+</p>
+
+<p>
+  <b>Postinumero:</b>
+  <%=h @member.postcode %>
+</p>
+
+<p>
+  <b>Postitoimipaikka:</b>
+  <%=h @member.city %>
+</p>
+
+<p>
+  <b>Puhelin:</b>
+  <%=h @member.phone %>
+</p>
+<p>
+  <b>Jäsenyyden tila:</b>
+  <%=h @member.state_str %>
+</p>
+<p>
+  <b>Hyväksytty jäseneksi vuonna:</b>
+  <%=h @member.membership_year %>
+</p>
+</div>

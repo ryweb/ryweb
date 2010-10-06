@@ -1,8 +1,7 @@
-<div id="buttonbar">
-	<%= link_to 'Muokkaa tietoja', edit_occasion_path(:id => @occasion) %>
-	<%= link_to 'Uusi tapahtuma', new_occasion_path %>	
-</div>
-<h2>Tapahtuman tiedot: <%= @occasion.name %></h2>
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Tapahtuman tiedot: <%= @occasion.name %></h2></div></div></div>
+<div class="border">
+
+  <%= crumbs %>
 
 <p><%= label_tag 'start_time', 'Aloitusaika' %>
 <%= @occasion.start_time %></p>
@@ -24,3 +23,6 @@
 
 <p><%= label_tag 'public_info', 'Julkinen (internet) lisätieto' %>
 <%= @occasion.public_info %></p>
+
+<br />
+</div>

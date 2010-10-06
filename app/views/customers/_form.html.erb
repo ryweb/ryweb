@@ -1,12 +1,11 @@
   <%= f.error_messages %>
 
-  <p><%= f.label :name, 'Järjestelmän nimi' %>
-    <% if current_user.user_level <= 5 %>
-           <%= f.text_field :name %><br />
-           <% else %>
-	<%= @edit_customer.name %>
-           <% end %>
-  </p>
+    <% permitted_to? :create, :customers do %>
+      <p><%= f.label :name, 'Järjestelmän nimi' %>
+          <%= f.text_field :name %>
+      </p>
+    <% end %>
+
   <p><%= f.label :title, 'Yhdistyksen nimi' %>
     <%= f.text_field :title %>
   </p>
@@ -37,6 +36,10 @@
 
    <p><%= f.label :email, 'Sähköpostiosoite' %>
     <%= f.text_field :email %>
+   </p>
+
+   <p><%= f.label :radio_url, 'Nettiradiolinkki' %>
+    <%= f.text_field :radio_url %>
    </p>
 
   <p>

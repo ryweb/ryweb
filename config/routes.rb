@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 ActionController::Routing::Routes.draw do |map|
+  map.resources :speakers, :path_prefix => '/:customer_key'
+  map.resources :members, :path_prefix => '/:customer_key'
+  map.resources :people, :path_prefix => '/:customer_key'
   map.resources :ui_templates, :path_prefix => '/:customer_key'
   map.resources :configurations, :path_prefix => '/:customer_key'
 

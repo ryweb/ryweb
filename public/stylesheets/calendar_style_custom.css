@@ -94,6 +94,23 @@ body {
     float: left;
 }
 
+.specialDay .day_number {
+	color: #dd0000;
+}
+
+.specialDay .sD {
+	font-size: 70%;
+	font-family: Arial, sans-serif;
+	width: 60%;
+	color: #dd0000;
+	padding-left: 2px;
+	float: left;
+	line-height: 1.8;
+	text-transform: uppercase;
+	overflow: visible;
+	white-space: nowrap;
+}
+
 .add_event_link {
     display: inline;
     float: right;

@@ -1,7 +1,10 @@
 class Page < CustomerData
+  using_access_control
   acts_as_versioned :class_name => 'PageVersion'
 
   before_create :set_menu_order
+
+  validates_presence_of :name, :title
 
   STATE_DRAFT = 1
   STATE_READY = 2

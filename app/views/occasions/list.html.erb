@@ -4,7 +4,7 @@
 <div class="border">
 
 <div id="buttonbar">
-	<%= link_to 'Lisää tapahtuma', new_occasion_path(:view => "list"), :class => 'button icon_add' %>  
+	<%= link_to 'Lisää tapahtuma', new_occasion_path(:view => "list"), :class => 'button icon_add' if permitted_to? :manage, :occasions %>
 </div>
 <div id="backforward">
   <p>
@@ -19,18 +19,23 @@
 <div id='occ_list'>
   <%= render :partial => 'occasion' %>
 </div>
+  <% if permitted_to? :manage, :occasions %>
   Vaihda valittujen tapahtumien tilaksi: <%= f.select :state, @occasion.getOptionsForSelectList(:state), options ={:selected => 10} %>
 <%= f.submit "Tallenna" %>
 <% end %>
-  
+<% end  %>
 <br />
+<% if permitted_to? :manage, :occasions %>
 <div class="table-header"><div class="table-header r"><div class="table-header m">Uusi tapahtuma</div></div></div>
 <div class="border">
+
 
 <div id ='quick_create'>
 	<%= render :partial => 'quick_create' %>
 </div>
+
 </div>
+<% end %>
 <br />
 
 </div>

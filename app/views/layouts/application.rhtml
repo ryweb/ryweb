@@ -43,8 +43,10 @@
 	        <li><%= link_to 'Etusivu', users_url %></li>
 			<% if current_user %>
 	            
-                <li<%= highlight_current(['pages', 'layouts','graphics', 'styles']) %>><%= link_to 'Nettisivut', pages_path %></li>
+                <li<%= highlight_current(['pages', 'layouts','graphics', 'styles']) %>><%= link_to 'Nettisivut', pages_path if permitted_to? :manage, :pages %></li>
+
 	            <li<%= highlight_current(['occasions', 'locations', 'occasion_types','occasions/import','occasions/export']) %>><%= link_to 'Tapahtumakalenteri', occasions_path %></li>
+                    <li<%= highlight_current(['people', 'members','speakers']) %>><%= link_to 'Henkilörekisterit', people_path if permitted_to? :manage, :people  %></li>
 				<% if current_user && current_user.user_level <= 10 %>
 					<li<%= highlight_current(['users','settings','customers','ui_templates']) %>><%= link_to 'Asetukset', settings_path %></li>
 				<% end %>
@@ -72,7 +74,7 @@
             		<div class="table-header"><div class="table-header r"><div class="table-header m"></div></div></div>
                           <div class="border">
                             <ul class="sidemenu">
-                              <% if ['users', 'settings', 'customers', 'occasions', 'occasions/import', 'occasions/export', 'locations', 'occasion_types','pages','layouts', 'graphics','styles','ui_templates'].include?(params[:controller]) %>
+                              <% if ['users', 'settings', 'customers', 'occasions', 'occasions/import', 'occasions/export', 'locations', 'occasion_types','pages','layouts', 'graphics','styles','ui_templates','people','members','speakers'].include?(params[:controller]) %>
                                   <%= render :partial => params[:controller] + '/context_menu' %>
                                 <% end %>                              
                             </ul>

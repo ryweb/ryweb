@@ -6,6 +6,9 @@
 	<% else %>
 		<li><%= link_to 'Yhdistyksen tiedot', customer_path(:id => Customer.current.id), :class => 'icon icon_places' %></li>
 	<% end %>
-<li><%= link_to 'Ulkoasumallit', ui_templates_path, :class => 'icon icon_themes' %></li>
+<% permitted_to? :create, :ui_templates do %>
+  <li><%= link_to 'Ulkoasumallit', ui_templates_path, :class => 'icon icon_themes' %></li>
+<% end %>
+
 <% end %>
 <% end %>

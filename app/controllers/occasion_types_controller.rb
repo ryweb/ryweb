@@ -1,10 +1,11 @@
 class OccasionTypesController < ApplicationController
+   filter_resource_access
    before_filter :login_required
   
   # GET /occasion_types
   # GET /occasion_types.xml
   def index
-    @occasion_types = OccasionType.find(:all)
+    @occasion_types = OccasionType.with_permissions_to(:index).find(:all, :order => "name ASC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +16,7 @@ class OccasionTypesController < ApplicationController
   # GET /occasion_types/1
   # GET /occasion_types/1.xml
   def show
-    @occasion_type = OccasionType.find(params[:id])
+    @occasion_type = OccasionType.with_permissions_to(:show).find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -36,7 +37,7 @@ class OccasionTypesController < ApplicationController
 
   # GET /occasion_types/1/edit
   def edit
-    @occasion_type = OccasionType.find(params[:id])
+    @occasion_type = OccasionType.with_permissions_to(:edit).find(params[:id])
   end
 
   # POST /occasion_types
@@ -46,7 +47,7 @@ class OccasionTypesController < ApplicationController
 
     respond_to do |format|
       if @occasion_type.save
-#        @occasion_type.update_attribute(:customer_id,current_user.customer_id)
+
         flash[:notice] = 'Uusi tapahtumatyyppi lisätty.'
         format.html { redirect_to(occasion_type_url(:id => @occasion_type)) }        
         format.xml  { render :xml => @occasion_type, :status => :created, :location => @occasion_type }
@@ -60,7 +61,7 @@ class OccasionTypesController < ApplicationController
   # PUT /occasion_types/1
   # PUT /occasion_types/1.xml
   def update
-    @occasion_type = OccasionType.find(params[:id])
+    @occasion_type = OccasionType.with_permissions_to(:update).find(params[:id])
 
     respond_to do |format|
       if @occasion_type.update_attributes(params[:occasion_type])
@@ -77,7 +78,7 @@ class OccasionTypesController < ApplicationController
   # DELETE /occasion_types/1
   # DELETE /occasion_types/1.xml
   def destroy
-    @occasion_type = OccasionType.find(params[:id])
+    @occasion_type = OccasionType.with_permissions_to(:destroy).find(params[:id])
     @occasion_type.destroy
 
     respond_to do |format|
