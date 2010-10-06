@@ -1,6 +1,9 @@
 class PublicController < ApplicationController
   layout 'public'
 
+  require 'rss/2.0'
+  require 'open-uri'
+
   before_filter :set_layout
   before_filter :generate_menu
   before_filter :set_locale
