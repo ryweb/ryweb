@@ -11,6 +11,14 @@
     <%= f.text_field :title %>
   </p>
 
+  <p><%= label_tag 'power_base', 'Leirikeskustukialue' %>
+    <%= f.select :power_base, options_for_select(Customer.campgrounds.collect {|p| [ p[1],p[0]] }.sort, @customer.power_base), options ={:include_blank => true} %>
+  </p>
+
+  <p><%= label_tag 'target_area', 'Lähetysalue' %>
+    <%= f.select :target_area, options_for_select(Customer.target_areas.collect {|p| [ p[1],p[0]] }.sort, @customer.target_area), options ={:include_blank => true} %>
+  </p>
+
    <p><%= f.label :address, 'Lähiosoite' %>
     <%= f.text_field :address %>
    </p>

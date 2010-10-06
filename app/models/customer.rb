@@ -42,5 +42,63 @@ class Customer < ActiveRecord::Base
        }
    end
   end
-  
+
+  def self.campgrounds
+    {10 => 'Hankasalmi',
+     20 => 'Kallio',
+     30 => 'Kuusamo',
+     40 => 'Maitoinen',
+     50 => 'Rautiosaari',
+     60 => 'Siikatörmä',
+     }
+  end
+
+  def campground_str
+    Customer.campgrounds[power_base]
+  end
+
+  def self.target_areas
+    {
+        10 => 'Lappi',
+        20 => 'Koillismaa',
+        30 => 'Pohjois-Pohjanmaa',
+        40 => 'Kainuu',
+        50 => 'Keski-Pohjanmaa',
+        60 => 'Etelä-Pohjanmaa',
+        70 => 'Keski-Suomi',
+        80 => 'Savo',
+        90 => 'Pohjois-Karjala',
+        100 => 'Länsi-Suomi',
+        110 => 'Häme',
+        120 => 'Etelä-Karjala',
+        130 => 'Helsinki',
+        140 => 'SRK:n ulkolähetys',
+    }
+  end
+
+  def target_area_str
+    Customer.target_ares[target_area]
+  end
+
+  def getcampurl(campground)
+          first = 'https://www.leirille.fi/leiri/'
+          last = '/?rss=1'
+    case campground
+    when 10
+      middle = 'Hankasalmi'
+    when 20
+      middle = 'Kallio'
+    when 30
+      middle = 'Kuusamo'
+    when 40
+      middle = 'Maitoinen'
+    when 50
+      middle = 'Rautiosaari'
+    when 60
+      middle = 'Siikatörmä'
+    end
+
+    return first + middle + last
+  end
+
 end
