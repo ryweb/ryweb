@@ -5,7 +5,9 @@ module PublicHelper
     end
   end
 
+
   def parseFeed (url, length)
+    begin
     feed_url = url
     output = "";
     open(feed_url) do |http|
@@ -23,5 +25,9 @@ module PublicHelper
       output += "</table>"
     end
     return output
+
+    rescue
+      return "<table><tr><td>#{t('public.error_camps_not_found')}</td></tr></table>"
+    end
   end
 end

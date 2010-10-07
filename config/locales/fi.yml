@@ -208,3 +208,4 @@ fi:
     enrol_to_camp: "Ilmoittaudu leirille"
     campground: "Leirikeskus"
     more_camps: "Lisää leirejä"
+    error_camps_not_found: "Virhe: Leirilista ei saatavilla"
