@@ -5,7 +5,7 @@
 
             <!-- CSS -->
             <link rel="stylesheet" type="text/css" href="/stylesheets/template/css/ry-common.css" />
-            <link rel="stylesheet" type="text/css" href="/stylesheets/template/css/theme2/styles.css" />
+            <link rel="stylesheet" type="text/css" href="/stylesheets/template/css/theme1/styles.css" />
 
             <!-- JQUERY -->
             <script type="text/javascript" src="/stylesheets/template/js/jquery-1.4.2.min.js"></script>
@@ -54,15 +54,14 @@
                                             <p><%= t('public.further_events') %></p>
                                     </div>
 
-                                    <!-- LEIRI FEED NOT YET IMPLEMENTET
+                                    <% if !@customer.power_base.nil? %>
                                     <div class="calendar-min calendar-min-theme2">
-
-                                            <h2>Ilmoittaudu leirille</h2>
-
-                                            < %= render :partial => 'camp' % >
-
+                                        <h2><%= t('public.enrol_to_camp') %></h2>
+                                        <h4><%= t('public.campground') %>: <%= @customer.campground_str %></h4>
+                                           <%= render :partial => 'camps' %>
+                                           <h4><%= t('public.more_camps') %>: <a href="http://www.leirille.fi" target="_blank">www.leirille.fi</a></h4>
                                     </div>
-                                    -->
+                                    <% end %>
                             <% end %>
                             </div>
 

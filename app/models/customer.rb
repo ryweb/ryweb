@@ -85,17 +85,17 @@ class Customer < ActiveRecord::Base
           last = '/?rss=1'
     case campground
     when 10
-      middle = 'Hankasalmi'
+      middle = 'hankasalmi'
     when 20
-      middle = 'Kallio'
+      middle = 'kallio'
     when 30
       middle = 'Kuusamo'
     when 40
-      middle = 'Maitoinen'
+      middle = 'maitoinen'
     when 50
-      middle = 'Rautiosaari'
+      middle = 'rautiosaari'
     when 60
-      middle = 'Siikatörmä'
+      middle = 'siikatorma'
     end
 
     return first + middle + last

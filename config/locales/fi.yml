@@ -205,3 +205,6 @@ fi:
     further_events: "Katso lisää toimintakalenterista"
     phone: "puhelin"
     week: "viikko"
+    enrol_to_camp: "Ilmoittaudu leirille"
+    campground: "Leirikeskus"
+    more_camps: "Lisää leirejä"
