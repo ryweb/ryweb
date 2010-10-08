@@ -19,7 +19,6 @@ class ChangeCustomerDefaults < ActiveRecord::Migration
         puts "Yhdistyksen (#{c.title}) oletusarvot päivitettiin onnistuneesti"
       else
         puts "Yhdistyksen oletusarvojen päivitys epäonnistui"
-        puts new_user.errors.full_messages
       end
     end
   end
