@@ -1,15 +1,15 @@
-<table id="calendar-modified">
+<table id="calendar-modified" border="1">
   <thead>
     <% unless @modified_occasions.blank? %>
-    <tr><th colspan ="7">Muuttuneet tapahtumat</td></tr>
+    <tr><th colspan ="6">Muuttuneet tapahtumat</td></tr>
   </thead>
   <tbody>
   <% for modified_occasion in @modified_occasions %>
-        <tr>
-          <% if modified_occasion.state == 30 %>
-          <td><strong><%= modified_occasion.getOptionsForSelectList(:state).index(modified_occasion.state) %></strong></td>
-          <% else %>
-          <td>&nbsp</td>
+        <!-- tr -->
+          <% if modified_occasion.state == 30 %>          
+            <tr class="cancelled">
+          <% else %>          
+            <tr>
           <% end %>
           <td class="day"><%= t('date.abbr_day_names')[modified_occasion.start_time.wday] %></td>
           <td class="date"><%= localize modified_occasion.start_time, :format => :very_short %></td>

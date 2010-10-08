@@ -330,6 +330,50 @@ hr {
 	white-space: nowrap;
 }
 
+#calendar-modified {
+	font-size: 110%;
+	border: 5px solid #d5d5d5;
+	margin-bottom: 20px;
+}
+
+#calendar-modified .day, #calendar-modified .date, #calendar-modified .time {
+	white-space: nowrap;
+}
+
+#calendar-modified tr.cancelled td {
+    text-decoration: line-through;
+}
+#calendar-modified td {
+	padding: 4px 8px;
+	background-color: #f8f8f8;
+	border-bottom: 1px solid #d5d5d5;
+	color: #333333;        
+}
+
+#calendar-modified th {
+	background-color: #d5d5d5;
+	padding: 10px 8px;
+	color: #000000;
+	text-align: left;
+	font-size: 120%;
+}
+
+#calendar-modified tr.even td {
+	background-color: #f0f0f0;
+}
+
+#calendar-modified tr.next td {
+	background-color: #e1f0fb;
+}
+
+#calendar-modified td.event {
+	font-weight: bold;
+}
+
+#calendar-modified .icon_listen {
+	white-space: nowrap;
+}
+
 #column .nosto_box {
 	display: block;
 	margin-bottom: 20px;
