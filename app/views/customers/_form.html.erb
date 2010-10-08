@@ -47,6 +47,10 @@
      <%= f.select :ui_template_id, @ui_templates.map {|t| [t.name, t.id ]}, {:include_blank => true}  %>
   </p>
 
+  <p><%= f.label :logo, 'Logo' %>
+    <%= f.text_field :logo %>
+   </p>
+
   <p><%= label_tag 'language', 'Kieli' %>
    <%= f.select :language, @customer.getOptionsForSelectList(:language), options ={:prompt => ""} %>
  </p>
