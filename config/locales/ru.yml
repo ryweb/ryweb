@@ -217,3 +217,8 @@ ru:
     further_events: "увидеть больше действий в календаре"
     phone: "номер телефона"
     week: "неделя"
+    enrol_to_camp: "Ilmoittaudu leirille"
+    campground: "Leirikeskus"
+    more_camps: "Lisää leirejä"
+    error_camps_not_found: "Virhe: Leirilista ei saatavilla"
+    listen_to_netradio: "слушать Интернет-радио"

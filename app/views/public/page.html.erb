@@ -6,7 +6,9 @@
 
     <% if @page.parameter_calendar_type == 'kk' %>
       <%= render :partial => 'month_view' %>
-    <% else %>
+    <% elsif @page.parameter_calendar_type == 'vk' %>
       <%= render :partial => 'week_view' %>
+    <% elsif @page.parameter_calendar_type == 'pk' %>
+      <%= render :partial => 'location_view' %>
     <% end %>
 <% end %>
