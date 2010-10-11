@@ -54,7 +54,7 @@ class PublicController < ApplicationController
       if @page.parameter_calendar_type == 'kk'
         @occasion_months = @occasions.group_by { |o| o.start_time.beginning_of_month }
       elsif @page.parameter_calendar_type == 'vk'
-        @occasion_weeks = @occasions.group_by { |o| o.start_date_week_str }
+        @occasion_weeks = @occasions.group_by { |o| o.start_time.beginning_of_week }
       elsif @page.parameter_calendar_type == 'pk'
         @occasion_locations = @occasions.group_by { |l| l.location.name }
       end
