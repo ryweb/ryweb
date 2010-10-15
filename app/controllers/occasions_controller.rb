@@ -2,6 +2,7 @@ class OccasionsController < ApplicationController
    before_filter :login_required
    filter_resource_access
    filter_access_to :list, :calendar, :require => :read
+   filter_access_to :auto_complete_for_occasion_location_id, :auto_complete_for_occasion_occasion_type_id, :require => [:create, :update]
 
 
    skip_before_filter :verify_authenticity_token, :only => [:auto_complete_for_occasion_location_id, :auto_complete_for_occasion_occasion_type_id]   
