@@ -27,8 +27,7 @@ class Occasions::ExportController < ApplicationController
                                   :conditions => [ "start_time > ? AND start_time < ?",
                                                    start_time, end_time ] )
       csv_string = FasterCSV.generate( :force_quotes => true ) do |csv|
-        csv << [convert_str("Päiväys"),
-                convert_str("Klo"),
+        csv << [convert_str("Päiväys ja klo"),
                 convert_str("Tapahtuma"),
                 convert_str("Paikka"),
                 convert_str("Tapahtumatyyppi"),
@@ -36,8 +35,7 @@ class Occasions::ExportController < ApplicationController
                 convert_str("Julkinen lisätieto")]
         
         @occasions.each do |o|
-          csv << [ convert_str(o.start_date_only_str),
-                   convert_str(o.start_time_only_str),
+          csv << [ convert_str(o.start_date_only_str) + " " + convert_str(o.start_time_only_str),
                    convert_str(o.name),
                    convert_str(o.location.nil? ? "" : o.location.name),
                    convert_str(o.occasion_type.nil? ? "" : o.occasion_type.name),
