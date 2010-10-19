@@ -25,7 +25,7 @@ class Occasions::ExportController < ApplicationController
     else
       @occasions = Occasion.find( :all,
                                   :conditions => [ "start_time > ? AND start_time < ?",
-                                                   start_time, end_time ] )
+                                                   start_time, end_time ], :order => 'start_time' )
       csv_string = FasterCSV.generate( :force_quotes => true ) do |csv|
         csv << [convert_str("Päiväys ja klo"),
                 convert_str("Tapahtuma"),
