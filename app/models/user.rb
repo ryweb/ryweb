@@ -64,8 +64,9 @@ class User < CustomerData
      when :user_level
        @options = {
          'yhdistyksen pääkäyttäjä' => 10,
+         'vastuuhenkilö' => 15,
          'normaali käyttäjä' => 20,
-       }          
+       }
    end
   end
 
@@ -73,10 +74,12 @@ class User < CustomerData
     case self.user_level
     when 20
       [:standard]
+    when 15
+      [:responsible]
     when 10
       [:admin]
     when 1
-      [:superadmin]      
+      [:superadmin]
     else
       []
     end

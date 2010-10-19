@@ -1,5 +1,7 @@
 authorization do
+  ## ## ##
   # Super admin is allowed to manage all models
+  ## ## ##
   role :superadmin do
     has_permission_on :customers, :to => [:manage]
     has_permission_on :ui_templates, :to => [:manage]
@@ -10,8 +12,10 @@ authorization do
   end
 
   role :admin do
+  ## ## ##
   # Admin is allowed to manage all models in a certain customer context
   # Notice! Usually attribute checks are not needed, since almost every Active Record calls implements the named scope (customer.current)
+  ## ## ##
 
     # Manage users of own customer
     has_permission_on :users, :to => [:manage]
@@ -36,6 +40,22 @@ authorization do
     end
   end
 
+  ## ## ##
+  # Responsible user is allowed to manage event calendar
+  ## ## ##
+  role :responsible do
+    # Responsible user is allowed to read and update his own user information
+    has_permission_on :users, :to => [:own] do
+      if_attribute :id => is {user.id}
+    end
+
+    # Manage occasions, occasion_types and locations of own customer
+    has_permission_on :occasions, :occasion_types, :locations, :to => [:manage]
+  end
+
+  ## ## ##
+  # Standard user is allowed to read and update his own user information
+  ## ## ##
   role :standard do
     # Standard user is allowed to read and update his own user information
     has_permission_on :users, :to => [:own] do
