@@ -4,7 +4,7 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.xml
   def index
-    @customers = Customer.with_permissions_to(:index).find(:all)
+    @customers = Customer.with_permissions_to(:index).find(:all, :order => 'name')
 
     respond_to do |format|
       format.html # index.html.erb
