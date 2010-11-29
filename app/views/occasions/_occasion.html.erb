@@ -46,7 +46,7 @@
     
     //show input 
     $("#occasion_type_header").parent().click(function(){
-      if(!isOutFocused) {
+      if(isOutFocused) {
 	  	$("#occasion_type_header").hide();
 	  	$("#otype").show().focus();
 	  	if ($("#otype").val() === occasionDefaultType || isOutFocused) {
