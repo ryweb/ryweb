@@ -1,0 +1,31 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Varattavat tilat</h2></div></div></div>
+<div class="border">
+
+<table>
+  <tr>
+    
+    <th>Tila</th>
+
+    <th>Tilan kuvaus</th>
+
+  </tr>
+
+<% @rooms.each do |room| %>
+  <tr>
+
+     <td><%=h room.name %></td>
+
+    <td><%=h room.description %></td>
+
+    <td><%= link_to 'Muokkaa', edit_room_path(:id => room) %>
+<%= link_to 'Poista', room_path(:id => room), :confirm => 'Oletko varma?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Uusi tila', new_room_path %>
+<%= link_to 'Näytä tilanvaraukset', bookings_path %>
+
+</div>

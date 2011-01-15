@@ -1,0 +1,22 @@
+ <div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Uusi tila</h2></div></div></div>
+<div class="border">
+ 
+<% form_for(@room) do |f| %>
+  <%= f.error_messages %>
+ 
+  <p>
+    <%= f.label :tila %>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :kuvaus %>
+    <%= f.text_field :description %>
+  </p>
+
+  <p>
+    <%= f.submit 'Lis&auml;&auml; uusi tila luetteloon' %>
+  </p>
+<% end %>
+
+</div>

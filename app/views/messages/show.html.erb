@@ -1,0 +1,28 @@
+<p>
+  <b>Name:</b>
+  <%=h @message.name %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%=h @message.content %>
+</p>
+
+<p>
+  <b>Public:</b>
+  <%=h @message.public %>
+</p>
+
+<p>
+  <b>Valid from:</b>
+  <%=h @message.valid_from %>
+</p>
+
+<p>
+  <b>Valid until:</b>
+  <%=h @message.valid_until %>
+</p>
+
+
+<%= link_to 'Edit', edit_message_path(@message) %> |
+<%= link_to 'Back', messages_path %>

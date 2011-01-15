@@ -1,0 +1,38 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Tiedotteen muokkaaminen</h2></div></div></div>
+<div class="border">
+
+<% form_for :message,
+   :url => message_path(:id => @message),
+   :html => {:method => :put }  do |f| -%>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name, 'Otsikko' %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :content, 'Teksti' %><br />
+    <%= f.text_area :content %>
+  </p>
+  <p>
+    <%= f.label :public, 'Julkinen' %><br />
+    <%= f.check_box :public %>
+  </p>
+  <p>
+    <%= f.label :valid_from, 'Julkaistaan' %><br />
+    <%= f.datetime_select :valid_from %>
+  </p>
+  <p>
+    <%= f.label :valid_until, 'Poistuu' %><br />
+    <%= f.datetime_select :valid_until %>
+  </p>
+  <p>
+    <%= f.label :receivers, 'Lähetä sähköposti?' %><br />
+    <%= f.check_box :receivers %>
+  </p>
+  <p>
+    <%= f.submit 'Tallenna' %>
+  </p>
+<% end %>
+
+</div>
