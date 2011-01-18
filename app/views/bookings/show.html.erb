@@ -15,48 +15,32 @@
    <b>Tilavaraukset </b>   
    <table>
      <% kuu=%w[tammi helmi maalis huhti touko kes&auml; hein&auml; elo syys loka marras joulu] %>
-     <% paiva=%w[su ma ti ke to pe la]; apupvm=0; alku=0; n=0; res={}; aika={}; piste=".";varaus=Array.new %>     	
+     <% paiva=%w[su ma ti ke to pe la]; res={}; ajat={}; pvm=Array.new; piste="." %>     	
 	 <tr><th class ="headeri headeri2"><%= kuu[Time.now.month-1]+"kuu" -%></th>
 	 <% for b in @bookings.sort{ |a,c| a.start_time <=> c.start_time }  %>
-	   <% paivays=10*(b.start_time.month*31+b.start_time.day) %>	   
-	   <% if paivays == apupvm  %>
-	     <% res[paivays+n]=varaus; aika[paivays+n]=alku %>
-		 <% varaus=b.rooms; alku=b.start_time; n+=1; next %>
-	   <% elsif n > 0 %>
-	     <% res[apupvm+n]=varaus; aika[apupvm+n]=alku; n=0 %>
-	   <% else %>
-	     <% varaus=b.rooms; alku=b.start_time; n=0 %>
+	   <% paivays=10*(b.start_time.month*31+b.start_time.day) %>	   	   
+	   <% unless res.has_key?(paivays) %>
+	     <% pvm << b.start_time; n=0 %>
+		 <th class="headeri" ><%= b.start_time.day.to_s+piste+paiva[b.start_time.wday] -%></th>
 	   <% end %> 	 
-	   <th class="headeri" ><%= b.start_time.day.to_s+piste+paiva[b.start_time.wday] -%></th>
-       <% apupvm=paivays %>       	   
+	   <% n+=1 while res.has_key?(paivays+n) %>
+	   <% res[paivays+n]=b.rooms; ajat[paivays+n]=b.start_time %>         		 		   
      <% end %>	 
 	 </tr>	  
 	 <% for r in Room.find(:all).sort{|a,b| a.name.upcase <=> b.name.upcase} %>
        <tr><td> <%= r.name -%> </td>
-	   <% apupvm=0; n=0 %>	            
-	   <% for b in @bookings.sort{ |a,c| a.start_time <=> c.start_time } %>
-         <% paivays=10*(b.start_time.month*31+b.start_time.day) %>
-		 <% if paivays == apupvm %>
-		   <% n=0; next %>
-		 <% end %>  
-		 <% if res.has_key?(paivays) %>
-		   <% ok=true %>	            	   
-		   <% while res.has_key?(paivays+n) %>
-		     <% varaus=res[paivays+n]; alku=aika[paivays+n]; n+=1 %>
-		     <% if varaus.include?(r) %>
-		       <td style="background-color:LightPink"><%= alku.hour.to_s+":"+sprintf("%02d",alku.min) -%></td>
-			   <% ok=false; break %>
-		     <% end %>
-           <% end %>
-		   <% if ok %>
-             <td style="background-color:RosyBrown "><%= "" -%></td>
+	   <% for aika in pvm %>
+	     <% paivays=10*(aika.month*31+aika.day); ok=true; n=0  %>
+         <% while res.has_key?(paivays+n) %>
+		   <% varaus=res[paivays+n]; alku=ajat[paivays+n]; n+=1 %>
+		   <% if varaus.include?(r) %>
+		     <td style="background-color:LightPink"><%= alku.hour.to_s+":"+sprintf("%02d",alku.min) -%></td>
+		     <% ok=false; break %>
 		   <% end %>
-		 <% elsif b.rooms.include?(r) %>
-		   <td style="background-color:LightPink"><%= b.start_time.hour.to_s+":"+sprintf("%02d",b.start_time.min) -%></td>           
-	     <% else %>   
+         <% end %>
+		 <% if ok  %>
 		   <td style="background-color:RosyBrown "><%= "" -%></td>
-		 <% end %>
-         <% apupvm=paivays %> 		 
+		 <% end  %>  
        <% end %>
 	   </tr>
      <% end %>	 
