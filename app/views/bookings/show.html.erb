@@ -15,32 +15,32 @@
    <b>Tilavaraukset </b>   
    <table>
      <% kuu=%w[tammi helmi maalis huhti touko kes&auml; hein&auml; elo syys loka marras joulu] %>
-     <% paiva=%w[su ma ti ke to pe la]; res={}; ajat={}; pvm=Array.new; piste="." %>     	
+     <% paiva=%w[su ma ti ke to pe la]; res={}; ajat={}; piste="." %>     	
+	 <% tilat=Room.find(:all).sort{|a,b| a.name.upcase <=> b.name.upcase} %>
 	 <tr><th class ="headeri headeri2"><%= kuu[Time.now.month-1]+"kuu" -%></th>
 	 <% for b in @bookings.sort{ |a,c| a.start_time <=> c.start_time }  %>
-	   <% paivays=10*(b.start_time.month*31+b.start_time.day) %>	   	   
-	   <% unless res.has_key?(paivays) %>
-	     <% pvm << b.start_time; n=0 %>
-		 <th class="headeri" ><%= b.start_time.day.to_s+piste+paiva[b.start_time.wday] -%></th>
-	   <% end %> 	 
-	   <% n+=1 while res.has_key?(paivays+n) %>
-	   <% res[paivays+n]=b.rooms; ajat[paivays+n]=b.start_time %>         		 		   
+	   <% paivays=b.start_time.month*31+b.start_time.day %>
+       <% unless res.has_key?(paivays) %>
+	      <th class="headeri" ><%= b.start_time.day.to_s+piste+paiva[b.start_time.wday] -%></th>
+	   <% end %> 	 	     	
+	   <% varaukset=res[paivays] || Array.new; klo=ajat[paivays] || Array.new(tilat.length) %>
+	   <% res[paivays]=varaukset+b.rooms; alku=b.start_time %>
+	   <% for r in b.rooms %>
+	     <% i=tilat.index(r); klo[i]=alku if !klo[i] or alku < klo[i] %>
+	   <% end %>	 
+	   <% ajat[paivays]=klo %>
      <% end %>	 
 	 </tr>	  
-	 <% for r in Room.find(:all).sort{|a,b| a.name.upcase <=> b.name.upcase} %>
-       <tr><td> <%= r.name -%> </td>
-	   <% for aika in pvm %>
-	     <% paivays=10*(aika.month*31+aika.day); ok=true; n=0  %>
-         <% while res.has_key?(paivays+n) %>
-		   <% varaus=res[paivays+n]; alku=ajat[paivays+n]; n+=1 %>
-		   <% if varaus.include?(r) %>
-		     <td style="background-color:LightPink"><%= alku.hour.to_s+":"+sprintf("%02d",alku.min) -%></td>
-		     <% ok=false; break %>
-		   <% end %>
-         <% end %>
-		 <% if ok  %>
-		   <td style="background-color:RosyBrown "><%= "" -%></td>
-		 <% end  %>  
+	 <% for r in tilat %>
+	   <tr><td> <%= r.name -%> </td>
+	   <% for paivays in ajat.keys.sort %>
+	     <% varaukset=res[paivays] %>
+		 <% if varaukset.include?(r) %>
+		   <% ajat[paivays].compact!; alku=ajat[paivays].shift; %>
+		   <td style="background-color:LightPink"><%= alku.hour.to_s+":"+sprintf("%02d",alku.min) -%></td>
+		 <% else %>
+           <td style="background-color:RosyBrown "><%= "" -%></td>
+		 <% end  %>
        <% end %>
 	   </tr>
      <% end %>	 
