@@ -15,13 +15,13 @@
    <b>Tilavaraukset </b>   
    <table>
      <% kuu=%w[tammi helmi maalis huhti touko kes&auml; hein&auml; elo syys loka marras joulu] %>
-     <% paiva=%w[su ma ti ke to pe la]; res={}; ajat={}; piste="." %>     	
+     <% paiva=%w[su ma ti ke to pe la]; res={}; ajat={} %>     	
 	 <% tilat=Room.find(:all).sort{|a,b| a.name.upcase <=> b.name.upcase} %>
 	 <tr><th class ="headeri headeri2"><%= kuu[Time.now.month-1]+"kuu" -%></th>
 	 <% for b in @bookings.sort{ |a,c| a.start_time <=> c.start_time }  %>
 	   <% paivays=b.start_time.month*31+b.start_time.day %>
        <% unless res.has_key?(paivays) %>
-	      <th class="headeri" ><%= b.start_time.day.to_s+piste+paiva[b.start_time.wday] -%></th>
+	      <th class="headeri" ><%= b.start_time.day.to_s+'.'+paiva[b.start_time.wday] -%></th>
 	   <% end %> 	 	     	
 	   <% varaukset=res[paivays] || Array.new; klo=ajat[paivays] || Array.new(tilat.length) %>
 	   <% res[paivays]=varaukset+b.rooms; alku=b.start_time %>
