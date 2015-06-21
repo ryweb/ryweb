@@ -1,0 +1,11 @@
+<b><%= @e.name%></b><br />
+<b>Paikka:</b>
+<% if @e.location %>
+	<%= @e.location.name %>
+<% else %>
+-
+<% end %><br />
+<b>Lisätiedot:</b><br />
+<%= @e.internal_info %>
+
+

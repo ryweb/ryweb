@@ -1,0 +1,12 @@
+<span id="pages" class="move_pages">
+  <% index = 0 %>
+  <% for page in @pages %>
+  <span class="menu_button" id="page_<%= page.menu_order.nil? ? index : page.menu_order %>">
+  	<span class="icon icon_move"><%=h page.name %></span>
+  </span>
+  <% index += 1 %>
+  <% end %>
+</span>
+
+<%= sortable_element( "pages", :url => { :action => "order" }, :tag => "span", :constraint => "horizontal" ) %>
+

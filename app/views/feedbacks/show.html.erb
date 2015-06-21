@@ -1,0 +1,10 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Palaute</h2></div></div></div>
+<div class="border">
+
+<p><strong>Tyyppi: </strong><%= @feedback.getOptionsForSelectList(:category).index(@feedback.category) %></p>
+<p><strong>Viesti: </strong><%= @feedback.message %></p>
+
+<% if current_user.superuser? %>
+<p><strong>Käyttäjän tiedot:</strong> id (<%= @feedback.user_id %>), customer_id (<%= @feedback.customer_id %>)</p>
+<% end %>
+</div>

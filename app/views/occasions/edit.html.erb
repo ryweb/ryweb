@@ -1,0 +1,14 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Tapahtuman tietojen muokkaus</h2></div></div></div>
+<div class="border">
+<div id="buttonbar">
+	<%= link_to 'Poista tapahtuma', occasion_path(:view => params[:view]), :class => 'icon icon_delete', :confirm => 'Oletko varma?', :method => :delete %>
+</div>
+
+ <%= crumbs %>
+
+<% form_for :occasion,
+			:url => occasion_path(:id => @occasion, :view => params[:view]),
+			:html => {:method => :put } do |f| -%>
+	<%= render :partial => 'form', :locals => {:f => f}%>	 
+<% end %>
+</div>

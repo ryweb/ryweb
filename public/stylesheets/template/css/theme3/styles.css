@@ -1,0 +1,48 @@
+body {
+	background-image: url(images/body-bg.jpg);
+	background-color: #F0F8FA;
+}
+
+h1 {
+	color: #236aa9;
+}
+
+h2 {
+	color: #236aa9;
+}
+
+#logo a {
+	color: #236aa9;
+}
+
+#header {
+	border-bottom-color: #dcbb00;
+}
+
+#nav li a.current {
+	background-color: #dcbb00;
+}
+
+.calendar-min {
+	background: #faf1b7;
+}
+
+.calendar-min-theme2 {
+	background: #e3f4f5;
+}
+
+.calendar-min tbody tr.even td {
+	background-color: #fffad7;
+}
+
+.calendar-min-theme2 tbody tr.even td {
+	background-color: #f6fafa;
+}
+
+.calendar-min h2 {
+	color: #236aa9;
+}
+
+.calendar-min-theme2 h2 {
+	color: #236aa9;
+}

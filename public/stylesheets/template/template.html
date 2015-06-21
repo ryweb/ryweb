@@ -1,0 +1,85 @@
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+            <title><%= @customer.title %></title>
+
+            <!-- CSS -->
+            <link rel="stylesheet" type="text/css" href="/stylesheets/template/css/ry-common.css" />
+            <link rel="stylesheet" type="text/css" href="/stylesheets/template/css/theme1/styles.css" />
+
+            <!-- JQUERY -->
+            <script type="text/javascript" src="/stylesheets/template/js/jquery-1.4.2.min.js"></script>
+            <script type="text/javascript" src="/stylesheets/template/js/main.js"></script>
+
+            <!-- CORNER -->
+            <script type="text/javascript" src="/stylesheets/template/js/jquery.corner.js"></script>
+
+            <!--[if lt IE 9]>
+            <script src="/stylesheets/template/js/IE9.js"></script>
+            <![endif]-->
+
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta http-equiv="Content-Language" content="fi" />
+            <meta name="Author" content="" />
+            <meta name="Copyright" content="" />
+            <meta name="Description" content="" />
+            <meta name="Keywords" content="" />
+    </head>
+    <body>
+            <div id="top-line"></div>
+            <div id="container">
+                    <div id="header">
+                            <h1 id="logo"><a href="<%= @page.default_page %>"><% if !@customer.logo.empty? %><%= image_tag(@customer.logo, :border => 0) %><% else %><%= @customer.title %><% end %></a></h1>
+                            <ul id="nav">
+                                <% for item in @mainmenu %>
+                                    <li><%= link_to item.title, {:controller => "public", :action => "page", :id => item}, :class => current(item.id.to_s) %></li>
+                                <% end %>
+                            </ul>
+                    </div>
+
+                    <div id="content">
+
+                            <div id="main">
+                                <%= yield %>
+                            </div>
+
+                            <div id="column">
+                            <% if @page.show_gadgets? %>
+                                    <div class="calendar-min">
+
+                                            <h2><%= t('public.near_future') %></h2>
+
+                                            <%= render :partial => 'near_future' %>
+
+                                            <p><%= t('public.further_events') %></p>
+                                    </div>
+
+                                    <% if !@customer.power_base.nil? %>
+                                    <div class="calendar-min calendar-min-theme2">
+                                        <h2><%= t('public.enrol_to_camp') %></h2>
+                                        <h4><%= t('public.campground') %>: <%= @customer.campground_str %></h4>
+                                           <%= render :partial => 'camps' %>
+                                           <h4><%= t('public.more_camps') %>: <a href="http://www.leirille.fi" target="_blank">www.leirille.fi</a></h4>
+                                    </div>
+                                    <% end %>
+                            <% end %>
+                            </div>
+
+                            <div class="clear"></div>
+
+                    </div>
+
+                    <div id="footer">
+                            <hr />
+                            <ul class="contact">
+                                    <li class="first">&copy; <%= @customer.title %></li>
+                                    <% if !@customer.address.empty? %><li><%= @customer.address %></li><% end %>
+                                    <% if !@customer.zip_code.nil? && !@customer.city.empty? %><li><%= @customer.zip_code %>&nbsp;<%= @customer.city %></li><% end %>
+                                    <% if !@customer.phone.empty? %><li><i><%= t('public.phone') %>&nbsp;</i><%= @customer.phone %></li><% end %>
+                                    <% if !@customer.email.empty? %><li><script type="text/javascript"> email_antispam('<%= @domain %>', '<%= @organization %>', '<%= @user %>'); </script></li><% end %>
+                            </ul>
+                            <div class="clear"></div>
+                    </div>
+            </div>
+    </body>
+    </html>

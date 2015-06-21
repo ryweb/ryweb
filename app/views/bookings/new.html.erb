@@ -1,0 +1,55 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Uusi tilanvaraus</h2></div></div></div>
+<div class="border">
+ 
+<% form_for(@booking) do |f| %>
+  <%= f.error_messages %>
+   
+  <p>
+    <%  d=Date.today+(7-Date.today.strftime("%w").to_i); y=d.year; m=d.month; paiva=d.day %>
+    <%= f.label :alkamisaika %>    
+	<%= f.datetime_select :start_time,
+        :order => [:day, :month, :year], 
+        :start_year => Date.today.year,
+        :end_year => (Date.today.year+2),
+        :use_month_names => %w[tammi helmi maalis huhti touko kes&auml; hein&auml; elo syys loka marras joulu].map{|x| x+"kuu"},             
+        :default => DateTime.new(y,m,paiva,16,0),
+        :minute_step => 30 
+    %>
+  </p>
+  
+  <p>
+    <%= f.label :loppumisaika %>
+    <%= f.datetime_select :end_time,
+        :order => [:day, :month, :year], 
+        :start_year => Date.today.year,
+        :end_year => (Date.today.year+2),
+        :use_month_names => %w[tammi helmi maalis huhti touko kes&auml; hein&auml; elo syys loka marras joulu].map{|x| x+"kuu"},         
+        :default => DateTime.new(y,m,paiva,19,0),
+        :minute_step => 30 
+    %>
+  </p>
+ 
+  <p>
+    <%= f.label :tilat %><br />
+    <% for r in Room.find(:all).sort{|a,b| a.name.upcase <=> b.name.upcase} %>
+      <div><%= check_box_tag "booking[room_ids][]",r.id,@booking.rooms.include?(r)-%> <%= r.name -%> (<%= r.description -%>)</div>
+    <% end %>    
+  </p>
+ 
+  <p>
+    <%= f.label :varaaja %>
+    <%= f.text_field :reserver %>
+  </p>
+
+  <p>
+    <%= f.label :puhelin %>
+    <%= f.text_field :telephone %>
+  </p> 
+
+  <p>
+    <%= f.submit 'Tee uusi tilanvaraus' %>
+  </p>
+<% end %>
+
+<%= link_to 'Takaisin varauslistaan', bookings_path %>
+</div>

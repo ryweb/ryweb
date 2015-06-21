@@ -1,0 +1,41 @@
+<%= f.error_messages %>
+	
+<p><%= label_tag 'name', 'Tapahtuma' %>
+<%= f.text_field :name %></p>
+
+<p><%= label_tag 'start_time', 'Aloitusaika' %>
+<%= datetime_select 'occasion', 'start_time', :use_month_numbers => true, :order => [:day,:month,:year],:default => Time.now.at_beginning_of_day + 8.hours, :minute_step => 15, :start_hour => 10 %>
+
+<p><%= label_tag 'repeat', 'Toisto' %>
+  <%= f.select :repeat, @occasion.getOptionsForSelectList(:repeat), options ={:prompt => ""} %>
+  <%= date_select 'occasion', 'repeat_until', :use_month_numbers => true, :order => [:day,:month,:year], :default => @occasion.start_time %> asti</p>
+
+<p><%= label_tag 'occasion_type_id', 'Tapahtuman tyyppi' %>
+<p><%= text_field_with_auto_complete 'occasion', 'occasion_type_id', :value => @occasion.occasion_type.name %></p>
+
+<% if !Customer.current.radio_url.nil? %>
+  <p><%= label_tag 'net_radio', 'Nettiradiolähetys' %>
+  <%= f.check_box :net_radio %>
+<% end %>
+
+<p><%= label_tag 'subject', 'Aihe' %>
+<p><%= text_field_with_auto_complete 'occasion', 'subject', :value => @occasion.subject %></p>
+
+<p><%= label_tag 'location_id', 'Paikka' %>
+<p><%= text_field_with_auto_complete 'occasion', 'location_id', :value => @occasion.location.name %></p>
+
+<p><%= label_tag 'state', 'Tila' %>
+<%= f.select :state, @occasion.getOptionsForSelectList(:state), options ={:prompt => ""} %></p>
+
+<p><%= label_tag 'internal_info', 'Sisäinen lisätieto' %>
+<%= f.text_area :internal_info, :rows=>10 %></p>
+
+<p><%= label_tag 'public_info', 'Julkinen (internet) lisätieto' %>
+<%= f.text_area :public_info, :rows=>10 %></p>
+
+<p><%= label_tag 'inform_changes', 'Tiedota muutoksesta?' %>
+<%= f.select :inform_changes, @occasion.getOptionsForSelectList(:inform_changes), options ={:prompt => ""} %></p>
+
+<p>
+    <%= f.submit "Tallenna" %>
+</p>

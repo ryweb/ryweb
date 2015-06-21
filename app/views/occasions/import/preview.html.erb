@@ -1,0 +1,34 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m">
+  <h2>Esikatselu</h2>
+</div></div></div>
+<div class="border">
+  
+  <table class="occasion_list">
+    <thead>
+      <tr>
+	<th>Päiväys</th>
+	<th>Klo</th>
+	<th>Tapahtuma</th>
+	<th>Tyyppi</th>
+	<th>Paikka</th>
+      </tr>
+    </thead>
+
+    <tbody>	
+      <% for occasion in @occasions %>
+      <tr class="<%= cycle("even", "odd") %>">
+	<td><%= occasion.start_date_only_str %></td>
+	<td><%= occasion.start_time_only_str %></td>	
+	<td><%= occasion.name %></td>
+	<td><%= occasion.occasion_type.name %></td>
+	<td><%= occasion.location.name%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <% form_for :occasion_import, :url => create_occasion_import_path do |f| %>
+  <%= f.submit "Lisää uudet tapahtumat" %>
+  <% end %>
+
+</div>

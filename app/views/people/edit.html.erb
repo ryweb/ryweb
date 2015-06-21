@@ -1,0 +1,20 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Henkilön tietojen muokkaus</h2></div></div></div>
+<div class="border">
+<div id="buttonbar">
+  
+</div>
+
+  <%= crumbs %>
+
+<% form_for :person,
+			:url => person_path(:id => @person),
+			:html => {:method => :put } do |f| -%>
+
+  <%= render :partial => 'form', :locals => {:f => f} %>
+  
+  <p>
+    <%= f.submit 'Tallenna' %>
+  </p>
+<% end %>
+
+</div>

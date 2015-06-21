@@ -1,0 +1,24 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Listing configurations</h2></div></div></div>
+<div class="border">
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Value</th>
+  </tr>
+
+<% @configurations.each do |configuration| %>
+  <tr>
+    <td><%=h configuration.name %></td>
+    <td><%=h configuration.value %></td>
+    <td><%= link_to 'Show', configuration_path(:id => configuration) %></td>
+    <td><%= link_to 'Edit', edit_configuration_path(:id => configuration) %></td>
+    <td><%= link_to 'Destroy', :id => configuration, :confirm => 'Oletko varma?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New configuration', new_configuration_path %>
+</div>

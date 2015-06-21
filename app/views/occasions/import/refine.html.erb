@@ -1,0 +1,31 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m">
+<h2>Sarakkeiden valinta</h2>
+</div></div></div>
+<div class="border">
+
+<p>Valitse kullekin sarakkeelle oikea kenttä ja jatka valitsemalla "Tarkista tiedot"</p>
+<% form_for :occasion_import, :url => validate_occasion_import_path do |f| %>
+<table>
+<tr>
+<% 1.upto(@columns.length) do %>
+<td>
+<%= select_tag "occasion_import[selected_column][]", options_for_select( [["Valitse", ""]] + @columns.map {|c| [ c.last, c.first ] } ) %>
+</td>
+<% end %>
+</tr>
+<% @data.each do |line| %>
+<tr>
+<% index = 0 %>
+<% line.each do |column| %>
+<td>
+<%= text_field_tag "occasion_import[column_data][#{index}][]", column %>
+<% index += 1 %>
+</td>
+<% end %>
+</tr>
+<% end %>
+</table>
+<%= f.submit "Tarkista tiedot" %>
+<% end %>
+
+</div>

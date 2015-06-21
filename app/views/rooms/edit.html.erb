@@ -1,0 +1,24 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Muutan tilan nime&auml;</h2></div></div></div>
+<div class="border"> 
+ 
+<% form_for :room,
+   :url => room_path(:id => @room),
+   :html => {:method => :put }  do |f| -%>   
+  <%= f.error_messages %>
+  
+  <p>
+    <%= f.label :tila %>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :selitys %>
+    <%= f.text_field :description %>
+  </p>
+
+  <p>
+    <%= f.submit 'Muutan tilan tiedot' %>
+  </p>
+<% end %>
+
+</div>

@@ -1,0 +1,19 @@
+<% if ['edit'].include?(params[:action]) %>
+<p>
+  <label for="filename">Tiedosto:</label>
+  <%=h @style.filename %>
+</p>
+
+<p>
+  <label for="content_type">Content-type:</label>
+  <%=h @style.content_type %>
+</p>
+
+<% end %>
+
+<p>
+    <label for="uploaded_data">Valitse tiedosto:</label>
+    <%= f.file_field :uploaded_data %>
+</p>
+
+

@@ -1,0 +1,38 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Tiedotteet</h2></div></div></div>
+<div class="border">
+
+<table>
+  <tr>
+    <th>Otsikko</th>
+    <th>Sisältö</th>
+    <th>Julkinen?</th>
+    <th>Julkaistu</th>
+    <th>Poistuu</th>
+  </tr>
+
+<% @messages.each do |message| %>
+  <tr>
+    <td><%=h message.name %></td>
+    <td><%=h message.content %></td>
+    <td><%=h message.public %></td>
+<% unless message.valid_from.blank? %>
+    <td><%= localize message.valid_from, :format => :short %></td>
+<% else %>
+    <td><%= message.valid_from %></td>
+<% end %>
+<% unless message.valid_until.blank? %>
+    <td><%= localize message.valid_until, :format => :short %></td>
+<% else %>
+    <td><%= message.valid_until %></td>
+<% end %>
+    <td><%= link_to 'Muokkaa', edit_message_path(:id => message) %></td>
+    <td><%= link_to 'Poista', message_path(:id => message), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Uusi tiedote', new_message_path %>
+
+</div>

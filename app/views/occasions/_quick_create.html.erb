@@ -1,0 +1,29 @@
+<% form_remote_for :occasion, :url => {:action => "create", :year => @date.year, :month => @date.month, :view => 'list'}, :html => { :id => 'quick_create_form' } do |f| %>
+
+<table>
+  <thead>
+  	<tr>
+       <th colspan ="2">Päiväys ja klo</th>
+       <th>Tapahtuma</th>
+       <th>Paikka</th>
+       <th>Tapahtumatyyppi</th>	   
+       <th>Aihe</th>
+       <th>Tila</th>
+	   <th>&nbsp;</th>
+	</tr>	   
+  </thead>
+<tbody>	
+<tr>
+	<td colspan="2"><%= f.text_field :start_time, :size => 15, :class => 'fieldhelp', :onfocus=>"this.value=''; this.className='activefield';", :value=> @date.strftime("%d.%m.%Y") + " " + "17:00", :onblur=>"this.value = this.value || this.defaultValue;" %></td>
+	<td><%= f.text_field :name, :size => 20, :class => 'fieldhelp', :onfocus=>"this.value=''; this.className='activefield';", :value=> "Seurat", :onblur=>"this.value = this.value || this.defaultValue;" %></td>
+	<td><%= text_field_with_auto_complete 'occasion', 'location_id', :size => 15, :class => 'fieldhelp', :onfocus=>"this.value=''; 
+this.className='activefield';", :value=> "Seurakuntatalo", :onblur=>"this.value = this.value || this.defaultValue;" %></td>
+	<td><%= text_field_with_auto_complete 'occasion', 'occasion_type_id', :value => @occasion.occasion_type.name, :size => 15, :class => 'fieldhelp', :onfocus=>"this.value=''; this.className='activefield';", :value=> "Lähetysseurat", :onblur=>"this.value = this.value || this.defaultValue;" %></td>
+	<td><%= text_field_with_auto_complete 'occasion', 'subject', :size => 15, :class => 'fieldhelp', :onfocus=>"this.value='';
+this.className='activefield';", :value=> "Päivän teksti", :onblur=>"this.value = this.value || this.defaultValue;" %></td>
+ 	<td><%= f.hidden_field :state, :value=>10 %>luonnos</td>
+	<td><%= f.submit "Tallenna" %></td>
+</tr>
+</tbody>
+</table>
+<% end %>

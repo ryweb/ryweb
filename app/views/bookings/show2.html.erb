@@ -1,0 +1,29 @@
+<p>
+   <% pvm=Array.new; aika=Array.new; pisin=0 %>
+   <% kuu=%w[tammi helmi maalis huhti touko kes&auml; hein&auml; elo syys loka marras joulu] %>
+   <% for b in @bookings.sort{ |a,b| a.start_time <=> b.start_time }  %>
+     <% apu=b.start_time-Time.now %>
+	 <% apupvm=b.start_time.day  %>    
+	 <% aika << apu if pvm.size==0 or apupvm != pvm.last  %>     
+     <% pvm << apupvm if pvm.size==0 or apupvm != pvm.last  %>	 
+	 <% pisin=apu if apu > pisin  %> 	
+   <% end %>
+   <b>Tilavarauksesi </b> 
+    <% alkukuu=kuu[Time.now.month-1]+"kuu" %>  
+    <% ajat=alkukuu+"."*(16-alkukuu.length) %>
+	<% for a in aika  %>
+	  <% ajat=ajat+"-"*(132*a/pisin-(ajat.length-16))+pvm.shift.to_s  %>
+	<% end  %>  
+    <div align="left"> <%= ajat -%> </div><br>   
+    <% for r in Room.find(:all).sort{|a,b| a.name.upcase <=> b.name.upcase} %>
+	  <% rivi=Array.new(132,"-")     %>
+	  <% for b in @bookings %>
+	    <% i=132*(b.start_time - Time.now)/pisin.to_i %>
+		<% j=132*(b.end_time - Time.now)/pisin.to_i %>
+	    <% rivi[i..j]="*" if b.rooms.include?(r) %>		 
+	  <% end %>
+	  <div align="left"> <%= r.name+"."*(16-r.name.length)+rivi.to_s -%> </div>
+    <% end %>    
+  </p> 
+
+<%= link_to 'Takaisin varauslistaan', bookings_path(:id => @booking) %>

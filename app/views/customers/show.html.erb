@@ -1,0 +1,42 @@
+<div class="table-header">
+  <div class="table-header r">
+    <div class="table-header m">
+      <h2>Yhdistyksen tiedot: <%= @customer.name %></h2>
+     </div>
+   </div>
+</div>
+
+<div class="border">
+	<div id="buttonbar">
+		<%= link_to 'Muokkaa tietoja', edit_customer_path(:id => @customer), :class => 'icon icon_edit' %>
+	</div>
+	
+	<%= crumbs if permitted_to? :manage, :customers %>
+	
+	<div>
+          <p><%= label_tag 'name', 'Järjestelmän nimi' %>
+          <%=@customer.name %></p>
+          <p><%= label_tag 'title', 'Yhdistyksen nimi' %>
+          <%=@customer.title %></p>
+          <p><%= label_tag 'address', 'Lähiosoite' %>
+          <%=@customer.address %></p>
+          <p><%= label_tag 'zip_code', 'Postinumero' %>
+          <%=@customer.zip_code %></p>
+          <p><%= label_tag 'city', 'Postitoimipaikka' %>
+          <%=@customer.city %></p>
+          <p><%= label_tag 'phone', 'Puhelin' %>
+          <%=@customer.phone %></p>
+          <p><%= label_tag 'email', 'Sähköposti' %>
+          <%=@customer.email %></p>
+          <p><%= label_tag 'radio_url', 'Nettiradiolinkki' %>
+          <%=@customer.radio_url %></p>
+          <p><%= label_tag 'ui_template.name', 'Ulkoasumalli' %>
+          <%=@customer.ui_template.name %></p>
+          <p><%= label_tag 'language', 'Kieli' %>
+          <%= @customer.getOptionsForSelectList(:language).index(@customer.language) %></p>
+          
+	</div>
+	
+	<div class="padding"></div>
+</div>
+

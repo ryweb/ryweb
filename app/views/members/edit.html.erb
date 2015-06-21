@@ -1,0 +1,16 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Henkilön tietojen muokkaus</h2></div></div></div>
+<div class="border">
+
+  <%= crumbs %>
+
+<% form_for :member,
+			:url => member_path(:id => @member),
+			:html => {:method => :put } do |f| -%>
+
+<%= render :partial => 'form', :locals => {:f => f} %>
+  <p>
+    <%= f.submit 'Tallenna' %>
+  </p>
+<% end %>
+
+</div>

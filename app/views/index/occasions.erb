@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<occasions type="array">
+<% @occasions.each do |occasion| %>
+  <occasion>
+    <customerid type="integer"><%=occasion.customer_id%></customerid>
+    <id type="integer"><%=occasion.id%></id>
+    <locationid><%=occasion.location_id%></locationid>
+    <name><%=occasion.name%></name>
+    <type><%=occasion.occasion_type.name%></type>
+    <info><%=occasion.public_info%></info>
+    <repeat><%=occasion.repeat%></repeat>
+    <repeatuntil type="datetime"><%=occasion.repeat_until.strftime("%Y-%m-%dT%H:%M:%SZ")%></repeatuntil>
+    <time type="datetime"><%=occasion.start_time.utc.strftime("%Y-%m-%dT%H:%M:%SZ")%></time>
+  </occasion>
+<% end %>
+</occasions>

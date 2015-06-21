@@ -1,0 +1,22 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Tapahtumatyypin tietojen muokkaus</h2></div></div></div>
+<div class="border">
+
+  <%= crumbs %>
+
+  
+<% form_for :occasion_type,
+			:url => occasion_type_path(:id => @occasion_type),
+			:html => {:method => :put } do |f| -%>
+  <%= f.error_messages %>
+  
+  <p><%= f.label :name, 'Tapahtumatyyppi' %>
+  <%= f.text_field :name %><br /></p>
+
+	<p><%= label_tag 'visiblity', 'Näkyvyys' %>
+	<%= f.select :visibility, @occasion_type.getOptionsForSelectList(:visibility), options ={:prompt => ""} %></p>
+
+  <p>
+    <%= f.submit "Tallenna" %>
+  </p>
+<% end %>
+</div>

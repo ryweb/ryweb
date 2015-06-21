@@ -1,0 +1,39 @@
+<p>
+   <b>Tilavarauksesi </b>
+   <table>
+     <% kuu=%w[tammi helmi maalis huhti touko kes&auml; hein&auml; elo syys loka marras joulu] %>
+     <% paiva=%w[su ma ti ke to pe la]; apupvm=0; res={} %>     
+	 <tr><th><%= kuu[Time.now.month-1]+"kuu" -%></th>
+	 <% for b in @bookings.sort{ |a,c| a.start_time <=> c.start_time }  %>
+	   <% paivays=b.start_time.month*31+b.start_time.day %>	   
+	   <% if paivays == apupvm  %>
+	     <% varaus=res[paivays]+b.rooms; res.delete(paivays) %>
+		 <%= varaus -%>
+		 <% res[paivays]=varaus; next %>
+	   <% else %>
+	     <% res[paivays]=b.rooms  %>
+ 	   <% end %> 	 
+	   <th><%= b.start_time.day.to_s + paiva[b.start_time.wday] -%></th>
+       <% apupvm=paivays %>       	   
+     <% end %>
+     <%= res.sort.inspect -%>	 
+	 </tr>	  
+	 <% for r in Room.find(:all) %>
+       <tr><td> <%= r.name -%> </td>
+	   <% for b in @bookings.sort{ |a,c| a.start_time <=> c.start_time } %>
+         <% paivays=b.start_time.month*31+b.start_time.day; varaus=res[paivays] %>
+		 <% unless varaus.include?(r) %>
+		   <td style="background-color:RosyBrown "><%= "" -%></td>
+		 <% else %>
+		   <% if b.rooms.include?(r) %>
+		     <td style="background-color:LightPink"><%= b.start_time.hour.to_s+":"+sprintf("%02d", b.start_time.min) -%></td>
+		   <% else %>
+		     <% next %>		   		   	   
+		   <% end %>	 
+	     <% end %>          		
+       <% end %>
+	   </tr>
+     <% end %>	 
+   </table>    
+</p> 
+<%= link_to 'Takaisin varauslistaan', bookings_path(:id => @booking) %>

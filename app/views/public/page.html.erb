@@ -1,0 +1,14 @@
+<%= @page.content %>
+
+<% if @page.calendar? %>
+
+  <%= render :partial => 'modified_occasions' %>
+
+    <% if @page.parameter_calendar_type == 'kk' %>
+      <%= render :partial => 'month_view' %>
+    <% elsif @page.parameter_calendar_type == 'vk' %>
+      <%= render :partial => 'week_view' %>
+    <% elsif @page.parameter_calendar_type == 'pk' %>
+      <%= render :partial => 'location_view' %>
+    <% end %>
+<% end %>

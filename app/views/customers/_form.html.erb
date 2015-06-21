@@ -1,0 +1,56 @@
+  <%= f.error_messages %>
+
+    <% permitted_to? :create, :customers do %>
+      <p><%= f.label :name, 'Järjestelmän nimi' %>
+          <%= f.text_field :name %>
+      </p>
+    <% end %>
+
+  <p><%= f.label :title, 'Yhdistyksen nimi' %>
+    <%= f.text_field :title %>
+  </p>
+
+  <p><%= label_tag 'power_base', 'Leirikeskustukialue' %>
+    <%= f.select :power_base, options_for_select(Customer.campgrounds.collect {|p| [ p[1],p[0]] }.sort, @customer.power_base), options ={:include_blank => true} %>
+  </p>
+
+  <p><%= label_tag 'target_area', 'Lähetysalue' %>
+    <%= f.select :target_area, options_for_select(Customer.target_areas.collect {|p| [ p[1],p[0]] }.sort, @customer.target_area), options ={:include_blank => true} %>
+  </p>
+
+   <p><%= f.label :address, 'Lähiosoite' %>
+    <%= f.text_field :address %>
+   </p>
+
+   <p><%= f.label :zip_code, 'Postinumero' %>
+    <%= f.text_field :zip_code %>
+   </p>
+
+   <p><%= f.label :city, 'Postitoimipaikka' %>
+    <%= f.text_field :city %>
+   </p>
+
+   <p><%= f.label :phone, 'Puhelinnumero' %>
+    <%= f.text_field :phone %>
+   </p>
+
+   <p><%= f.label :email, 'Sähköpostiosoite' %>
+    <%= f.text_field :email %>
+   </p>
+
+   <p><%= f.label :radio_url, 'Nettiradiolinkki' %>
+    <%= f.text_field :radio_url %>
+   </p>
+
+  <p>
+     <%= label_tag 'ui_template_id', 'Ulkoasumalli' %>
+     <%= f.select :ui_template_id, @ui_templates.map {|t| [t.name, t.id ]}, {:include_blank => true}  %>
+  </p>
+
+  <p><%= f.label :logo, 'Logo' %>
+    <%= f.text_field :logo %>
+   </p>
+
+  <p><%= label_tag 'language', 'Kieli' %>
+   <%= f.select :language, @customer.getOptionsForSelectList(:language), options ={:prompt => ""} %>
+ </p>

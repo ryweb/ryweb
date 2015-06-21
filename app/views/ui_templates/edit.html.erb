@@ -1,0 +1,13 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Ulkoasumallin muokkaus: <%=@ui_template .name %></h2></div></div></div>
+<div class="border">
+
+  <%= crumbs %>
+
+<% form_for( :ui_template, :url => ui_template_path(:id => @ui_template), :html => {:method => :put}) do |f| %>
+<%= render :partial => 'form', :locals => {:f => f} %>
+  <p>
+    <%= f.submit 'Tallenna' %>
+  </p>
+<% end %>
+
+</div>

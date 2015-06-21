@@ -1,0 +1,32 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Käyttäjät</h2></div></div></div>
+<div class="border">
+<div id="buttonbar">
+	<%= link_to 'Lisää käyttäjä', new_user_path, :class => 'button icon_add' %>
+</div>
+
+   <%= crumbs %>
+  
+<table style="width: 100%;">
+  <thead>
+  	<tr>
+  	<th>Käyttäjätunnus</th>
+	<th>Sähköposti</th>
+	<th>&nbsp;</th>
+	</tr>
+  </thead>
+  <tbody>
+<% for user in @users %> 
+	<tr class="<%= cycle("even", "odd") %>">
+    <td><%= link_to user.login, user_path(:id => user) %></td>
+	<td><%= user.email%></td>
+	<% if current_user.user_level <= 10 %>
+	    <td><%= link_to 'Muokkaa', edit_user_path(:id => user), :class => 'icon icon_edit' %>  
+    	<%= link_to 'Poista', user_path(:id => user), :class => 'icon icon_delete', :confirm => 'Oletko varma?', :method => :delete %></td>
+	<% else %>
+		<td>&nbsp;</td>
+	<% end %>
+  </tr>
+<% end %>
+</tbody>
+</table>
+</div>

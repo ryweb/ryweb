@@ -1,0 +1,25 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2> Versiohistoria - <%=@page.title %> </h2></div></div></div>
+<div class="border">
+
+<table style="width: 90%">
+  <tr>
+    <th>#</th>
+    <th>Tekijä</th>
+    <th>Muokattu</th>
+    <th>Tila</th>
+    <th colspan="3"></th>
+  </tr>
+<% @versions.each do |page| %>
+<tr>
+  <td><%=h page.version%></td>
+  <td><%=h Page.author_name(page.author_id)%></td>
+  <td><%=localize(page.updated_at, :format => :long) %></td>
+  <td><%=h Page.states[page.state]%></td>
+  <td><% if page.version > 1 %>
+<%=link_to "Näytä muutokset", :action => 'diff', :version => page.version, :id => @page %>
+<% end %>
+</td>
+</tr>
+<% end %>
+</table>
+</div>

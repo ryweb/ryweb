@@ -1,0 +1,16 @@
+ 
+<p>
+  <b>Varattava tila:</b>
+  <%=h @room.name %>
+</p>
+
+
+<p>
+  <b>Selvitys tilasta:</b>
+  <%=h @room.description %>
+</p>
+
+
+
+<%= link_to 'Muokkaa', edit_room_path(:id => @room) %> |
+<%= link_to 'Varattavat tilat', rooms_path(:id => @room) %>

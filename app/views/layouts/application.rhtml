@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fi" lang="fi">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<%= stylesheet_link_tag "application2" %>
+<%= stylesheet_link_tag "application3" %>
+<%= stylesheet_link_tag 'calendar_style_custom' %>
+<%= stylesheet_link_tag 'template/css/smoothness/jquery-ui-1.8.6.custom' %>
+<%= init_tinymce_hammer_if_required %>
+
+<title>Rauhanyhdistys.fi - <%= Customer.current.title %></title>
+
+<%= javascript_include_tag "jquery-1.4.2.min" %>
+<%= javascript_include_tag "jquery-ui-1.8.6.custom.min" %>
+<script> jQuery.noConflict(); </script>
+
+<%= javascript_include_tag :defaults %>
+
+
+</head>
+
+<body>
+<!-- wrap starts here -->
+<div id="container">
+        <!-- header -->
+        <div id="header">
+            <h1 id="logo-text">Rauhanyhdistys.fi - <%= Customer.current.title %></h1>
+            <!-- div id="header-links" -->
+              <p>
+              	<ul>
+             	<% if logged_in? -%>
+					<li><%= 'Kirjauduttu nimellä '%>
+					<strong><%= link_to @current_user.login, user_path(:id => @current_user) %></strong> ::
+					<%= link_to "Kirjaudu ulos", logout_path, { :title => "Log out", :class => "icon icon_logout" } %></li>
+				<% else -%>
+					<li><%= link_to "Kirjaudu sisään",  login_path,  { :title => "Kirjautuminen" } %></li>
+				<% end -%>   
+				</ul>             
+			  </p>
+            <!-- /div -->
+        </div> <!-- header ends here -->
+
+        <!-- menu -->
+          <ul id="menu">
+	        <li><%= link_to 'Etusivu', users_url %></li>
+			<% if current_user %>
+	            
+                <li<%= highlight_current(['pages', 'layouts','graphics', 'styles']) %>><%= link_to 'Nettisivut', pages_path if permitted_to? :manage, :pages %></li>
+
+	            <li<%= highlight_current(['occasions', 'locations', 'occasion_types','occasions/import','occasions/export']) %>><%= link_to 'Tapahtumakalenteri', occasions_path %></li>
+<li<%= highlight_current(['bookings', 'rooms']) %>><%= link_to 'Tilanvaraukset', bookings_path %></li>
+                    <li<%= highlight_current(['people', 'members','speakers']) %>><%= link_to 'Henkilörekisterit', people_path if permitted_to? :manage, :people  %></li>
+				<% if current_user && current_user.user_level <= 10 %>
+					<li<%= highlight_current(['users','settings','customers','ui_templates']) %>><%= link_to 'Asetukset', settings_path %></li>
+				<% end %>
+			<% end %>
+
+          </ul>
+
+        <!-- content-wrap starts here -->
+        <div id="content-wrap">
+
+
+			<!-- main starts here -->
+
+            <div id="main">
+              <% unless flash[:notice].nil? %><div class="notice"><% spiffy_corners :generate_css => true do %><%= flash[:notice] %><% end %></div><% end %>
+              <% unless flash[:error].nil? %><div class="error"><%= flash[:error] %></div> <% end %>
+
+              <%= yield %>
+            </div>
+			<!-- main ends here -->
+
+			<!-- sidebar starts here -->
+            <div id="sidebar">
+              <% if current_user %>
+            		<div class="table-header"><div class="table-header r"><div class="table-header m"></div></div></div>
+                          <div class="border">
+                            <ul class="sidemenu">
+                              <% if ['users', 'settings', 'customers', 'occasions', 'occasions/import', 'occasions/export', 'locations', 'bookings', 'rooms', 'occasion_types','pages','layouts', 'graphics','styles','ui_templates','people','members','speakers'].include?(params[:controller]) %>
+                                  <%= render :partial => params[:controller] + '/context_menu' %>
+                                <% end %>                              
+                            </ul>
+			</div>
+
+                        <% spiffy_corners :generate_css => true do %><strong>Uusia ideoita?<br />
+                          Palautetta?<br />
+                        Virhetoimintoja?<br /></strong>
+                        <br />
+                        <%= link_to "Lähetä viesti kehittäjille", new_feedback_path %>
+                        <br />
+                        <% end %>
+              <% end %>
+            </div>
+			<!-- sidebar ends here -->
+
+        </div><!-- content-wrap ends here -->
+        <!--footer starts here-->
+        <div id="footer">
+            <p>&copy; 2010 <strong>Rauhanyhdistys.fi</strong></p>
+        </div>  <!-- footer ends here -->
+
+</div> <!-- container ends here -->
+
+</body>
+</html>

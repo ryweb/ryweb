@@ -1,0 +1,41 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Tapahtumakalenteri
+<%= h @date.month.to_s + '/' + @date.year.to_s %>
+</h2></div></div></div>
+<div class="border">
+
+<div id="buttonbar">
+	<%= link_to 'Lisää tapahtuma', new_occasion_path(:view => "list"), :class => 'button icon_add' if permitted_to? :manage, :occasions %>
+</div>
+<div id="backforward">
+  <p>
+    <ul>
+      <%= navigation_back(:view => 'list') %><li><%= h @occasion.monthname[@date.month.to_i - 1] + 'kuu' %></li><%= navigation_forward(:view => 'list') %>
+    </ul>
+  </p>
+</div>
+
+
+<% form_remote_for :occasion, :url => {:action => 'bulk_change', :year => @date.year, :month => @date.month}, :html =>{:id => 'bulk_change'} do |f| -%>
+<div id='occ_list'>
+  <%= render :partial => 'occasion' %>
+</div>
+  <% if permitted_to? :manage, :occasions %>
+  Vaihda valittujen tapahtumien tilaksi: <%= f.select :state, @occasion.getOptionsForSelectList(:state), options ={:selected => 10} %>
+<%= f.submit "Tallenna" %>
+<% end %>
+<% end  %>
+<br />
+<% if permitted_to? :manage, :occasions %>
+<div class="table-header"><div class="table-header r"><div class="table-header m">Uusi tapahtuma</div></div></div>
+<div class="border">
+
+
+<div id ='quick_create'>
+	<%= render :partial => 'quick_create' %>
+</div>
+
+</div>
+<% end %>
+<br />
+
+</div>

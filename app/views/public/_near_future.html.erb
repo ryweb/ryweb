@@ -1,0 +1,10 @@
+	<table>
+		<tbody>
+                    <% for next_occasion in @next_occasions %>
+                  <tr><td class="date"><%= t('date.abbr_day_names')[next_occasion.start_time.wday] %>&nbsp;
+                  <%= localize next_occasion.start_time, :format => :very_short %></td>
+                  <td class="time"><%= next_occasion.start_time_only_str %></td>
+                  <td><%= next_occasion.name %></td></tr>
+                  <% end %>
+		</tbody>
+	</table>

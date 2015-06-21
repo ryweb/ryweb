@@ -1,0 +1,30 @@
+<p>
+   <b>Tilavarauksesi </b>
+   <table>
+     <% kuu=%w[tammi helmi maalis huhti touko kes&auml; hein&auml; elo syys loka marras joulu] %>
+     <% paiva=%w[su ma ti ke to pe la]; apupvm=0; pvm=Array.new  %>     
+	 <tr><th><%= kuu[Time.now.month-1]+"kuu" -%></th>
+	 <% for b in @bookings.sort{ |a,c| a.start_time <=> c.start_time }  %>
+	   <% paivays=b.start_time.day %>
+	   <% if paivays==apupvm  %>
+	     <% pvm << apupvm if pvm[-1] != apupvm %>
+		 <% next %> 
+       <% end %> 		 
+	   <th><%= b.start_time.day.to_s + paiva[b.start_time.wday] -%></th>
+       <% apupvm=b.start_time.day %>	    	
+     <% end %>
+	 </tr>	  
+     <% for r in Room.find(:all).sort{|s,t| s.name.upcase <=> t.name.upcase} %>
+       <tr><td> <%= r.name -%> </td>
+	   <% for b in @bookings.sort{ |a,c| a.start_time <=> c.start_time } %>	   
+         <% if b.rooms.include?(r)  %>
+     	   <td style="background-color:LightPink"><%= b.start_time.hour.to_s+":"+sprintf("%02d", b.start_time.min) -%></td>
+	     <% else %>
+	       <td style="background-color:RosyBrown "><%= "" -%></td>	   
+	     <% end %>	 
+       <% end %>
+	   </tr>
+     <% end %>	 
+   </table>    
+</p> 
+<%= link_to 'Takaisin varauslistaan', bookings_path(:id => @booking) %>

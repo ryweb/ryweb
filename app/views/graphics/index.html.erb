@@ -1,0 +1,33 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Kuvat</h2></div></div></div>
+<div class="border">
+
+<div id="buttonbar">
+  <%= link_to 'Uusi kuva', new_graphic_path, :class => 'button icon_add' %>
+</div>
+<%= crumbs %>
+
+
+<table style="width: 95%;">
+  <thead>
+  	<tr>
+		<th>Kuva</th>
+		<th>Hakemistopolku</th>
+		<th></th>
+		<th></th>
+	</tr>
+  </thead>
+
+<tbody>
+  <% for graphic in @graphics %>
+  <tr class="<%= cycle("even", "odd") %>">
+        <td><%= link_to graphic.filename, graphic.public_filename %></td>
+	<td><%= graphic.public_filename %></td>
+        <td><%= link_to 'Muokkaa', edit_graphic_path(:id => graphic), :class => 'icon icon_edit' %></td>
+    <td><%= link_to 'Poista', graphic_path(:id => graphic), :class => 'icon icon_delete', :confirm => 'Oletko varma?', :method => :delete %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+<br />
+
+</div>

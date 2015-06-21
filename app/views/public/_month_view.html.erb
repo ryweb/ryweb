@@ -1,0 +1,15 @@
+  <table id="calendar">
+  <% @occasion_months.sort.each do |month, occasions| %>
+  <thead><tr><th colspan ="6"><strong><%= t('date.month_names')[month.strftime('%m').to_i] %></strong></th></tr></thead>
+  <tbody><% for occasion in occasions %>
+  <tr>
+    <td class="day"><%= t('date.abbr_day_names')[occasion.start_time.wday] %></td>
+    <td class="date"><%= localize occasion.start_time, :format => :very_short %></td>
+    <td class="time"><% unless occasion.start_time_only_str == "00:00" %><%= occasion.start_time_only_str %><% end %></td>
+    <td class="event"><%= occasion.name %>&nbsp;<% if occasion.net_radio == 1 %><%= link_to t('public.listen_to_netradio'), @customer.radio_url, :popup => ['Nettiradio', 'height=202,width=500'], :class => 'icon icon_listen' %> <% end %></td>
+    <td class="locale"><% if occasion.location %><%= occasion.location.name %><% end %></td>
+    <td class="info"><%= occasion.public_info %></td>
+  </tr><% end %>
+  </tbody>
+  <% end %>
+  </table>

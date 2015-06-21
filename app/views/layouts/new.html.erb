@@ -1,0 +1,15 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Uusi ulkoasu</h2></div></div></div>
+<div class="border">
+
+  <%= crumbs %>
+
+<% form_for(@layout) do |f| %>
+
+    <%= render :partial => 'form', :locals => {:f => f} %>
+
+  <p>
+    <%= f.submit 'Luo' %>
+  </p>
+<% end %>
+
+</div>

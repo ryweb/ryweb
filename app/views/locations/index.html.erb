@@ -1,0 +1,31 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Paikat</h2></div></div></div>
+<div class="border">
+  
+<div id="buttonbar">
+	<%= link_to 'Uusi paikka', new_location_path, :class => 'button icon_add' if permitted_to? :manage, :locations %>
+</div>
+<%= crumbs %>
+
+<table style="width: 95%;">
+  <thead>
+  	<tr>
+		<th>Paikka</th>
+		<th>Osoite</th>
+		<th>&nbsp;</th>
+	</tr>
+  </thead>
+
+<tbody>
+<% for location in @locations %>
+  <tr class="<%= cycle("even", "odd") %>">
+	<td><%= link_to location.name, location_path(:id => location) %></td>
+	<td><%= location.address %></td>
+    <td><%= link_to 'Muokkaa', edit_location_path(:id => location), :class => 'icon icon_edit' if permitted_to? :manage, :locations %>
+    <%= link_to 'Poista', location_path(:id => location), :class => 'icon icon_delete', :confirm => 'Oletko varma?', :method => :delete if permitted_to? :manage, :locations %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<br />
+</div>

@@ -1,0 +1,153 @@
+body {
+	
+}
+
+.calendar {
+  width: 98%;
+  background-color: white;
+  /* border: 2px gray solid;*/
+  table-layout:fixed;
+}
+
+.monthName {
+  font-weight: bold;
+  font-size: 1.2em;
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 0.7em;
+}
+
+.dayName th {
+  width: 13%;
+  font-size: 0.7em;
+  padding-top: 0.6em;
+  padding-bottom: 0.3em;
+
+  text-align: center;
+  background: #2089b6;
+  color: white;
+}
+   
+.otherMonth {
+  vertical-align: top;
+  color: #eeeeee;
+  border-bottom: 1px dotted #bbbbbb;
+  border-left: 1px dotted #bbbbbb;
+  border-right: 1px dotted #bbbbbb;  
+  background-color: white;
+}
+
+.day {
+  height: 60px;
+  vertical-align: top;
+  border-bottom: 1px dotted #bbbbbb;
+  border-left: 1px dotted #bbbbbb;
+  border-right: 1px dotted #bbbbbb;
+}
+
+.specialDay {
+  height: 60px;
+  vertical-align: top;
+  border-bottom: 1px dotted #bbbbbb;
+  border-left: 1px dotted #bbbbbb;
+  border-right: 1px dotted #bbbbbb;
+}
+
+
+.day a, .day a:visited, .day a:hover {
+  display: block;
+  color: black;
+  text-decoration: none;
+  font-size: 0.85em;
+  text-overflow:ellipsis;
+  overflow:hidden;
+  white-space:nowrap;
+}
+
+.weekendDay {
+  background-color: #ffffdd;
+}
+
+.today {
+    border: 1px black solid;
+    background-color: #FFFAAA;
+}
+
+.day cancelled a, .day cancelled a:visited, .day cancelled a:hover {
+    text-decoration: line-through;
+}
+
+.day draft a, .day draft a:visited, .day draft a:hover {
+    font-style: italic;
+}
+
+.day div {
+	clear: both;
+}
+
+.day_number {
+    display: inline;
+    font-size: 1.1em;
+    font-weight: normal;
+    color: #0F96B4;
+    text-align: left;
+    float: left;
+}
+
+.specialDay .day_number {
+	color: #dd0000;
+}
+
+.specialDay .sD {
+	font-size: 70%;
+	font-family: Arial, sans-serif;
+	width: 60%;
+	color: #dd0000;
+	padding-left: 2px;
+	float: left;
+	line-height: 1.8;
+	text-transform: uppercase;
+	overflow: visible;
+	white-space: nowrap;
+}
+
+.add_event_link {
+    display: inline;
+    float: right;
+    padding-top: 2px;
+}
+
+.week_number {
+  width: 3% !important;
+  font-size: 0.8em;
+  text-align: center;
+  color: #777777;
+  background-color: white;
+}
+
+/* month navigation */
+
+#backforward ul {
+    text-transform: uppercase;
+    display: inline;
+}
+
+#backforward li {
+    list-style: none;
+    display: inline;
+    color: #0F96B4;
+    font-weight: bold;
+    font-size: 1.3em;
+    text-align: center;
+    padding: 0 0 0 15px;
+}
+
+#backforward li a {
+    text-decoration: none;
+    font-size: 0.6em;
+    color: #0F96B4
+}
+
+#backforward li a:hover {
+    text-decoration: underline;
+}

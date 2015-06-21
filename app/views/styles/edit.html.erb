@@ -1,0 +1,15 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Tyylitiedosto</h2></div></div></div>
+<div class="border">
+
+<%= error_messages_for :style %>
+
+<% form_for(:style, :url => style_path(:id => @style), :html => { :multipart => true, :method => :put }) do |f| %>
+
+<%= render :partial => 'form', :locals => {:f => f} %>
+
+
+  <p>
+    <%= submit_tag "Tallenna" %>
+  </p>
+<% end %>
+</div>

@@ -1,0 +1,15 @@
+<div class="table-header"><div class="table-header r"><div class="table-header m"><h2>Kuvan muokkaus</h2></div></div></div>
+<div class="border">
+
+      <%= crumbs %>
+  
+
+<%= error_messages_for :graphic %>
+<% form_for( :graphic, :url => graphic_path(:id => @graphic), :html => {:multipart => true, :method => :put}) do |f| %>
+
+  <%= render :partial => 'form', :locals => {:f => f} %>
+  <p>
+    <%= submit_tag "Tallenna" %>
+  </p>
+<% end %>
+</div>

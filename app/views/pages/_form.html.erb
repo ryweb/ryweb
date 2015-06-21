@@ -1,0 +1,70 @@
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title, "Otsikko" %>
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%= f.label :name, "Nimi" %>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :content, "Sisältö" %>
+    <%= f.tinymce :content, :rows => 20, :cols => 60 %>
+  </p>
+  <p>
+    <%= f.label :state, "Tila" %>
+    <%= f.select :state, Page.states.map {|s| [s[1],s[0]]}.sort {|x,y| x[1] <=> y[1]} %>
+  </p>
+  <p>
+  	<%= f.label :public, "Näkyvyys" %>
+    <%= f.check_box :public %> Julkinen
+  </p>
+  <p>
+    <%= f.label :layout_id, "Ulkoasu" %>
+    <% if Customer.current.ui_template.nil? %>
+      <%= f.select :layout_id, Layout.find(:all).map {|l| [l.name, l.id]} %>
+    <% else %>
+      <%= Customer.current.ui_template.name %>
+    <% end %>
+  </p>
+
+
+  <p>
+    <%= f.label :page_type, "Sivun tyyppi" %>
+    <%= f.select :page_type, Page.page_types.map {|s| [s[1],s[0]]}.sort {|x,y| x[1] <=> y[1]} %>
+  </p>
+
+
+  <div style="background-color: lightyellow; border: 1px solid yellow; padding-top: 1em; padding-bottom: 1em;<%if @page.page_type != 2%>display: none;<%end%> " id="page_type_options_2" class="page_type_options">
+    <p>
+    <label>Kalenterin tyyppi</label>
+    <%=select("page","parameter_calendar_type", {"Kuukausi" => 'kk', "Viikko" => 'vk', "Paikka" => 'pk'})%>
+     </p>
+    <p>
+    <label>Montako kuukautta näytetään eteenpäin</label>
+    <%=select ("page","parameter_calendar_length", (1...12).map {|n| [n.to_s,n.to_s]})%>
+    </p>
+  </div>
+<script language="javascript">
+  var last_page_type_option = 0;
+<% if @page.page_type %>
+  var last_page_type_option = <%= @page.page_type%>;
+<% end %>
+  function toggle_page_type_options() {
+  var page_page_type_value = $('page_page_type').value;
+
+  if (last_page_type_option != 0 && $('page_type_options_'+last_page_type_option)) {
+  $('page_type_options_'+last_page_type_option).hide();
+  }
+  if ($('page_type_options_'+page_page_type_value)) {
+  $('page_type_options_'+page_page_type_value).show();
+  }
+  last_page_type_option = page_page_type_value;
+
+  }
+</script>
+
+  <%= observe_field :page_page_type, :function => "toggle_page_type_options();" %>
